@@ -12,9 +12,9 @@ namespace dominio2
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public DateTime FechaDeNacimiento { get; set; }
-        public string Nacionalidad { get; set; }
-        public string Equipo { get; set; }
-        public string Posicion { get; set; }
+        public Nacionalidad Nacionalidad { get; set; }
+        public Equipo Equipo { get; set; }
+        public Posicion Posicion { get; set; }
         public string Imagen { get; set; }
         public bool Activo { get; set; }
     }

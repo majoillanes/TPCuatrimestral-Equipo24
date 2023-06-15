@@ -12,6 +12,10 @@
             <ItemTemplate>
                 <asp:Label runat="server" Text='<%# Eval("Jugador.Nombres") %>'></asp:Label>
                 <asp:Label runat="server" Text='<%# Eval("Jugador.Apellidos") %>'></asp:Label>
+                <asp:Label runat="server" Text='<%# Eval("Jugador.Nacionalidad.Gentilicio") %>'></asp:Label>
+                <asp:Label runat="server" Text='<%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                <asp:Label runat="server" Text='<%# Eval("Jugador.Equipo.Nombre") %>'></asp:Label>
+                <asp:Label runat="server" Text='<%# Eval("Jugador.Posicion.Descripcion") %>'></asp:Label>
                 <br />
                 <asp:Image runat="server" ImageUrl='<%# Eval("Jugador.Imagen") %>' Width="100" Height="100" />
             </ItemTemplate>

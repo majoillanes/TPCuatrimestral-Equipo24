@@ -16,7 +16,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select F.IDFigurita, F.IDAlbum, F.Activo, F.Pegada,F.IDJugador, J.Nombres, J.Apellidos, J.Imagen From Figuritas F\r\nINNER JOIN Jugadores J ON F.IDJugador = J.ID");
+                datos.setearConsulta("select F.IDFigurita, F.IDAlbum, F.Activo, F.Pegada,F.IDJugador, J.Nombres, J.Apellidos, J.Imagen, J.FechaDeNacimiento, N.GENTILICIO_NAC, E.Nombre,P.Descripcion From Figuritas F\r\nINNER JOIN Jugadores J ON F.IDJugador = J.ID\r\nINNER JOIN Nacionalidad N ON N.ISO_NAC = J.Nacionalidad\r\nINNER JOIN Equipos E ON E.ID = J.Equipo\r\nINNER JOIN Posiciones P ON P.Codigo = J.Posicion");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -26,14 +26,18 @@ namespace Test
                     figurita.Activo = (bool)datos.Lector["Activo"];
                     figurita.Pegada = (bool)datos.Lector["Pegada"];
                     figurita.Jugador = new Jugador();
-                    if (!(datos.Lector["IDJugador"] is DBNull))
-                    {
-                        figurita.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
-                        figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
-                        figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
-                        figurita.Jugador.Imagen = (string)datos.Lector["Imagen"];
-                    }
-                  
+                    figurita.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
+                    figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
+                    figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
+                    figurita.Jugador.Imagen = (string)datos.Lector["Imagen"];
+                    figurita.Jugador.FechaDeNacimiento = ((DateTime)datos.Lector["FechaDeNacimiento"]).Date;
+                    figurita.Jugador.Nacionalidad = new Nacionalidad();
+                    figurita.Jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    figurita.Jugador.Equipo = new Equipo();
+                    figurita.Jugador.Equipo.Nombre = (string)datos.Lector["Nombre"];
+                    figurita.Jugador.Posicion = new Posicion();
+                    figurita.Jugador.Posicion.Descripcion = (string)datos.Lector["Descripcion"];
+
                     figuritas.Add(figurita);
                 }
                 return figuritas;
