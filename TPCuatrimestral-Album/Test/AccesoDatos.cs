@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace negocio
+namespace Test
 {
     public class AccesoDatos
     {
@@ -19,7 +19,7 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=ALBUM_DB; integrated security=true");
+            conexion = new SqlConnection("server=DESKTOP-VDQB8VL; database=ALBUM_DB; integrated security=true");
             comando = new SqlCommand();
         }
 

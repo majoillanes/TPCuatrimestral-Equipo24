@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dominio
+namespace dominio2
 {
-    public class Album
+    public class TipoDeFigurita
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public List<Figurita> Figuritas { get; set; }
+        public string Descripcion { get; set; }
     }
 }

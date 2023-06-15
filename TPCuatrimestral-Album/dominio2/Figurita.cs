@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dominio
+namespace dominio2
 {
     public class Figurita
     {
@@ -14,6 +14,6 @@ namespace dominio
        // public int PrecioVenta { get; set; }
         public bool Pegada { get; set; }
         public bool Activo { get; set; }
-        public Jugador  Jugador { get; set; }
+        public Jugador Jugador { get; set; }
     }
 }
