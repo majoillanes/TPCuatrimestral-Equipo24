@@ -1,0 +1,30 @@
+﻿body {
+    background-color: #8490BB;
+}
+.ImageInicio {
+    height: 25em;
+    margin-left: 25%;
+    margin-right:2.5%;
+}
+.titulo-bienvenida{
+    text-align:center;
+    color: white !important;
+}
+.titulo-album{
+    text-align: right;
+    color: white;
+}
+
+.btn-ing {
+    border-radius: 25px;
+    background-color: white;
+    color: #8490BB;
+    font-size: xx-large;
+    width: 25rem;
+    height: 4rem;
+    margin-top: 2.5rem;
+    
+}
+
+
+
