@@ -17,7 +17,7 @@
 
 .btn-ing {
     border-radius: 25px;
-    background-color: white;
+    background-color: #fff;
     color: #8490BB;
     font-size: xx-large;
     width: 25rem;
@@ -26,5 +26,9 @@
     
 }
 
+.login {
+    background-color: #d3cfcf !important;
+    border-radius: 0 0 3rem 3rem;
+}
 
 

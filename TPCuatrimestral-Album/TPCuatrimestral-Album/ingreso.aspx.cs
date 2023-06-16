@@ -13,5 +13,10 @@ namespace TPCuatrimestral_Album
         {
 
         }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm1.aspx", false);
+        }
     }
 }

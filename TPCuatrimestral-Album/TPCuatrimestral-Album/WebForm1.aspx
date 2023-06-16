@@ -46,24 +46,25 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>--%>
-    <div class="row row-cols-1 row-cols-sm-6 g-4 mt-4">
-        <asp:Repeater ID="repeaterJugadores" runat="server">
-            <ItemTemplate>
-                <div class="col">
-                    <div class="card">
-                        <img class="card-img-top" src='<%# Eval("Jugador.Imagen") %>' alt="Imagen del jugador">
-                        <div class="card-body">
-                            <h5 class="card-title"><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></h5>
-                            <p class="card-text"> <%# Eval("Jugador.Nacionalidad.Gentilicio") %></p>
-                            <p class="card-text"><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></p>
-                            <p class="card-text"><%# Eval("Jugador.Equipo.Nombre") %></p>
-                            <p class="card-text"><%# Eval("Jugador.Posicion.Descripcion") %></p>
+    <div class="container-xl">
+        <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
+            <asp:Repeater ID="repeaterJugadores" runat="server">
+                <ItemTemplate>
+                    <div class="col">
+                        <div class="card">
+                            <img class="card-img-top" src='<%# Eval("Jugador.Imagen") %>' alt="Imagen del jugador">
+                            <div class="card-body">
+                                <h5 class="card-title"><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></h5>
+                                <p class="card-text"><%# Eval("Jugador.Nacionalidad.Gentilicio") %></p>
+                                <p class="card-text"><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></p>
+                                <p class="card-text"><%# Eval("Jugador.Equipo.Nombre") %></p>
+                                <p class="card-text"><%# Eval("Jugador.Posicion.Descripcion") %></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
     </div>
-
 
 </asp:Content>
