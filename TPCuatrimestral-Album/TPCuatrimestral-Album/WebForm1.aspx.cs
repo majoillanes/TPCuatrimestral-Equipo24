@@ -14,8 +14,10 @@ namespace TPCuatrimestral_Album
         protected void Page_Load(object sender, EventArgs e)
         {
             FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
-            gvLista.DataSource = figuritaNegocio.listar();
-            gvLista.DataBind();
+           // gvLista.DataSource = figuritaNegocio.listar();
+           // gvLista.DataBind();
+            repeaterJugadores.DataSource = figuritaNegocio.listar();
+            repeaterJugadores.DataBind();
         }
     }
 }
