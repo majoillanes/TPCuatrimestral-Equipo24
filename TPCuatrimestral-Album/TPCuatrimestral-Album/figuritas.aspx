@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="TPCuatrimestral_Album.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="figuritas.aspx.cs" Inherits="TPCuatrimestral_Album.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -64,6 +64,9 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
+            <div class="container d-flex justify-content-center mt-4">
+                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" onclick="btnVolver_Click" />
+            </div>
         </div>
     </div>
 

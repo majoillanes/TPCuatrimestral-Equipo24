@@ -8,6 +8,7 @@ namespace dominio2
 {
     public class Figurita
     {
+        //Codigo unico
         public int IDFigurita { get; set; }
         public TipoDeFigurita TipoDeFigurita { get; set; }
         public int IDAlbum { get; set; }

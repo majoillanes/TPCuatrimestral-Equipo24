@@ -19,5 +19,10 @@ namespace TPCuatrimestral_Album
             repeaterJugadores.DataSource = figuritaNegocio.listar();
             repeaterJugadores.DataBind();
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("menu.aspx", false);
+        }
     }
 }

@@ -68,12 +68,76 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\Estilos.css" />
+    <Content Include="album.aspx" />
+    <Content Include="bonosRecompensas.aspx" />
+    <Content Include="estadisticas.aspx" />
+    <Content Include="tienda.aspx" />
+    <Content Include="intercambio.aspx" />
+    <Content Include="paquete.aspx" />
+    <Content Include="perfil.aspx" />
+    <Content Include="menu.aspx" />
     <Content Include="ingreso.aspx" />
     <Content Include="inicio.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="figuritas.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="album.aspx.cs">
+      <DependentUpon>album.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="album.aspx.designer.cs">
+      <DependentUpon>album.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bonosRecompensas.aspx.cs">
+      <DependentUpon>bonosRecompensas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bonosRecompensas.aspx.designer.cs">
+      <DependentUpon>bonosRecompensas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estadisticas.aspx.cs">
+      <DependentUpon>estadisticas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estadisticas.aspx.designer.cs">
+      <DependentUpon>estadisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tienda.aspx.cs">
+      <DependentUpon>tienda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tienda.aspx.designer.cs">
+      <DependentUpon>tienda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intercambio.aspx.cs">
+      <DependentUpon>intercambio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intercambio.aspx.designer.cs">
+      <DependentUpon>intercambio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="paquete.aspx.cs">
+      <DependentUpon>paquete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="paquete.aspx.designer.cs">
+      <DependentUpon>paquete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="perfil.aspx.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="perfil.aspx.designer.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="menu.aspx.cs">
+      <DependentUpon>menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="menu.aspx.designer.cs">
+      <DependentUpon>menu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ingreso.aspx.cs">
       <DependentUpon>ingreso.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,12 +167,12 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="figuritas.aspx.cs">
+      <DependentUpon>figuritas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="figuritas.aspx.designer.cs">
+      <DependentUpon>figuritas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

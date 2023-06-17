@@ -1,16 +1,19 @@
 ﻿body {
     background-color: #8490BB;
 }
+
 .ImageInicio {
     height: 25em;
     margin-left: 25%;
-    margin-right:2.5%;
+    margin-right: 2.5%;
 }
-.titulo-bienvenida{
-    text-align:center;
+
+.titulo-bienvenida {
+    text-align: center;
     color: white !important;
 }
-.titulo-album{
+
+.titulo-album {
     text-align: right;
     color: white;
 }
@@ -23,7 +26,6 @@
     width: 25rem;
     height: 4rem;
     margin-top: 2.5rem;
-    
 }
 
 .login {
@@ -31,4 +33,22 @@
     border-radius: 0 0 3rem 3rem;
 }
 
+.principal {
+    height: 100vh;
+}
 
+.container-menu {
+    height: 100%;
+}
+
+.container-menu > .col-6 {
+    background-color: #258c9d;
+    border-radius: 2rem;
+}
+
+.btn-menu {
+    height: 3rem;
+    background-color: #b8c3e9;
+    color: #fff;
+    border-radius: 0.5rem;
+}

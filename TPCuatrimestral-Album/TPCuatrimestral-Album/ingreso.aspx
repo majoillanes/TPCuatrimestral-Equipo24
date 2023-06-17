@@ -8,7 +8,7 @@
         <div class="login col-4">
             <h2 style="text-align: center">Registrate o Inicia Sesión</h2>
 
-            <form>
+            <div>
                 <div class="row g-3 align-items-center p-3">
                     <div class="col">
                         <asp:Label ID="lblEmail" runat="server" CssClass="form-label">E-mail:</asp:Label>
@@ -31,7 +31,7 @@
                 </div>
 
 
-            </form>
+            </div>
         </div>
     </div>
 </asp:Content>
