@@ -46,7 +46,10 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>--%>
-    <div class="container-xl">
+
+    <%-- a partir de aca funcionaba --%>
+
+    <%--<div class="container-xl">
         <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
             <asp:Repeater ID="repeaterJugadores" runat="server">
                 <ItemTemplate>
@@ -65,7 +68,41 @@
                 </ItemTemplate>
             </asp:Repeater>
             <div class="container d-flex justify-content-center mt-4">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" onclick="btnVolver_Click" />
+                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
+            </div>
+        </div>
+    </div>--%>
+
+    <%-- pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --%>
+
+    <div class="container-xl">
+        <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
+            <asp:Repeater ID="repeaterJugadores" runat="server">
+                <ItemTemplate>
+                    <div class="container d-flex justify-content-center mt-2">
+                        <div class="borde container d-flex justify-content-center align-items-center">
+                            <div class="figurita d-flex flex-column">
+                                <div class="imagen" style="background-image:url('<%# Eval("Jugador.Imagen") %>')"></div>
+                                <div class="info d-flex flex-column">
+                                    <div class="nombre d-flex justify-content-center">
+                                        <p><b><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></b></p>
+                                    </div>
+                                    <div class="props">
+                                        <ul>
+                                            <li><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></li>
+                                            <li><%# Eval("Jugador.Posicion.Descripcion") %></li>
+                                            <li><%# Eval("Jugador.Equipo.Nombre") %></li>
+                                            <li><%# Eval("Jugador.Nacionalidad.Gentilicio") %></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <div class="container d-flex justify-content-center mt-4">
+                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
             </div>
         </div>
     </div>

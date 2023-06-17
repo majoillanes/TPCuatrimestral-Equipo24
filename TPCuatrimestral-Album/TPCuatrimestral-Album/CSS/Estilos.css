@@ -41,14 +41,52 @@
     height: 100%;
 }
 
-.container-menu > .col-6 {
-    background-color: #258c9d;
-    border-radius: 2rem;
-}
+    .container-menu > .col-6 {
+        background-color: #258c9d;
+        border-radius: 2rem;
+    }
 
 .btn-menu {
     height: 3rem;
     background-color: #b8c3e9;
     color: #fff;
     border-radius: 0.5rem;
+}
+
+/* Estilos figuritas jugadores */
+
+.borde {
+    background-color: #000;
+    height: 350px;
+    width: 250px;
+}
+
+.figurita {
+    height: 95%;
+    width: 99.9%;
+    border: 1px white;
+    background-color: #fff;
+}
+
+.imagen {
+    height: 60%;
+    background-position: center top;
+}
+
+.info {
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26));
+    height: 40%;
+}
+
+.nombre {
+    border-bottom: 0.5px solid #fff;
+    height: 25%;
+}
+
+.props {
+    height: 50%;
+}
+
+.props > ul > li {
+    list-style-type: none !important;
 }
