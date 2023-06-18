@@ -71,6 +71,8 @@
     <Content Include="album.aspx" />
     <Content Include="bonosRecompensas.aspx" />
     <Content Include="estadisticas.aspx" />
+    <Content Include="formularioNacionalidad.aspx" />
+    <Content Include="nacionalidadAdmin.aspx" />
     <Content Include="tienda.aspx" />
     <Content Include="intercambio.aspx" />
     <Content Include="paquete.aspx" />
@@ -80,6 +82,7 @@
     <Content Include="inicio.aspx" />
     <Content Include="Web.config" />
     <Content Include="figuritas.aspx" />
+    <Content Include="administracion.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="album.aspx.cs">
@@ -102,6 +105,20 @@
     </Compile>
     <Compile Include="estadisticas.aspx.designer.cs">
       <DependentUpon>estadisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularioNacionalidad.aspx.cs">
+      <DependentUpon>formularioNacionalidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularioNacionalidad.aspx.designer.cs">
+      <DependentUpon>formularioNacionalidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nacionalidadAdmin.aspx.cs">
+      <DependentUpon>nacionalidadAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nacionalidadAdmin.aspx.designer.cs">
+      <DependentUpon>nacionalidadAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="tienda.aspx.cs">
       <DependentUpon>tienda.aspx</DependentUpon>
@@ -173,6 +190,13 @@
     </Compile>
     <Compile Include="figuritas.aspx.designer.cs">
       <DependentUpon>figuritas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="administracion.aspx.cs">
+      <DependentUpon>administracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administracion.aspx.designer.cs">
+      <DependentUpon>administracion.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

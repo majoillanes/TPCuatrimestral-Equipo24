@@ -13,6 +13,7 @@
             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnBonosRecompensas" runat="server" Text="Bonos y recompensas" onclick="btnBonosRecompensas_Click"/>                             
             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnTienda" runat="server" Text="Tienda" onclick="btnTienda_Click"/>
             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnEstadisticas" runat="server" Text="Estadísticas" onclick="btnEstadisticas_Click"/>
+             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnAdministrador" runat="server" Text="Administración" onclick="btnAdministrador_Click"/>
             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnSalir" runat="server" Text="Salir" onclick="btnSalir_Click"/>
         </div>
     </div>

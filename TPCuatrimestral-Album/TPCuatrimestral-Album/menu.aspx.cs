@@ -53,6 +53,11 @@ namespace TPCuatrimestral_Album
         {
             Response.Redirect("estadisticas.aspx", false);
         }
+        
+        protected void btnAdministrador_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("administracion.aspx", false);
+        }
 
         protected void btnSalir_Click(object sender, EventArgs e)
         {
