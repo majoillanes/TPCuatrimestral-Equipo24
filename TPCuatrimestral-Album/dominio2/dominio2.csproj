@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Album.cs" />
     <Compile Include="Equipo.cs" />
+    <Compile Include="Estadio.cs" />
     <Compile Include="Figurita.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="Nacionalidad.cs" />
