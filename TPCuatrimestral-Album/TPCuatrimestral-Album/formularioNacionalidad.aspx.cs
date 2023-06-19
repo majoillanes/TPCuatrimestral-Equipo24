@@ -16,10 +16,12 @@ namespace TPCuatrimestral_Album
         {
             try
             {
+                btnEliminar.Visible = false;
                 //configuración si estamos modificando.
                 string ISO = Request.QueryString["ISO"] != null ? Request.QueryString["ISO"].ToString() : "";
                 if (ISO != "" && !IsPostBack)
                 {
+                    btnEliminar.Visible = true;
                     txtISO.Enabled = false;
                     NacionalidadNegocio negocio = new NacionalidadNegocio();
                     Nacionalidad seleccionado = (negocio.listar(ISO));
