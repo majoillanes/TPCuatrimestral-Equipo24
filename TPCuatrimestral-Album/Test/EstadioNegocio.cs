@@ -15,15 +15,15 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios");
+                datos.setearConsulta("SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios WHERE Activo = 1");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Estadio estadio = new Estadio();
-                    estadio.ID = (int)datos.Lector["ID"];
+                    estadio.ID = (Int16)datos.Lector["ID"];
                     estadio.Nombre = (string)datos.Lector["Nombre"];
                     estadio.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
-                    estadio.Capacidad = (int)datos.Lector["Capacidad"];
+                    estadio.Capacidad = (string)datos.Lector["Capacidad"];
                     estadio.Barrio = (string)datos.Lector["Barrio"];
                     estadio.Calle = (string)datos.Lector["Calle"];
                     estadio.Imagen = (string)datos.Lector["Imagen"];
@@ -69,20 +69,20 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public Estadio listar(Int16 ID)
+        public Estadio listar(string ID)
         {
             Estadio estadio = new Estadio();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios WHERE ID ='{ID}'");
+                datos.setearConsulta($"SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios WHERE ID ='{ID}' AND Activo = 1");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     estadio.ID = (Int16)datos.Lector["ID"];
                     estadio.Nombre = (string)datos.Lector["Nombre"];
                     estadio.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
-                    estadio.Capacidad = (int)datos.Lector["Capacidad"];
+                    estadio.Capacidad = (string)datos.Lector["Capacidad"];
                     estadio.Barrio = (string)datos.Lector["Barrio"];
                     estadio.Calle = (string)datos.Lector["Calle"];
                     estadio.Imagen = (string)datos.Lector["Imagen"];
@@ -136,7 +136,7 @@ namespace Test
                     estadio.ID = (int)datos.Lector["ID"];
                     estadio.Nombre = (string)datos.Lector["Nombre"];
                     estadio.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
-                    estadio.Capacidad = (int)datos.Lector["Capacidad"];
+                    estadio.Capacidad = (string)datos.Lector["Capacidad"];
                     estadio.Barrio = (string)datos.Lector["Barrio"];
                     estadio.Calle = (string)datos.Lector["Calle"];
                     estadio.Imagen = (string)datos.Lector["Imagen"];
@@ -170,7 +170,7 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(int ID)
+        public void eliminar(string ID)
         {
             AccesoDatos datos = new AccesoDatos();
             try

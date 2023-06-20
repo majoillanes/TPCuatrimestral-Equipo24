@@ -74,7 +74,7 @@
 }
 
 .info {
-    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26));
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
     height: 40%;
 }
 

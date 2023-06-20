@@ -11,7 +11,7 @@ namespace dominio2
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Alias { get; set; }
-        public int Capacidad { get; set; }
+        public string Capacidad { get; set; }
         public string Barrio { get; set; }
         public string Calle { get; set; }
         public string Imagen { get; set; }

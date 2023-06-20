@@ -72,6 +72,8 @@
     <Content Include="bonosRecompensas.aspx" />
     <Content Include="equipoAdmin.aspx" />
     <Content Include="estadisticas.aspx" />
+    <Content Include="estadiosAdmin.aspx" />
+    <Content Include="formularioEstadio.aspx" />
     <Content Include="formularioEquipo.aspx" />
     <Content Include="formularioNacionalidad.aspx" />
     <Content Include="nacionalidadAdmin.aspx" />
@@ -114,6 +116,20 @@
     </Compile>
     <Compile Include="estadisticas.aspx.designer.cs">
       <DependentUpon>estadisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estadiosAdmin.aspx.cs">
+      <DependentUpon>estadiosAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estadiosAdmin.aspx.designer.cs">
+      <DependentUpon>estadiosAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularioEstadio.aspx.cs">
+      <DependentUpon>formularioEstadio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularioEstadio.aspx.designer.cs">
+      <DependentUpon>formularioEstadio.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularioEquipo.aspx.cs">
       <DependentUpon>formularioEquipo.aspx</DependentUpon>
