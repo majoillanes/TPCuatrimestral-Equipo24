@@ -17,5 +17,10 @@ namespace TPCuatrimestral_Album
         {
             Response.Redirect("nacionalidadAdmin.aspx", false);
         }
+
+        protected void btnEquipoAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("equipoAdmin.aspx", false);
+        }
     }
 }

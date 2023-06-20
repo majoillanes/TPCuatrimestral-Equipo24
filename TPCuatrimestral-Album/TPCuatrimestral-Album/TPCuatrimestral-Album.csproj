@@ -70,7 +70,9 @@
     <Content Include="CSS\Estilos.css" />
     <Content Include="album.aspx" />
     <Content Include="bonosRecompensas.aspx" />
+    <Content Include="equipoAdmin.aspx" />
     <Content Include="estadisticas.aspx" />
+    <Content Include="formularioEquipo.aspx" />
     <Content Include="formularioNacionalidad.aspx" />
     <Content Include="nacionalidadAdmin.aspx" />
     <Content Include="tienda.aspx" />
@@ -99,12 +101,26 @@
     <Compile Include="bonosRecompensas.aspx.designer.cs">
       <DependentUpon>bonosRecompensas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="equipoAdmin.aspx.cs">
+      <DependentUpon>equipoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="equipoAdmin.aspx.designer.cs">
+      <DependentUpon>equipoAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="estadisticas.aspx.cs">
       <DependentUpon>estadisticas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estadisticas.aspx.designer.cs">
       <DependentUpon>estadisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularioEquipo.aspx.cs">
+      <DependentUpon>formularioEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularioEquipo.aspx.designer.cs">
+      <DependentUpon>formularioEquipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularioNacionalidad.aspx.cs">
       <DependentUpon>formularioNacionalidad.aspx</DependentUpon>

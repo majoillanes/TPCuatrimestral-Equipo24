@@ -23,8 +23,8 @@ namespace TPCuatrimestral_Album
         }
         protected void gvNacionalidades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string id = gvNacionalidades.SelectedDataKey.Value.ToString();
-            Response.Redirect("formularioNacionalidad.aspx?ISO=" + id);
+            string iso = gvNacionalidades.SelectedDataKey.Value.ToString();
+            Response.Redirect("formularioNacionalidad.aspx?ISO=" + iso);
         }
     }
 }

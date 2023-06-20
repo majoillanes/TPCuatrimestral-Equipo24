@@ -11,25 +11,16 @@ namespace TPCuatrimestral_Album
 {
 
 
-    public partial class WebForm2
+    public partial class equipoAdmin
     {
 
         /// <summary>
-        /// Control btnNacionalidadAdmin.
+        /// Control gvEquipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNacionalidadAdmin;
-
-        /// <summary>
-        /// Control btnEquipoAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEquipoAdmin;
+        protected global::System.Web.UI.WebControls.GridView gvEquipos;
     }
 }

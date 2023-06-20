@@ -33,7 +33,7 @@ namespace TPCuatrimestral_Album
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-                Response.Redirect("Error.aspx");
+                //Response.Redirect("Error.aspx");
             }
         }
 

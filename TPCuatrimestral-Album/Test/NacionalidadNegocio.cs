@@ -63,20 +63,13 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public Nacionalidad modificar(Nacionalidad nacionalidad)
+        public void modificar(Nacionalidad nacionalidad)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta($"UPDATE NACIONALIDAD SET PAIS_NAC = '{nacionalidad.Pais}', GENTILICIO_NAC = '{nacionalidad.Gentilicio}' WHERE ISO_NAC = '{nacionalidad.ISO}'");
-                datos.ejecutarLectura();
-                while (datos.Lector.Read())
-                {
-                    nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
-                    nacionalidad.Pais = (string)datos.Lector["PAIS_NAC"];
-                    nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
-                }
-                return nacionalidad;
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
