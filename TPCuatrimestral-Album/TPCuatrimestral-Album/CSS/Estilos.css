@@ -90,3 +90,44 @@
 .props > ul > li {
     list-style-type: none !important;
 }
+
+/*Pruebas para estilos de perfil*/
+
+.icon-list {
+    list-style: none;
+    padding: 0;
+    margin-top:1.5%;
+}
+
+    .icon-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .icon-list i {
+        margin-right: 10px;
+    }
+
+.icons {
+    display: flex;
+    height: 3em;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.icon-descrip {
+    display: flex;
+    flex-direction: column;
+    margin-left:1.5%;
+   font-weight:bold;
+}
+.descrip{
+    margin-bottom: 1.5%
+}
+.icons-right {
+    list-style:none;
+    padding: 0;
+    margin-top: 1.5%;
+    margin-left:80%;
+
+}
