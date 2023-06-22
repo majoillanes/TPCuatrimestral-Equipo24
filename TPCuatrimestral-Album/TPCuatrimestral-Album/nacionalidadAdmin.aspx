@@ -13,6 +13,7 @@
                 <asp:BoundField HeaderText="ISO Nacionalidad" DataField="ISO" />
                 <asp:BoundField HeaderText="País" DataField="Pais" />
                 <asp:BoundField HeaderText="Gentilicio" DataField="Gentilicio" />
+                <asp:CheckBoxField HeaderText="Estado" DataField="Activo"/>
                 <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍" />
             </Columns>
         </asp:GridView>

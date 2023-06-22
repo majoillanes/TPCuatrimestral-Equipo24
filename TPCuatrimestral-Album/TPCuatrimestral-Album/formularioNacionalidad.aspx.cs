@@ -16,18 +16,21 @@ namespace TPCuatrimestral_Album
         {
             try
             {
-                btnEliminar.Visible = false;
-                //configuración si estamos modificando.
+                btnInactivar.Visible = false;
+
                 string ISO = Request.QueryString["ISO"] != null ? Request.QueryString["ISO"].ToString() : "";
                 if (ISO != "" && !IsPostBack)
                 {
-                    btnEliminar.Visible = true;
+                    btnInactivar.Visible = true;
                     txtISO.Enabled = false;
                     NacionalidadNegocio negocio = new NacionalidadNegocio();
                     Nacionalidad seleccionado = (negocio.listar(ISO));
                     txtISO.Text = ISO;
                     txtPaís.Text = seleccionado.Pais;
                     txtGentilicio.Text = seleccionado.Gentilicio;
+
+                    if (!seleccionado.Activo)
+                        btnInactivar.Text = "Reactivar";
                 }
             }
             catch (Exception ex)
@@ -64,13 +67,13 @@ namespace TPCuatrimestral_Album
             }
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void btnInactivar_Click(object sender, EventArgs e)
         {
             try
             {
-                    NacionalidadNegocio negocio = new NacionalidadNegocio();
-                    negocio.eliminar(txtISO.Text);
-                    Response.Redirect("nacionalidadAdmin.aspx");
+                NacionalidadNegocio negocio = new NacionalidadNegocio();
+                negocio.inactivar(txtISO.Text, (btnInactivar.Text == "Inactivar") ? false : true);
+                Response.Redirect("nacionalidadAdmin.aspx");
             }
             catch (Exception ex)
             {

@@ -25,6 +25,7 @@ namespace Test
                     jugador.Apellidos = (string)datos.Lector["Apellidos"];
                     jugador.FechaDeNacimiento = (DateTime)datos.Lector["FechaDeNacimiento"];
                     jugador.Imagen = (string)datos.Lector["Imagen"];
+                    jugador.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                     jugador.Nacionalidad = new Nacionalidad();
                     jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
                     jugador.Equipo = new Equipo();

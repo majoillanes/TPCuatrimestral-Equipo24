@@ -21,7 +21,7 @@
                         <asp:Image ID="imgEquipo" runat="server" ImageUrl='<%# Eval("Imagen") %>' Width="100" Height="100" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Activo" DataField="Activo" />
+                <asp:CheckBoxField HeaderText="Estado" DataField="Activo"/>
                 <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍" />
             </Columns>
         </asp:GridView>

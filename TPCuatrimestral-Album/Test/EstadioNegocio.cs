@@ -48,7 +48,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Es.ID, Es.Nombre FROM Estadios Es\r\nLEFT JOIN Equipos Eq ON Eq.Estadio = Es.ID\r\nWHERE Eq.ID IS NULL");
+                datos.setearConsulta("SELECT Es.ID, Es.Nombre FROM Estadios Es\r\nLEFT JOIN Equipos Eq ON Eq.Estadio = Es.ID\r\nWHERE Eq.ID IS NULL AND Es.Activo = 1");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

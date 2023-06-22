@@ -11,5 +11,6 @@ namespace dominio2
         public string ISO { get; set; }
         public string Gentilicio { get; set; }
         public string Pais { get; set; }
+        public bool Activo { get; set; }
     }
 }

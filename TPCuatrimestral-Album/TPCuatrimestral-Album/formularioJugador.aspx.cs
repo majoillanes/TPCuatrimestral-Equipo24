@@ -21,7 +21,7 @@ namespace TPCuatrimestral_Album
                     EquipoNegocio equipoNegocio = new EquipoNegocio();
                     List<Equipo> listaEquipo = equipoNegocio.listar();
                     NacionalidadNegocio nacionalidadNegocio = new NacionalidadNegocio();
-                    List<Nacionalidad> listaNacionalidad = nacionalidadNegocio.listar();
+                    List<Nacionalidad> listaNacionalidad = nacionalidadNegocio.listarDisponilbes();
                     PosicionNegocio estadioNegocio = new PosicionNegocio();
                     List<Posicion> listaPosicion = estadioNegocio.listar();
 

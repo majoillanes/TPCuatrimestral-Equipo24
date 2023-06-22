@@ -15,7 +15,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select N.ISO_NAC, N.PAIS_NAC, N.GENTILICIO_NAC from Nacionalidad N");
+                datos.setearConsulta("select N.ISO_NAC, N.PAIS_NAC, N.GENTILICIO_NAC, N.Activo from Nacionalidad N");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -23,6 +23,36 @@ namespace Test
                     nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
                     nacionalidad.Pais = (string)datos.Lector["PAIS_NAC"];
                     nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    nacionalidad.Activo = (bool)datos.Lector["Activo"];
+                    nacionalidades.Add(nacionalidad);
+                }
+                return nacionalidades;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Nacionalidad> listarDisponilbes()
+        {
+            List<Nacionalidad> nacionalidades = new List<Nacionalidad>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select N.ISO_NAC, N.PAIS_NAC, N.GENTILICIO_NAC, N.Activo from Nacionalidad N WHERE N.Activo = 1 ");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Nacionalidad nacionalidad = new Nacionalidad();
+                    nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
+                    nacionalidad.Pais = (string)datos.Lector["PAIS_NAC"];
+                    nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    nacionalidad.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                     nacionalidades.Add(nacionalidad);
                 }
                 return nacionalidades;
@@ -43,13 +73,14 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"select N.ISO_NAC, N.PAIS_NAC, N.GENTILICIO_NAC from Nacionalidad N WHERE N.ISO_NAC='{iso}'" );
+                datos.setearConsulta($"select N.ISO_NAC, N.PAIS_NAC, N.GENTILICIO_NAC, N.Activo from Nacionalidad N WHERE N.ISO_NAC='{iso}'" );
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
                     nacionalidad.Pais = (string)datos.Lector["PAIS_NAC"];
                     nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    nacionalidad.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                 }
                 return nacionalidad;
             }
@@ -98,12 +129,13 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(string iso)
+        public void inactivar(string iso, bool activo = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"DELETE FROM NACIONALIDAD WHERE ISO_NAC ='{iso}'");
+                int activoInt = activo ? 1 : 0;
+                datos.setearConsulta($"UPDATE Nacionalidad SET Activo = {activoInt} WHERE ISO_NAC ='{iso}'");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
