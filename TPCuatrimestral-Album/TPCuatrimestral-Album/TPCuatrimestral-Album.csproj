@@ -75,7 +75,9 @@
     <Content Include="estadiosAdmin.aspx" />
     <Content Include="formularioEstadio.aspx" />
     <Content Include="formularioEquipo.aspx" />
+    <Content Include="formularioJugador.aspx" />
     <Content Include="formularioNacionalidad.aspx" />
+    <Content Include="jugadoresAdmin.aspx" />
     <Content Include="nacionalidadAdmin.aspx" />
     <Content Include="tienda.aspx" />
     <Content Include="intercambio.aspx" />
@@ -138,12 +140,26 @@
     <Compile Include="formularioEquipo.aspx.designer.cs">
       <DependentUpon>formularioEquipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularioJugador.aspx.cs">
+      <DependentUpon>formularioJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularioJugador.aspx.designer.cs">
+      <DependentUpon>formularioJugador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularioNacionalidad.aspx.cs">
       <DependentUpon>formularioNacionalidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="formularioNacionalidad.aspx.designer.cs">
       <DependentUpon>formularioNacionalidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jugadoresAdmin.aspx.cs">
+      <DependentUpon>jugadoresAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jugadoresAdmin.aspx.designer.cs">
+      <DependentUpon>jugadoresAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="nacionalidadAdmin.aspx.cs">
       <DependentUpon>nacionalidadAdmin.aspx</DependentUpon>

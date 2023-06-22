@@ -45,7 +45,9 @@
     <Compile Include="EquipoNegocio.cs" />
     <Compile Include="EstadioNegocio.cs" />
     <Compile Include="FiguritaNegocio.cs" />
+    <Compile Include="JugadorNegocio.cs" />
     <Compile Include="NacionalidadNegocio.cs" />
+    <Compile Include="PosicionNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

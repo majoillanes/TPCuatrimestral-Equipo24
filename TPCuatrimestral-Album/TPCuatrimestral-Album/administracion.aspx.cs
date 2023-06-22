@@ -27,5 +27,10 @@ namespace TPCuatrimestral_Album
         {
             Response.Redirect("estadiosAdmin.aspx", false);
         }
+
+        protected void btnJugadoresAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("jugadoresAdmin.aspx", false);
+        }
     }
 }

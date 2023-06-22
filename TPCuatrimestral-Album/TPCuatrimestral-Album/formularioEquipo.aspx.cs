@@ -24,7 +24,6 @@ namespace TPCuatrimestral_Album
                 ddlEstadio.DataValueField = "ID";
                 ddlEstadio.DataTextField = "Nombre";
                 ddlEstadio.DataBind();
-
             }
 
             try
