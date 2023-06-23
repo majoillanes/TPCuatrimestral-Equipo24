@@ -4,11 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-xl mt-2 ">
-        <asp:GridView ID="gvNacionalidades" runat="server" DataKeyNames="ISO"
-            CssClass="table" AutoGenerateColumns="false"
-            OnSelectedIndexChanged="gvNacionalidades_SelectedIndexChanged"
+        <asp:GridView ID="gvNacionalidades" runat="server"
+            AllowPaging="True"
+            AutoGenerateColumns="false" CssClass="table table-hover align-middle text-center"
+            DataKeyNames="ISO"
             OnPageIndexChanging="gvNacionalidades_PageIndexChanging"
-            AllowPaging="True" PageSize="5">
+            OnSelectedIndexChanged="gvNacionalidades_SelectedIndexChanged"
+            PageSize="5">
             <Columns>
                 <asp:BoundField HeaderText="ISO Nacionalidad" DataField="ISO" />
                 <asp:BoundField HeaderText="País" DataField="Pais" />

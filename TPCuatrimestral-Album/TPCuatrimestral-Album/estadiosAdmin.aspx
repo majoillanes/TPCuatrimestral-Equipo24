@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-xl mt-2 ">
-        <asp:GridView ID="gvEstadios" runat="server" DataKeyNames="ID" CssClass="table table-hover align-middle text-center" AutoGenerateColumns="false" OnSelectedIndexChanged="gvEstadios_SelectedIndexChanged" OnPageIndexChanging="gvEstadios_PageIndexChanging" AllowPaging="true" PageSize="5">
+        <asp:GridView ID="gvEstadios" runat="server" DataKeyNames="ID" CssClass="table " AutoGenerateColumns="false" OnSelectedIndexChanged="gvEstadios_SelectedIndexChanged" OnPageIndexChanging="gvEstadios_PageIndexChanging" AllowPaging="true" PageSize="5">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

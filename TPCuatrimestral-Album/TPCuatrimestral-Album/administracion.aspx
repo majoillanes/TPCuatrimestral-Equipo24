@@ -8,6 +8,7 @@
              <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnEquipoAdmin" runat="server" Text="Administrar equipos" OnClick="btnEquipoAdmin_Click"/>
              <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnEstadiosAdmin" runat="server" Text="Administrar estadios" OnClick="btnEstadiosAdmin_Click"/>
              <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnJugadoresAdmin" runat="server" Text="Administrar Jugadores" OnClick="btnJugadoresAdmin_Click"/>
+             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
         </div>
     </div>
 </asp:Content>

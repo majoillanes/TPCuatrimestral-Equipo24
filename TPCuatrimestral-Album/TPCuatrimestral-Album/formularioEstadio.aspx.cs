@@ -1,6 +1,8 @@
 ﻿using dominio2;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,10 +13,14 @@ namespace TPCuatrimestral_Album
 {
     public partial class Formulario_web111 : System.Web.UI.Page
     {
+        public bool HayError { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                HayError=false;
+            }
             string id = Request.QueryString["ID"] != null ? Request.QueryString["ID"].ToString() : "";
-
             if (id != "" && !IsPostBack)
             {
                 Estadio estadio = new Estadio();
@@ -31,7 +37,7 @@ namespace TPCuatrimestral_Album
                 txtID.Enabled = false;
                 imgEstadios.ImageUrl = txtImagen.Text;
             }
-            else
+            if (id=="")
             {
                 txtID.Visible = false;
                 lblID.Visible = false;
@@ -67,6 +73,10 @@ namespace TPCuatrimestral_Album
                 else
                     negocio.agregar(nuevo);
                 Response.Redirect("estadiosAdmin.aspx", false);
+            }
+            catch(SqlException)
+            {
+                HayError = true;
             }
             catch (Exception ex)
             {

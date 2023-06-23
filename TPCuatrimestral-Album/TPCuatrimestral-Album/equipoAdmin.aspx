@@ -4,11 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-xl mt-2 ">
-        <asp:GridView ID="gvEquipos" runat="server" DataKeyNames="ID"
-            CssClass="table" AutoGenerateColumns="false"
-            OnSelectedIndexChanged="gvEquipos_SelectedIndexChanged"
+        <asp:GridView ID="gvEquipos" runat="server"
+            AllowPaging="True"
+            AutoGenerateColumns="false" CssClass="table table-hover align-middle text-center"
+            DataKeyNames="ID"
             OnPageIndexChanging="gvEquipos_PageIndexChanging"
-            AllowPaging="True" PageSize="5">
+            OnSelectedIndexChanged="gvEquipos_SelectedIndexChanged"
+            PageSize="5">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

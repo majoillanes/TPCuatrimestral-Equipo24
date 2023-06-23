@@ -26,7 +26,7 @@ namespace Test
                     equipo.Imagen = (string)datos.Lector["Imagen"];
                     equipo.IDEstadio = (Int16)datos.Lector["Estadio"];
                     equipo.Fundacion = (Int16)datos.Lector["Fundacion"];
-                    equipo.Alias = (string)datos.Lector["Alias"];
+                    equipo.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
                     equipo.Activo = (bool)datos.Lector["Activo"];
                     equipos.Add(equipo);
                 }

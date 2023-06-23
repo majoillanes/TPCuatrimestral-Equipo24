@@ -32,5 +32,10 @@ namespace TPCuatrimestral_Album
         {
             Response.Redirect("jugadoresAdmin.aspx", false);
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("menu.aspx", false);
+        }
     }
 }
