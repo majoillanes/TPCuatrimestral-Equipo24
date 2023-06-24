@@ -7,7 +7,16 @@
         <img class="icons" src="Images/LogoLiga.png" alt="Banner">
         
     </div>
+  
+      <ul class="icons-right">
+           <li>
+            <img class="icons" src="Images/coins.png" alt="Monedas">
+            <span class="icon-description">Mi Moneda Virtual</span>
+        </li>
 
+
+    </ul>
+     
     <ul class="icon-list">
         <li>
             <img class="icons" src="Images/perfil.png" alt="Perfil">
@@ -38,13 +47,7 @@
         </li>
     </ul>
 
-    <ul class="icons-right">
-           <li>
-            <img class="icons" src="Images/coins.png" alt="Monedas">
-            <span class="icon-description">Mi Moneda Virtual</span>
-        </li>
-
-    </ul>
+  
 
    
     <div class="container d-flex justify-content-center mt-4">
