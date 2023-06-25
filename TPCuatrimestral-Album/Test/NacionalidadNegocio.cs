@@ -117,7 +117,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"INSERT INTO NACIONALIDAD (ISO_NAC ,PAIS_NAC,GENTILICIO_NAC) VALUES('{nacionalidad.ISO}','{nacionalidad.Pais}','{nacionalidad.Gentilicio}')");
+                datos.setearConsulta($"INSERT INTO NACIONALIDAD (ISO_NAC ,PAIS_NAC,GENTILICIO_NAC, ACTIVO) VALUES('{nacionalidad.ISO}','{nacionalidad.Pais}','{nacionalidad.Gentilicio}', 1)");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

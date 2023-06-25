@@ -16,9 +16,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtGentilicio" class="form-label">Gentilicio: </label>
-                    <asp:TextBox runat="server" ID="txtGentilicio" CssClass="form-control" />
+                    <asp:TextBox runat="server" ID="txtGentilicio" CssClass="form-control"  />
+                </div>
+                <div class="mb-3">
+<%--                    Cuando se dispara el error, se va de gira el tamaño de los textbox--%>
+                    <asp:Label CssClass="alert alert-danger d-flex justify-content-center" ID="lblError" runat="server" Text="Por favor complete todos los campos"></asp:Label>
                 </div>
             </div>
+            
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <asp:Button Text="Inactivar" ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-info" runat="server" />

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using dominio2;
 using Test;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TPCuatrimestral_Album
 {
@@ -17,6 +18,7 @@ namespace TPCuatrimestral_Album
             try
             {
                 btnInactivar.Visible = false;
+                lblError.Visible = false;
 
                 string ISO = Request.QueryString["ISO"] != null ? Request.QueryString["ISO"].ToString() : "";
                 if (ISO != "" && !IsPostBack)
@@ -51,15 +53,22 @@ namespace TPCuatrimestral_Album
                 nuevo.Gentilicio = txtGentilicio.Text;
                 nuevo.ISO = txtISO.Text;
 
-                if (Request.QueryString["ISO"] != null)
+                if (!(string.IsNullOrEmpty(nuevo.Pais) || string.IsNullOrEmpty(nuevo.Gentilicio) || string.IsNullOrEmpty(nuevo.ISO)))
                 {
-                    nuevo.ISO = txtISO.Text;
-                    negocio.modificar(nuevo);
+                    if (Request.QueryString["ISO"] != null)
+                    {
+                        nuevo.ISO = txtISO.Text;
+                        negocio.modificar(nuevo);
+                    }
+                    else
+                        negocio.agregar(nuevo);
+                    Response.Redirect("nacionalidadAdmin.aspx", false);
                 }
                 else
-                    negocio.agregar(nuevo);
-
-                Response.Redirect("nacionalidadAdmin.aspx", false);
+                {
+                    lblError.Visible = true;
+                }
+                
             }
             catch (Exception ex)
             {
