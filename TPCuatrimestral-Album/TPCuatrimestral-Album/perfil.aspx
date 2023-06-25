@@ -4,13 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container d-flex justify-content-center">
         <h2 style="color:#fff;">Mi Perfil</h2>
-        <img class="icons" src="Images/LogoLiga.png" alt="Banner">
+        <img class="icon" src="Images/LogoLiga.png" alt="Banner">
         
     </div>
   
-      <ul class="icons-right">
+  <ul class="icons-right">
            <li>
-            <img class="icons" src="Images/coins.png" alt="Monedas">
+            <img class="icon" src="Images/coins.png" alt="Monedas">
             <span class="icon-description">Mi Moneda Virtual</span>
         </li>
 

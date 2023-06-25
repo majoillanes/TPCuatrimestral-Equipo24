@@ -114,15 +114,13 @@
     height: 3em;
     margin-left: 2%;
     margin-right: 2%;
-    margin-top:10%;
+
 }
 
 .icon {
     display: flex;
     height: 3em;
     margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 10%;
 }
 .icon-descrip {
     display: flex;
@@ -137,4 +135,5 @@
     list-style: none;
     padding: 0;
     text-align: right;
+    margin-left: 90%;
 }
