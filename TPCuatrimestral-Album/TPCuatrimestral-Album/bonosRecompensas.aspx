@@ -7,7 +7,7 @@
         <img class="icon" src="Images/LogoLiga.png" alt="Banner">
     </div>
     <div>
-        <img class="imageRecompensa" src="Images/recompensa.png" alt="Banner">
+        <img class="imageRecompensa" src="Images/recompensa.png" alt="Recompensa">
     </div>
 
     <div class="container-box">

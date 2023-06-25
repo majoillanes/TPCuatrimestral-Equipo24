@@ -3,9 +3,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container d-flex justify-content-center">
-        <h2 style="color:#fff;">Aca Iría el paquete</h2>
+        <h2 style="color:#fff;">Abrir Paquete</h2>
+        <img class="icon" src="Images/LogoLiga.png" alt="Banner">
     </div>
-    <div class="container d-flex justify-content-center mt-4">
+
+         <div>
+          <img class="imageCard1" src="Images/joker-card.png" alt="JokerCard">
+        <img class="imageBox1" src="Images/box.png" alt="Box">
+    </div>
+
+    <div class="container d-flex justify-content-start mt-4">
+    <asp:Button ID="btnAbrir" runat="server" Text="Abrir Paquete" CssClass="btn btn-secondary" OnClick="btnAbrir_Click" />
+    </div>
+   
+    <div class="container d-flex justify-content-center mt-6">
         <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
     </div>
 </asp:Content>

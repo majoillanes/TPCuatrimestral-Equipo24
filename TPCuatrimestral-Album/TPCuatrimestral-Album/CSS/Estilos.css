@@ -183,3 +183,32 @@
     display: flex;
     margin-left: 20%;
 }
+
+
+/*Estadisticas*/
+
+.imageEstadisticas {
+    display: flex;
+    height: 5em;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+/*Abrir Paquete*/
+
+.imageBox1 {
+    display: flex;
+    height: 10em;
+    align-items:center;
+    margin-left:45%;
+}
+
+.imageCard1 {
+    display: flex;
+    height: 4em;
+    align-items: center;
+    margin-left: 48%;
+    margin-top:5%;
+}
