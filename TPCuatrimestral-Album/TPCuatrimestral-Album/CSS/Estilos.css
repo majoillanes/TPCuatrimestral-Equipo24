@@ -137,3 +137,49 @@
     text-align: right;
     margin-left: 90%;
 }
+
+/*Bonos y recompensas*/
+
+.imageRecompensa{
+    display: flex;
+    height: 15em;
+    text-align:center;
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+.imageBox{
+    display: flex;
+    height: 10em;
+    margin-left: 10%;
+  
+}
+
+.imageCard {
+    display: flex;
+    height: 4em;
+    margin-left: 35%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+    .list li {
+        display: flex;
+        margin-right: 98px;
+        margin-top: 15px;
+    }
+
+.container-box{
+    display: flex;
+    margin-left: 20%;
+}
