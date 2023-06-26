@@ -1,6 +1,7 @@
 ﻿using dominio2;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,7 @@ namespace TPCuatrimestral_Album
 {
     public partial class formularioJugador : System.Web.UI.Page
     {
+        public bool HayError { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,6 +27,7 @@ namespace TPCuatrimestral_Album
                     PosicionNegocio estadioNegocio = new PosicionNegocio();
                     List<Posicion> listaPosicion = estadioNegocio.listar();
 
+                    HayError = false;
 
                     ddlEquipo.DataSource = listaEquipo;
                     ddlEquipo.DataValueField = "ID";
@@ -85,16 +88,21 @@ namespace TPCuatrimestral_Album
                 Jugador nuevo = new Jugador();
                 JugadorNegocio negocio = new JugadorNegocio();
 
-                nuevo.Nombres = txtNombres.Text;
-                nuevo.Apellidos = txtApellidos.Text;
+                nuevo.Nombres = txtNombres.Text == "" ? null : txtNombres.Text;
+                nuevo.Apellidos = txtApellidos.Text == "" ? null : txtApellidos.Text;
                 nuevo.FechaDeNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
                 nuevo.Nacionalidad = new Nacionalidad();
                 nuevo.Nacionalidad.ISO = ddlNacionalidad.SelectedItem.Value;
                 nuevo.Equipo = new Equipo();
-                nuevo.Equipo.ID =Int16.Parse(ddlEquipo.SelectedItem.Value);
+                nuevo.Equipo.ID = Int16.Parse(ddlEquipo.SelectedItem.Value);
                 nuevo.Posicion = new Posicion();
                 nuevo.Posicion.Codigo = ddlPosicion.SelectedItem.Value;
                 nuevo.Imagen = txtImagenUrl.Text;
+
+                if (nuevo.Nombres == "" || nuevo.Nombres == null || nuevo.Apellidos == null || nuevo.Apellidos == "")
+                {
+                    nuevo.FechaDeNacimiento = DateTime.Parse("fdssafdafsd");
+                }
 
                 if (Request.QueryString["IDJugador"] != null)
                 {
@@ -108,9 +116,18 @@ namespace TPCuatrimestral_Album
 
                 Response.Redirect("jugadoresAdmin.aspx", false);
             }
+            catch (SqlException)
+            {
+                HayError = true;
+            }
+            catch (FormatException)
+            {
+                HayError = true;
+            }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
+                throw ex;
             }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
