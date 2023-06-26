@@ -7,7 +7,7 @@
         <img class="icon" src="Images/LogoLiga.png" alt="Banner">
         
     </div>
-  
+    
   <ul class="icons-right">
            <li>
             <img class="icon" src="Images/coins.png" alt="Monedas">
@@ -46,8 +46,6 @@
             <!--Redireccionamos al form de contacto?-->
         </li>
     </ul>
-
-  
 
    
     <div class="container d-flex justify-content-center mt-4">

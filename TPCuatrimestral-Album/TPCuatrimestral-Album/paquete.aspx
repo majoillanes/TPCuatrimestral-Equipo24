@@ -12,11 +12,13 @@
         <img class="imageBox1" src="Images/box.png" alt="Box">
     </div>
 
-    <div class="container d-flex justify-content-start mt-4">
-    <asp:Button ID="btnAbrir" runat="server" Text="Abrir Paquete" CssClass="btn btn-secondary" OnClick="btnAbrir_Click" />
-    </div>
-   
-    <div class="container d-flex justify-content-center mt-6">
-        <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
+    <div class="container d-flex">
+        <div class="container d-flex justify-content-center mt-4">
+            <asp:Button ID="btnAbrir" runat="server" Text="Abrir Paquete" CssClass="btn btn-secondary" OnClick="btnAbrir_Click" />
+        </div>
+
+        <div class="container d-flex justify-content-center mt-4">
+            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
+        </div>
     </div>
 </asp:Content>

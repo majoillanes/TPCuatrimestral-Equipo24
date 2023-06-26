@@ -18,5 +18,10 @@ namespace TPCuatrimestral_Album
         {
             Response.Redirect("menu.aspx", false);
         }
+
+        protected void bntVender_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

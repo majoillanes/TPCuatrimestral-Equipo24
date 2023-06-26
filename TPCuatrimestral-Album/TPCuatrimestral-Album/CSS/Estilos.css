@@ -136,6 +136,7 @@
     padding: 0;
     text-align: right;
     margin-left: 90%;
+    margin-right:15%;
 }
 
 /*Bonos y recompensas*/
@@ -211,4 +212,13 @@
     align-items: center;
     margin-left: 48%;
     margin-top:5%;
+}
+
+/*Tienda*/
+
+.imageIntercambio {
+    display: flex;
+    height: 10em;
+    align-items: center;
+  
 }

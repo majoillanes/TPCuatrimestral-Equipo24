@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <div class="container d-flex justify-content-center mt-2">
+        <h2 style="color:#fff;">Menú Principal</h2>
+        <img class="icon" src="Images/LogoLiga.png" alt="Banner">
+    </div>
     <div class="container container-menu d-flex justify-content-center align-items-center">
         <div class="col-6 d-flex flex-column mt-2 p-4">
             <asp:Button CssClass="btn btn-light btn-menu my-1" ID="btnPerfil" runat="server" Text="Perfil" onclick="btnPerfil_Click"/>
