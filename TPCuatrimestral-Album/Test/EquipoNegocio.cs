@@ -25,7 +25,7 @@ namespace Test
                     equipo.Ciudad = (string)datos.Lector["Ciudad"];
                     equipo.Imagen = (string)datos.Lector["Imagen"];
                     equipo.IDEstadio = (Int16)datos.Lector["Estadio"];
-                    equipo.Fundacion = (Int16)datos.Lector["Fundacion"];
+                    equipo.Fundacion = (string)datos.Lector["Fundacion"];
                     equipo.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
                     equipo.Activo = (bool)datos.Lector["Activo"];
                     equipos.Add(equipo);
@@ -57,7 +57,7 @@ namespace Test
                     equipo.Ciudad = (string)datos.Lector["Ciudad"];
                     equipo.Imagen = (string)datos.Lector["Imagen"];
                     equipo.IDEstadio = (Int16)datos.Lector["Estadio"];
-                    equipo.Fundacion = (Int16)datos.Lector["Fundacion"];
+                    equipo.Fundacion = (string)datos.Lector["Fundacion"];
                     equipo.Alias = (string)datos.Lector["Alias"];
                     equipo.Activo = (bool)datos.Lector["Activo"];
                 }
@@ -96,7 +96,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"INSERT INTO Equipos(Nombre, Alias, Ciudad, Fundacion, Estadio, Imagen, Activo )\r\nvalues('{equipo.Nombre}', '{equipo.Alias}','{equipo.Ciudad}',{equipo.Fundacion}, {equipo.IDEstadio},'{equipo.Imagen}',1)");
+                datos.setearConsulta($"INSERT INTO Equipos(Nombre, Alias, Ciudad, Fundacion, Estadio, Imagen, Activo )\r\nvalues('{equipo.Nombre}', '{equipo.Alias}','{equipo.Ciudad}','{equipo.Fundacion}', {equipo.IDEstadio},'{equipo.Imagen}',1)");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

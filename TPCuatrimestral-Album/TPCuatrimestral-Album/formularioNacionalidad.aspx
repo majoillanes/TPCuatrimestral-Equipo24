@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-7">
                 <div class="mb-3">
                     <label for="txtISO" class="form-label">ISO</label>
                     <asp:TextBox runat="server" ID="txtISO" CssClass="form-control" />

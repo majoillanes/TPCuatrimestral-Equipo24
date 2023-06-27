@@ -116,11 +116,11 @@ namespace TPCuatrimestral_Album
 
                 Response.Redirect("jugadoresAdmin.aspx", false);
             }
-            catch (SqlException)
+            catch (FormatException)
             {
                 HayError = true;
             }
-            catch (FormatException)
+            catch (SqlException)
             {
                 HayError = true;
             }

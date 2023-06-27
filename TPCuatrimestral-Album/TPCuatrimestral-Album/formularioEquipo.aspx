@@ -44,6 +44,10 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
+                            <div class="mb-3">
+<%--                    Cuando se dispara el error, se va de gira el tamaño de los textbox--%>
+                    <asp:Label CssClass="alert alert-danger d-flex justify-content-center" ID="lblError" runat="server" Text="Por favor complete los campos obligatorios"></asp:Label>
+                </div>
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger" runat="server" />

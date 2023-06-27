@@ -1,6 +1,7 @@
 ﻿using dominio2;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,6 +29,7 @@ namespace TPCuatrimestral_Album
 
             try
             {
+                lblError.Visible = false;
                 lblID.Visible = false;
                 txtID.Visible = false;
                 btnEliminar.Visible = false;
@@ -65,7 +67,7 @@ namespace TPCuatrimestral_Album
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-               // Response.Redirect("Error.aspx");
+                // Response.Redirect("Error.aspx");
             }
         }
 
@@ -78,22 +80,29 @@ namespace TPCuatrimestral_Album
 
 
                 nuevo.Nombre = txtNombre.Text;
-                nuevo.Alias = txtAlias.Text;
+                nuevo.Alias = txtAlias.Text == "" ? null : txtAlias.Text;
                 nuevo.Ciudad = txtCiudad.Text;
-                nuevo.Fundacion = Int16.Parse(txtFundacion.Text);
-                nuevo.IDEstadio =Int16.Parse(ddlEstadio.SelectedItem.Value);
-                nuevo.Imagen = txtImagenUrl.Text;
+                nuevo.Fundacion = txtFundacion.Text == "" ? null : txtFundacion.Text;
+                nuevo.IDEstadio = string.IsNullOrEmpty(ddlEstadio.SelectedItem?.Value) ? (short)0 : Int16.Parse(ddlEstadio.SelectedItem.Value);
+                nuevo.Imagen = txtImagenUrl.Text == "" ? null : txtImagenUrl.Text;
 
-                if (Request.QueryString["ID"] != null)
+                if (!(string.IsNullOrEmpty(nuevo.Nombre)  || string.IsNullOrEmpty(nuevo.Ciudad) || nuevo.IDEstadio == 0 ))
                 {
-                    nuevo.ID = Int16.Parse(txtID.Text);
-                    negocio.modificar(nuevo);
+                    if (Request.QueryString["ID"] != null)
+                    {
+                        nuevo.ID = Int16.Parse(txtID.Text);
+                        negocio.modificar(nuevo);
+                    }
+                    else
+                    {
+                        negocio.agregar(nuevo);
+                    }
+                    Response.Redirect("equipoAdmin.aspx", false);
                 }
-                else {
-                    negocio.agregar(nuevo);
+                else
+                {
+                    lblError.Visible = true;
                 }
-
-                Response.Redirect("equipoAdmin.aspx", false);
             }
             catch (Exception ex)
             {

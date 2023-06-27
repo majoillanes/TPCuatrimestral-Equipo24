@@ -13,7 +13,7 @@ namespace dominio2
         public string Imagen { get; set; }
         public string Ciudad { get; set; }
         public  Int16 IDEstadio { get; set; }
-        public Int16 Fundacion { get; set; }
+        public string Fundacion { get; set; }
         public string Alias { get; set; }
         public bool Activo { get; set; }
     }
