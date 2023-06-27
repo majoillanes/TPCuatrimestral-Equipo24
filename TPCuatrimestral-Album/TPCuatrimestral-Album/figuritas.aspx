@@ -80,14 +80,14 @@
             <asp:Repeater ID="repeaterJugadores" runat="server">
                 <ItemTemplate>
                     <div class="container d-flex justify-content-center mt-2">
-                        <div class="borde container d-flex justify-content-center align-items-center">
-                            <div class="figurita d-flex flex-column">
-                                <div class="imagen" style="background-image:url('<%# Eval("Jugador.Imagen") %>')"></div>
-                                <div class="info d-flex flex-column">
-                                    <div class="nombre d-flex justify-content-center">
+                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
+                            <div class="figurita-figurita d-flex flex-column">
+                                <div class="imagen-figurita" style="background-image:url('<%# Eval("Jugador.Imagen") %>')"></div>
+                                <div class="info-figurita d-flex flex-column">
+                                    <div class="nombre-figurita d-flex justify-content-center">
                                         <p><b><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></b></p>
                                     </div>
-                                    <div class="props">
+                                    <div class="props-figurita">
                                         <ul>
                                             <li><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></li>
                                             <li><%# Eval("Jugador.Posicion.Descripcion") %></li>

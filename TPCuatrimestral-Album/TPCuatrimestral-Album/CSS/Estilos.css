@@ -55,39 +55,39 @@
 
 /* Estilos figuritas jugadores */
 
-.borde {
+.borde-figurita {
     background-color: #000;
     height: 350px;
     width: 250px;
 }
 
-.figurita {
+.figurita-figurita {
     height: 95%;
     width: 99.9%;
     border: 1px white;
     background-color: #fff;
 }
 
-.imagen {
+.imagen-figurita {
     height: 60%;
     background-position: center top;
 }
 
-.info {
+.info-figurita {
     background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
     height: 40%;
 }
 
-.nombre {
+.nombre-figurita {
     border-bottom: 0.5px solid #fff;
     height: 25%;
 }
 
-.props {
+.props-figurita {
     height: 50%;
 }
 
-.props > ul > li {
+.props-figurita > ul > li {
     list-style-type: none !important;
 }
 
@@ -214,7 +214,7 @@
     margin-top:5%;
 }
 
-/*Tienda*/
+/* Tienda */
 
 .imageIntercambio {
     display: flex;
@@ -222,3 +222,126 @@
     align-items: center;
   
 }
+
+/* Album */
+
+.album {
+    height: 650px;
+    width: 97.5%;
+    background-color: #000;
+}
+
+.pagina1 {
+    height: 90%;
+    width: 47.5%;
+    background-color: #fff;
+}
+
+.pagina2 {
+    height: 90%;
+    width: 47.5%;
+    background-color: #fff;
+}
+
+/* Figuritas del album */
+
+.borde {
+    background-color: #000;
+    height: 95%;
+    width: 20%;
+}
+
+.figurita {
+    height: 90%;
+    width: 90%;
+    border: 1px white;
+    background-color: #fff;
+    font-size: xx-small;
+}
+
+.imagen {
+    height: 55%;
+    background-image: url("https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png");
+    background-size: cover;
+}
+
+.info {
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    height: 45%;
+}
+
+.nombre {
+    border-bottom: 0.5px solid #fff;
+    height: 25%;
+}
+
+.borde-escudo {
+    background-color: #000;
+    height: 95%;
+    width: 20%;
+}
+
+.figurita-escudo {
+    height: 90%;
+    width: 90%;
+    border: 1px white;
+    background-color: #fff;
+    font-size: xx-small;
+}
+
+.imagen-escudo {
+    height: 75%;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_del_C_A_River_Plate.svg/826px-Escudo_del_C_A_River_Plate.svg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.info-escudo {
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    height: 25%;
+}
+
+.nombre-escudo {
+    border-bottom: 0.5px solid #fff;
+    height: 25%;
+}
+
+.props {
+    height: 70%;
+}
+
+    .props > ul > li {
+        list-style-type: none !important;
+    }
+
+.borde-estadio {
+    background-color: #000;
+    height: 70%;
+    width: 40%;
+}
+
+.figurita-estadio {
+    height: 85%;
+    width: 94%;
+    border: 1px white;
+    background-color: #fff;
+    font-size: xx-small;
+}
+
+.imagen-estadio {
+    height: 85%;
+    background-image: url("https://www.cariverplate.com.ar/imagenes/contenidos/2021-09/128-19932-dronemonumental.jpg");
+    background-size: cover;
+    background-position: 0 70%;
+}
+
+.info-estadio {
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    height: 25%;
+}
+
+.nombre-estadio {
+    height: 25%;
+}
+
