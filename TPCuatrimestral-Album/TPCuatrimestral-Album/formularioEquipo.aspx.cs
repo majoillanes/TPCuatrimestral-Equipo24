@@ -32,14 +32,14 @@ namespace TPCuatrimestral_Album
                 lblError.Visible = false;
                 lblID.Visible = false;
                 txtID.Visible = false;
-                btnEliminar.Visible = false;
+                btnInactivar.Visible = false;
                 //configuración si estamos modificando.
                 string ID = Request.QueryString["ID"] != null ? Request.QueryString["ID"].ToString() : "";
                 if (ID != "" && !IsPostBack)
                 {
                     lblID.Visible = true;
                     txtID.Visible = true;
-                    btnEliminar.Visible = true;
+                    btnInactivar.Visible = true;
                     txtID.Enabled = false;
                     EquipoNegocio equipo = new EquipoNegocio();
                     Equipo seleccionado = (equipo.listar(ID));
@@ -62,6 +62,9 @@ namespace TPCuatrimestral_Album
                     ddlEstadio.DataValueField = "ID";
                     ddlEstadio.DataTextField = "Nombre";
                     ddlEstadio.DataBind();
+
+                    if (!seleccionado.Activo)
+                        btnInactivar.Text = "Reactivar";
                 }
             }
             catch (Exception ex)
@@ -86,7 +89,7 @@ namespace TPCuatrimestral_Album
                 nuevo.IDEstadio = string.IsNullOrEmpty(ddlEstadio.SelectedItem?.Value) ? (short)0 : Int16.Parse(ddlEstadio.SelectedItem.Value);
                 nuevo.Imagen = txtImagenUrl.Text == "" ? null : txtImagenUrl.Text;
 
-                if (!(string.IsNullOrEmpty(nuevo.Nombre)  || string.IsNullOrEmpty(nuevo.Ciudad) || nuevo.IDEstadio == 0 ))
+                if (!(string.IsNullOrEmpty(nuevo.Nombre) || string.IsNullOrEmpty(nuevo.Ciudad) || nuevo.IDEstadio == 0 ))
                 {
                     if (Request.QueryString["ID"] != null)
                     {
@@ -110,12 +113,12 @@ namespace TPCuatrimestral_Album
             }
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void btnInactivar_Click(object sender, EventArgs e)
         {
             try
             {
                 EquipoNegocio negocio = new EquipoNegocio();
-                negocio.eliminar(txtID.Text);
+                negocio.eliminar(txtID.Text, (btnInactivar.Text == "Inactivar") ? false : true);
                 Response.Redirect("equipoAdmin.aspx");
             }
             catch (Exception ex)

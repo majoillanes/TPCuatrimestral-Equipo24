@@ -19,7 +19,6 @@
                     <asp:TextBox runat="server" ID="txtGentilicio" CssClass="form-control"  />
                 </div>
                 <div class="mb-3">
-<%--                    Cuando se dispara el error, se va de gira el tamaño de los textbox--%>
                     <asp:Label CssClass="alert alert-danger d-flex justify-content-center" ID="lblError" runat="server" Text="Por favor complete todos los campos"></asp:Label>
                 </div>
             </div>

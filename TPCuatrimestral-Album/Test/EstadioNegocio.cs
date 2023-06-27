@@ -15,7 +15,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios WHERE Activo = 1");
+                datos.setearConsulta("SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen, Activo FROM Estadios");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -27,6 +27,7 @@ namespace Test
                     estadio.Barrio = (string)datos.Lector["Barrio"];
                     estadio.Calle = (string)datos.Lector["Calle"];
                     estadio.Imagen = (string)datos.Lector["Imagen"];
+                    estadio.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                     estadios.Add(estadio);
                 }
                 return estadios;
@@ -75,7 +76,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen FROM Estadios WHERE ID ='{ID}' AND Activo = 1");
+                datos.setearConsulta($"SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen,Activo FROM Estadios WHERE ID ='{ID}'");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -86,12 +87,12 @@ namespace Test
                     estadio.Barrio = (string)datos.Lector["Barrio"];
                     estadio.Calle = (string)datos.Lector["Calle"];
                     estadio.Imagen = (string)datos.Lector["Imagen"];
+                    estadio.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                 }
                 return estadio;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -170,12 +171,13 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(string ID)
+        public void eliminar(string ID, bool activo = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"DELETE FROM ESTADIOS WHERE ID ='{ID}'");
+                int activoInt = activo ? 1 : 0;
+                datos.setearConsulta($"UPDATE Estadios SET Activo = {activoInt} WHERE ID ='{ID}'");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -36,12 +36,16 @@ namespace TPCuatrimestral_Album
                 txtID.Text = id;
                 txtID.Enabled = false;
                 imgEstadios.ImageUrl = txtImagen.Text;
+                btnInactivar.Visible = true;
+                if (!estadio.Activo)
+                    btnInactivar.Text = "Reactivar";
+
             }
             if (id=="")
             {
                 txtID.Visible = false;
                 lblID.Visible = false;
-                btnEliminar.Visible = false;
+                btnInactivar.Visible = false;
             }
 
         }
@@ -85,12 +89,12 @@ namespace TPCuatrimestral_Album
             }
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void btnInactivar_Click(object sender, EventArgs e)
         {
 
             string id = Request.QueryString["ID"];
             EstadioNegocio estadioNegocio = new EstadioNegocio();
-            estadioNegocio.eliminar(id);
+            estadioNegocio.eliminar(id, (btnInactivar.Text == "Inactivar") ? false : true);
             Response.Redirect("estadiosAdmin.aspx", false);
         }
     }

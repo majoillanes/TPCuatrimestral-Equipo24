@@ -108,12 +108,13 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(string id)
+        public void eliminar(string id, bool activo = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"UPDATE Equipos SET Activo = 0 WHERE ID ='{id}'");
+                int activoInt = activo ? 1 : 0;
+                datos.setearConsulta($"UPDATE Equipos SET Activo = {activoInt} WHERE ID ='{id}'");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

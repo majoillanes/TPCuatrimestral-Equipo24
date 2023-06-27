@@ -13,6 +13,7 @@
                 <asp:BoundField HeaderText="Barrio" DataField="Barrio" />
                 <asp:BoundField HeaderText="Calle" DataField="Calle" />
                 <asp:ImageField HeaderText="Imagen" DataImageUrlField="Imagen" ControlStyle-CssClass="img-fluid img-thumbnail" ControlStyle-Height="100px" />
+                <asp:CheckBoxField HeaderText="Estado" DataField="Activo"/>
                 <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍" />
             </Columns>
         </asp:GridView>

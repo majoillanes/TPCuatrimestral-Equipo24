@@ -15,9 +15,11 @@ namespace TPCuatrimestral_Album
         public bool HayError { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
+                btnInactivar.Visible = false;
+                lblID.Visible = false;
+                txtID.Visible = false;
                 if (!IsPostBack)
                 {
                     EquipoNegocio equipoNegocio = new EquipoNegocio();
@@ -44,16 +46,13 @@ namespace TPCuatrimestral_Album
                     ddlPosicion.DataTextField = "Descripcion";
                     ddlPosicion.DataBind();
                 }
-                lblID.Visible = false;
-                txtID.Visible = false;
-                btnEliminar.Visible = false;
                 //configuración si estamos modificando.
                 string ID = Request.QueryString["IDJugador"] != null ? Request.QueryString["IDJugador"].ToString() : "";
                 if (ID != "" && !IsPostBack)
                 {
+                    btnInactivar.Visible = true;
                     lblID.Visible = true;
                     txtID.Visible = true;
-                    btnEliminar.Visible = true;
                     txtID.Enabled = false;
                     JugadorNegocio jugador = new JugadorNegocio();
                     Jugador seleccionado = jugador.listar(ID);
@@ -67,7 +66,10 @@ namespace TPCuatrimestral_Album
                     ddlEquipo.SelectedValue = seleccionado.Equipo.ID.ToString();
                     ddlNacionalidad.SelectedValue = seleccionado.Nacionalidad.ISO;
                     ddlPosicion.SelectedValue = seleccionado.Posicion.Codigo;
+                    if (!seleccionado.Activo)
+                        btnInactivar.Text = "Reactivar";
                 }
+
             }
             catch (Exception ex)
             {
@@ -88,8 +90,8 @@ namespace TPCuatrimestral_Album
                 Jugador nuevo = new Jugador();
                 JugadorNegocio negocio = new JugadorNegocio();
 
-                nuevo.Nombres = txtNombres.Text == "" ? null : txtNombres.Text;
-                nuevo.Apellidos = txtApellidos.Text == "" ? null : txtApellidos.Text;
+                nuevo.Nombres = string.IsNullOrWhiteSpace(txtNombres.Text) ? null : txtNombres.Text;
+                nuevo.Apellidos = string.IsNullOrWhiteSpace(txtApellidos.Text) ? null : txtApellidos.Text;
                 nuevo.FechaDeNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
                 nuevo.Nacionalidad = new Nacionalidad();
                 nuevo.Nacionalidad.ISO = ddlNacionalidad.SelectedItem.Value;
@@ -97,24 +99,26 @@ namespace TPCuatrimestral_Album
                 nuevo.Equipo.ID = Int16.Parse(ddlEquipo.SelectedItem.Value);
                 nuevo.Posicion = new Posicion();
                 nuevo.Posicion.Codigo = ddlPosicion.SelectedItem.Value;
-                nuevo.Imagen = txtImagenUrl.Text;
+                nuevo.Imagen = string.IsNullOrWhiteSpace(txtImagenUrl.Text) ? null : txtImagenUrl.Text;
 
-                if (nuevo.Nombres == "" || nuevo.Nombres == null || nuevo.Apellidos == null || nuevo.Apellidos == "")
+                if (!(string.IsNullOrEmpty(nuevo.Nombres) || string.IsNullOrEmpty(nuevo.Apellidos) || string.IsNullOrEmpty(nuevo.Imagen)))
                 {
-                    nuevo.FechaDeNacimiento = DateTime.Parse("fdssafdafsd");
-                }
+                    if (Request.QueryString["IDJugador"] != null)
+                    {
+                        nuevo.IDJugador = Int32.Parse(txtID.Text);
+                        negocio.modificar(nuevo);
+                    }
+                    else
+                    {
+                        negocio.agregar(nuevo);
+                    }
 
-                if (Request.QueryString["IDJugador"] != null)
-                {
-                    nuevo.IDJugador = Int32.Parse(txtID.Text);
-                    negocio.modificar(nuevo);
+                    Response.Redirect("jugadoresAdmin.aspx", false);
                 }
                 else
                 {
-                    negocio.agregar(nuevo);
+                    HayError = true;
                 }
-
-                Response.Redirect("jugadoresAdmin.aspx", false);
             }
             catch (FormatException)
             {
@@ -130,12 +134,12 @@ namespace TPCuatrimestral_Album
                 throw ex;
             }
         }
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void btnInactivar_Click(object sender, EventArgs e)
         {
             try
             {
                 JugadorNegocio negocio = new JugadorNegocio();
-                negocio.eliminar(txtID.Text);
+                negocio.eliminar(txtID.Text, (btnInactivar.Text == "Inactivar") ? false : true);
                 Response.Redirect("jugadoresAdmin.aspx");
             }
             catch (Exception ex)

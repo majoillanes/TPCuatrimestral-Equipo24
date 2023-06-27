@@ -61,6 +61,7 @@ namespace Test
                     jugador.Apellidos = (string)datos.Lector["Apellidos"];
                     jugador.FechaDeNacimiento = (DateTime)datos.Lector["FechaDeNacimiento"];
                     jugador.Imagen = (string)datos.Lector["Imagen"];
+                    jugador.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                     jugador.Nacionalidad = new Nacionalidad();
                     jugador.Nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
                     jugador.Equipo = new Equipo();
@@ -116,12 +117,13 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(string ID)
+        public void eliminar(string ID, bool activo = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"UPDATE Jugadores set Activo = 0 WHERE ID ='{ID}'");
+                int activoInt = activo ? 1 : 0;
+                datos.setearConsulta($"UPDATE Jugadores set Activo = {activoInt} WHERE ID ='{ID}'");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

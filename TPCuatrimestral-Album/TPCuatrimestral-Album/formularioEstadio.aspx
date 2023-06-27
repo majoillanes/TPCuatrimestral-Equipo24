@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <asp:Label for="txtCapacidad" ID="lblCapacidad" runat="server" Text="Capacidad:"></asp:Label>
-                            <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" TextMode="Number" AutoPostBack="true"/>
+                            <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" TextMode="Number" AutoPostBack="true" />
                         </div>
                         <div class="mb-3">
                             <asp:Label for="txtBarrio" ID="lblBarrio" runat="server" Text="Barrio:"></asp:Label>
@@ -52,10 +52,11 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-            <div class="mb-3">
-                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
-                <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" runat="server" OnClick="btnEliminar_Click" />
-                <a class="btn btn-light" href="estadiosAdmin.aspx">Cancelar</a>
+                <div class="mb-3">
+                    <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+                    <asp:Button Text="Inactivar" ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-info" runat="server" />
+                    <a class="btn btn-light" href="estadiosAdmin.aspx">Cancelar</a>
+                </div>
             </div>
         </div>
     </div>
