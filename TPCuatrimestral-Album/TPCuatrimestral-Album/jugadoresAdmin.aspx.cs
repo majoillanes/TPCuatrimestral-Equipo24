@@ -11,6 +11,7 @@ namespace TPCuatrimestral_Album
 {
     public partial class jugadoresAdmin : System.Web.UI.Page
     {
+        public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
            JugadorNegocio jugadorNegocio = new JugadorNegocio();
@@ -38,5 +39,60 @@ namespace TPCuatrimestral_Album
             gvJugadores.DataBind();
         }
 
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCriterio.Items.Clear();
+            if (ddlCampo.SelectedItem.ToString() == "Equipo")
+            {
+                EquipoNegocio equipoNegocio = new EquipoNegocio();
+                ddlCriterio.DataSource = equipoNegocio.listar();
+                ddlCriterio.DataValueField = "ID";
+                ddlCriterio.DataTextField = "Nombre";
+                ddlCriterio.DataBind();
+            }
+            else
+            {
+                PosicionNegocio posicionNegocio = new PosicionNegocio();
+                ddlCriterio.DataSource = posicionNegocio.listar();
+                ddlCriterio.DataValueField = "Codigo";
+                ddlCriterio.DataTextField = "Descripcion";
+                ddlCriterio.DataBind();
+            }
+        }
+
+        protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            FiltroAvanzado = chkAvanzado.Checked;
+            txtFiltroR.Enabled = !FiltroAvanzado;
+            btnLimpiar.Enabled = false;
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                JugadorNegocio negocio = new JugadorNegocio();
+                gvJugadores.DataSource = negocio.filtrar(
+                    ddlCampo.SelectedItem.Value.ToString(),
+                    ddlCriterio.SelectedItem.Value.ToString(),
+                    ddlEstado.SelectedItem.ToString());
+                gvJugadores.DataBind();
+                btnLimpiar.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            gvJugadores.DataSource = Session["listaJugadores"];
+            gvJugadores.DataBind();
+            ddlCriterio.Items.Clear();
+            btnLimpiar.Enabled=false;
+        }
     }
 }

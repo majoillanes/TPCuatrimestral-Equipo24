@@ -135,5 +135,54 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+
+        public List<Jugador> filtrar(string campo, string criterio, string estado)
+        {
+            List<Jugador> jugadores = new List<Jugador>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = $"SELECT J.ID, J.Nombres, J.Apellidos, J.FechaDeNacimiento, J.Imagen, J.Activo, N.GENTILICIO_NAC, E.Nombre, P.Descripcion FROM Jugadores J\r\nINNER JOIN Nacionalidad N ON N.ISO_NAC = J.Nacionalidad\r\nINNER JOIN Equipos E ON E.ID = J.Equipo\r\nINNER JOIN Posiciones P ON P.Codigo = J.Posicion where ";
+                if (campo == "Equipo")
+                    consulta += $"E.ID = {criterio}";
+                else
+                    consulta += $"P.Codigo = '{criterio}'";
+
+                if (estado == "Activo")
+                    consulta += " and J.Activo = 1";
+                else if (estado == "Inactivo")
+                    consulta += " and J.Activo = 0";
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Jugador jugador = new Jugador();
+                    jugador.IDJugador = (int)datos.Lector["ID"];
+                    jugador.Nombres = (string)datos.Lector["Nombres"];
+                    jugador.Apellidos = (string)datos.Lector["Apellidos"];
+                    jugador.FechaDeNacimiento = (DateTime)datos.Lector["FechaDeNacimiento"];
+                    jugador.Imagen = (string)datos.Lector["Imagen"];
+                    jugador.Activo = bool.Parse(datos.Lector["Activo"].ToString());
+                    jugador.Nacionalidad = new Nacionalidad();
+                    jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    jugador.Equipo = new Equipo();
+                    jugador.Equipo.Nombre = (string)datos.Lector["Nombre"];
+                    jugador.Posicion = new Posicion();
+                    jugador.Posicion.Descripcion = (string)datos.Lector["Descripcion"];
+                    jugadores.Add(jugador);
+                }
+                return jugadores;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
