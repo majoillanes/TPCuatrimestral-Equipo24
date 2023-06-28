@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,8 @@ namespace TPCuatrimestral_Album
         protected void Page_Load(object sender, EventArgs e)
         {
            JugadorNegocio jugadorNegocio = new JugadorNegocio();
-            gvJugadores.DataSource = jugadorNegocio.listar();
+            Session.Add("listaJugadores", jugadorNegocio.listar());
+            gvJugadores.DataSource = Session["listaJugadores"];
             gvJugadores.DataBind();
         }
 
@@ -28,5 +30,13 @@ namespace TPCuatrimestral_Album
             gvJugadores.PageIndex = e.NewPageIndex;
             gvJugadores.DataBind();
         }
+
+        protected void FiltroR_TextChanged(object sender, EventArgs e)
+        {
+            List<Jugador> jugadoresF = ((List<Jugador>)Session["listaJugadores"]).FindAll(x => x.Nombres.ToUpper().Contains(txtFiltroR.Text.ToUpper()));
+            gvJugadores.DataSource = jugadoresF;
+            gvJugadores.DataBind();
+        }
+
     }
 }
