@@ -7,8 +7,6 @@
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
                             <asp:Label runat="server" ID="lblID" AssociatedControlID="txtID" CssClass="form-label" Text="ID"></asp:Label>
                             <asp:TextBox runat="server" ID="txtID" CssClass="form-control" />
                             </div>
@@ -37,18 +35,16 @@
                                 <asp:DropDownList ID="ddlPosicion" CssClass="btn btn-info dropdown-toggl" runat="server"></asp:DropDownList>
                             </div>
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
                     <div class="col-6">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div class="mb-3">
                                     <label for="txtImagen" class="form-label">Imagen:</label>
                                     <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
                                         AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" />
-                                </div>
-                                <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
+                                    <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
                                     runat="server" ID="imgJugador" Width="60%" />
+                                </div>
                                 <%if (HayError)
                                     { %>
                                 <div class="alert alert-danger mt-4 py-4 d-flex justify-content-center" role="alert">
