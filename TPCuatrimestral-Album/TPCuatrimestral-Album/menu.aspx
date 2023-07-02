@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="container d-flex justify-content-center mt-2">
-        <h2 style="color:#fff;">Menú Principal</h2>
+<div class="container d-flex justify-content-center">
+        <h2 style="color:#fff;">Inicio</h2>
         <img class="icon" src="Images/LogoLiga.png" alt="Banner">
     </div>
     <div class="container container-menu d-flex justify-content-center align-items-center">
