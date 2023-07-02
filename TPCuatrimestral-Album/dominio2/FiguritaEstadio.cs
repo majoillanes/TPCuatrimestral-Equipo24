@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominio2
 {
-    internal class FiguritaEstadio
+    public class FiguritaEstadio
     {
     }
 }

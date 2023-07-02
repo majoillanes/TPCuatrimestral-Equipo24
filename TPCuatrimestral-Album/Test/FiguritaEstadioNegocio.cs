@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    internal class FiguritaEstadioNegocio
+    public class FiguritaEstadioNegocio
     {
     }
 }
