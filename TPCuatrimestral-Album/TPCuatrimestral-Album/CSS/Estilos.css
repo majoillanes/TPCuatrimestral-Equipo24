@@ -87,16 +87,15 @@
     height: 50%;
 }
 
-.props-figurita > ul > li {
-    list-style-type: none !important;
-}
+    .props-figurita > ul > li {
+        list-style-type: none !important;
+    }
 
 /*Pruebas para estilos de perfil*/
 
 .icon-list {
     list-style: none;
     padding: 0;
-    
 }
 
     .icon-list li {
@@ -114,7 +113,6 @@
     height: 3em;
     margin-left: 2%;
     margin-right: 2%;
-
 }
 
 .icon {
@@ -122,38 +120,40 @@
     height: 3em;
     margin-left: 2%;
 }
+
 .icon-descrip {
     display: flex;
     flex-direction: column;
-    margin-left:1.5%;
-   font-weight:bold;
+    margin-left: 1.5%;
+    font-weight: bold;
 }
-.descrip{
+
+.descrip {
     margin-bottom: 1.5%
 }
+
 .icons-right {
     list-style: none;
     padding: 0;
     text-align: right;
     margin-left: 90%;
-    margin-right:15%;
+    margin-right: 15%;
 }
 
 /*Bonos y recompensas*/
 
-.imageRecompensa{
+.imageRecompensa {
     display: flex;
     height: 15em;
-    text-align:center;
+    text-align: center;
     margin-top: 2%;
     margin-left: 40%;
 }
 
-.imageBox{
+.imageBox {
     display: flex;
     height: 10em;
     margin-left: 10%;
-  
 }
 
 .imageCard {
@@ -180,7 +180,7 @@
         margin-top: 15px;
     }
 
-.container-box{
+.container-box {
     display: flex;
     margin-left: 20%;
 }
@@ -202,8 +202,8 @@
 .imageBox1 {
     display: flex;
     height: 10em;
-    align-items:center;
-    margin-left:45%;
+    align-items: center;
+    margin-left: 45%;
 }
 
 .imageCard1 {
@@ -211,7 +211,7 @@
     height: 4em;
     align-items: center;
     margin-left: 48%;
-    margin-top:5%;
+    margin-top: 5%;
 }
 
 /* Tienda */
@@ -220,7 +220,6 @@
     display: flex;
     height: 10em;
     align-items: center;
-  
 }
 
 /* Album */
@@ -229,6 +228,11 @@
     height: 650px;
     width: 97.5%;
     background-color: #000;
+}
+
+.botones {
+    height: 100%;
+    width: 100%;
 }
 
 .pagina1 {
@@ -241,9 +245,18 @@
     height: 90%;
     width: 47.5%;
     background-color: #fff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-/* Figuritas del album */
+.opacidad-img {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Figuritas */
 
 .borde {
     background-color: #000;
@@ -266,7 +279,7 @@
 }
 
 .info {
-    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251,226,226));
     height: 45%;
 }
 
@@ -298,7 +311,7 @@
 }
 
 .info-escudo {
-    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251,226,226));
     height: 25%;
 }
 
@@ -337,12 +350,32 @@
 }
 
 .info-estadio {
-    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251, 226, 226));
+    background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251,226,226));
     height: 25%;
 }
 
 .nombre-estadio {
     height: 25%;
+}
+
+.boton {
+    text-decoration: none;
+    color: #fff;
+    font-size: larger;
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
+
+    .boton:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+.circulo {
+    background-color: #fff;
+    border-radius: 5rem;
+    width: 2.5rem;
 }
 
 /*Estilos de la barra de navegación*/

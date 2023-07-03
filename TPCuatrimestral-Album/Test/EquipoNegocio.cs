@@ -73,6 +73,37 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+        public Equipo listar(int id)
+        {
+            Equipo equipo= new Equipo();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"select E.ID, E.Nombre, E.Ciudad, E.Imagen, E.Alias, E.Fundacion, E.Estadio, E.Imagen, E.Activo from Equipos E WHERE E.ID='{id}'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    equipo.ID = (Int16)datos.Lector["ID"];
+                    equipo.Nombre = (string)datos.Lector["Nombre"];
+                    equipo.Ciudad = (string)datos.Lector["Ciudad"];
+                    equipo.Imagen = (string)datos.Lector["Imagen"];
+                    equipo.IDEstadio = (Int16)datos.Lector["Estadio"];
+                    equipo.Fundacion = (string)datos.Lector["Fundacion"];
+                    equipo.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"] ;
+                    equipo.Activo = (bool)datos.Lector["Activo"];
+                }
+                return equipo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void modificar(Equipo equipo)
         {
             AccesoDatos datos = new AccesoDatos();

@@ -59,7 +59,7 @@ ID SMALLINT PRIMARY KEY IDENTITY(1,1),
 Nombre VARCHAR(100) NOT NULL,
 Alias VARCHAR(50),
 Ciudad VARCHAR(80) NOT NULL,
-Fundacion SMALLINT CHECK (Fundacion > 1800 AND Fundacion < YEAR(GETDATE())),
+Fundacion VARCHAR(4) NOT NULL CHECK (Fundacion LIKE '%[0-9]%'),
 Estadio SMALLINT NOT NULL FOREIGN KEY REFERENCES Estadios (ID),
 Imagen VARCHAR(250),
 Activo BIT DEFAULT 1
@@ -108,6 +108,7 @@ ID INT PRIMARY KEY IDENTITY(1,1),
 IDFigurita INT FOREIGN KEY REFERENCES Figuritas(IDFigurita) NOT NULL,
 IDEstadios SMALLINT FOREIGN KEY REFERENCES Estadios(ID) NOT NULL
 )
+SELECT * FROM Equipos
 GO
 CREATE TABLE Usuarios_X_Figuritas(
 IDUsuario INT FOREIGN KEY REFERENCES Usuarios(ID) NOT NULL,
@@ -122,7 +123,7 @@ VALUES
 ('MED','Mediocampista'),
 ('DEL','Delantero')
 
-
+drop database ALBUM_DB
 
 INSERT INTO Estadios (Nombre, Alias, Capacidad, Barrio, Calle, Imagen)
 VALUES
@@ -154,36 +155,36 @@ VALUES
 ('Norberto Tomaghello', NULL, '20000', 'Gobernador Costa', 'Av. Humahuaca 244', 'https://pbs.twimg.com/media/FMjWk3vXMAYD3E4?format=jpg&name=medium'),
 ('Julio Humberto Grondona', 'El Viaducto', '18300', 'Sarandí', 'Julio Humberto Grondona 3660', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-arsenal-sarandi1-740x526.jpg'),
 ('Claudio Fabián Tapia', NULL, '4400', 'Barracas', 'Luna 1211', 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt8afb1e67b3bfd35b/64279c1de55f443779683e6d/01a.png?auto=webp&format=pjpg&width=3840&quality=60')
-
 GO
 INSERT INTO Equipos (Nombre, Alias, Ciudad, Fundacion, Estadio, Imagen)
 VALUES
-('Argentinos Juniors', 'El Bicho', 'Ciudad Autónoma de Buenos Aires', 1904, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Maradona%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Asociacion_Atletica_Argentinos_Juniors.svg/1200px-Asociacion_Atletica_Argentinos_Juniors.svg.png'),
-('Arsenal', 'El Arse', 'Sarandí', 1957, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Grondona%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Arsenal_Sarand%C3%AD_logo.svg/1200px-Arsenal_Sarand%C3%AD_logo.svg.png'),
-('Atlético Tucumán', 'El Decano', 'Tucumán', 1902, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Fierro%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg/1200px-Logo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg.png'),
-('Banfield', 'El Taladro', 'Banfield', 1896, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Florencio%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/CA_Banfield_%282014%29.svg/1200px-CA_Banfield_%282014%29.svg.png'),
-('Barracas Central', NULL, 'Ciudad Autónoma de Buenos Aires', 1904, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Tapia%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Barracas_central_logo.svg/1200px-Barracas_central_logo.svg.png'),
-('Belgrano', 'El Pirata', 'Córdoba', 1905, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Villagra%'), 'https://upload.wikimedia.org/wikipedia/commons/8/85/Escudo_Oficial_del_Club_Atl%C3%A9tico_Belgrano.png'),
-('Boca Juniors', 'El Xeneize', 'Ciudad Autónoma de Buenos Aires', 1905, (SELECT ID FROM Estadios WHERE Alias LIKE '%Bombonera%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/CABJ70.png/1200px-CABJ70.png'),
-('Central Córdoba', 'El Ferroviario', 'Santiago del Estero', 1919, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Terrera%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Escudo_del_Club_Central_C%C3%B3rdoba_de_Santiago_del_Estero.svg/1200px-Escudo_del_Club_Central_C%C3%B3rdoba_de_Santiago_del_Estero.svg.png'),
-('Colón', 'El Sabalero', 'Santa Fe', 1901, (SELECT ID FROM Estadios WHERE Alias LIKE '%Elefante%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg.png'),
-('Defensa y Justicia', 'El Halcón', 'Florencio Varela', 1935, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Tomaghello%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg/1200px-Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg.png'),
-('Gimnasia y Esgrima', 'El Lobo', 'La Plata', 1887, (SELECT ID FROM Estadios WHERE Alias LIKE '%Bosque%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Gimnasia_Esgrima_LP_logo.svg/800px-Gimnasia_Esgrima_LP_logo.svg.png'),
-('Godoy Cruz', 'El Tomba', 'Mendoza', 1921, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Gambarte%'), 'https://upload.wikimedia.org/wikipedia/commons/4/4b/GCAT.png'),
-('Huracán', 'El Globo', 'Ciudad Autónoma de Buenos Aires', 1908, (SELECT ID FROM Estadios WHERE Alias LIKE '%Palacio%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Escudo_de_Hurac%C3%A1n.png/1200px-Escudo_de_Hurac%C3%A1n.png'),
-('Independiente', 'El Rojo', 'Avellaneda', 1904, (SELECT ID FROM Estadios WHERE Alias LIKE '%Libertador%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png'),
-('Instituto', 'La Gloria', 'Córdoba', 1918, (SELECT ID FROM Estadios WHERE Alias LIKE '%Alta Córdoba%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_Instituto_Atletico_Central_Cordoba.png/225px-Escudo_Instituto_Atletico_Central_Cordoba.png'),
-('Lanús', 'El Granate', 'Lanús', 1915, (SELECT ID FROM Estadios WHERE Alias LIKE '%Ciudad de Lanús%'), 'https://upload.wikimedia.org/wikipedia/commons/9/93/Modificacion_flyer_para_Editat%C3%B3n_del_Centenario_del_Club_Atl%C3%A9tico_Lan%C3%BAs.png'),
-('Newell''s Old Boys', 'La Lepra', 'Rosario', 1903, (SELECT ID FROM Estadios WHERE Alias LIKE '%Coloso%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg.png'),
-('Platense', 'El Calamar', 'Vicente López', 1905, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Vicente López%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Escudo_del_Club_Alt%C3%A9tico_Platense.svg/1200px-Escudo_del_Club_Alt%C3%A9tico_Platense.svg.png'),
-('Racing Club', 'La Academia', 'Avellaneda', 1903, (SELECT ID FROM Estadios WHERE Alias LIKE '%Cilindro%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Racing_Club_%282014%29.svg/1200px-Escudo_de_Racing_Club_%282014%29.svg.png'),
-('River Plate', 'El Millonario', 'Ciudad Autónoma de Buenos Aires', 1901, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Liberti%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_del_C_A_River_Plate.svg/1200px-Escudo_del_C_A_River_Plate.svg.png'),
-('Rosario Central', 'El Canalla', 'Rosario', 1889, (SELECT ID FROM Estadios WHERE Alias LIKE '%Arroyito%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Rosario_Central_logo.svg/1200px-Rosario_Central_logo.svg.png'),
-('San Lorenzo', 'El Ciclón', 'Ciudad Autónoma de Buenos Aires', 1908, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Bidegain%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg.png'),
-('Talleres', 'El Matador', 'Córdoba', 1903, (SELECT ID FROM Estadios WHERE Alias LIKE '%Boutique%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Escudo_Talleres_2015.svg/1200px-Escudo_Talleres_2015.svg.png'),
-('Tigre', 'El Matador de Victoria', 'Victoria', 1902, (SELECT ID FROM Estadios WHERE Alias LIKE '%Victoria%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Escudo_del_Club_Atl%C3%A9tico_Tigre.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Tigre.svg.png'),
-('Unión', 'El Tatengue', 'Santa Fe', 1907, (SELECT ID FROM Estadios WHERE Nombre LIKE '%15 de Abril%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg/1788px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg.png'),
-('Velez Sarsfield', 'El Fortín', 'Ciudad Autónoma de Buenos Aires', 1910, (SELECT ID FROM Estadios WHERE Nombre LIKE '%Amalfitani%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png')
+('Argentinos Juniors', 'El Bicho', 'Ciudad Autónoma de Buenos Aires', '1904', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Maradona%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Asociacion_Atletica_Argentinos_Juniors.svg/1200px-Asociacion_Atletica_Argentinos_Juniors.svg.png'),
+('Arsenal', 'El Arse', 'Sarandí', '1957', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Grondona%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Arsenal_Sarand%C3%AD_logo.svg/1200px-Arsenal_Sarand%C3%AD_logo.svg.png'),
+('Atlético Tucumán', 'El Decano', 'Tucumán', '1902', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Fierro%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg/1200px-Logo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg.png'),
+('Banfield', 'El Taladro', 'Banfield', '1896', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Florencio%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/CA_Banfield_%282014%29.svg/1200px-CA_Banfield_%282014%29.svg.png'),
+('Barracas Central', 'El Guapo', 'Ciudad Autónoma de Buenos Aires', '1904', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Tapia%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Barracas_central_logo.svg/1200px-Barracas_central_logo.svg.png'),
+('Belgrano', 'El Pirata', 'Córdoba', '1905', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Villagra%'), 'https://upload.wikimedia.org/wikipedia/commons/8/85/Escudo_Oficial_del_Club_Atl%C3%A9tico_Belgrano.png'),
+('Boca Juniors', 'El Xeneize', 'Ciudad Autónoma de Buenos Aires', '1905', (SELECT ID FROM Estadios WHERE Alias LIKE '%Bombonera%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/CABJ70.png/207px-CABJ70.png'),
+('Central Córdoba', 'El Ferroviario', 'Santiago del Estero', '1919', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Terrera%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Escudo_del_Club_Central_C%C3%B3rdoba_de_Santiago_del_Estero.svg/1200px-Escudo_del_Club_Central_C%C3%B3rdoba_de_Santiago_del_Estero.svg.png'),
+('Colón', 'El Sabalero', 'Santa Fe', '1901', (SELECT ID FROM Estadios WHERE Alias LIKE '%Elefante%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg.png'),
+('Defensa y Justicia', 'El Halcón', 'Florencio Varela', '1935', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Tomaghello%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg/1200px-Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg.png'),
+('Estudiantes de la Plata', 'El Pincha', 'La Plata', '1905', (SELECT ID FROM Estadios WHERE Alias LIKE '%Estadio UNO%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Escudo_de_Estudiantes_de_La_Plata.svg/188px-Escudo_de_Estudiantes_de_La_Plata.svg.png'),
+('Gimnasia y Esgrima', 'El Lobo', 'La Plata', '1887', (SELECT ID FROM Estadios WHERE Alias LIKE '%Bosque%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Gimnasia_Esgrima_LP_logo.svg/800px-Gimnasia_Esgrima_LP_logo.svg.png'),
+('Godoy Cruz', 'El Tomba', 'Mendoza', '1921', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Gambarte%'), 'https://upload.wikimedia.org/wikipedia/commons/4/4b/GCAT.png'),
+('Huracán', 'El Globo', 'Ciudad Autónoma de Buenos Aires', '1908', (SELECT ID FROM Estadios WHERE Alias LIKE '%Palacio%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg/240px-Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg.png'),
+('Independiente', 'El Rojo', 'Avellaneda', '1904', (SELECT ID FROM Estadios WHERE Alias LIKE '%Libertador%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png'),
+('Instituto', 'La Gloria', 'Córdoba', '1918', (SELECT ID FROM Estadios WHERE Alias LIKE '%Alta Córdoba%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_Instituto_Atletico_Central_Cordoba.png/225px-Escudo_Instituto_Atletico_Central_Cordoba.png'),
+('Lanús', 'El Granate', 'Lanús', '1915', (SELECT ID FROM Estadios WHERE Alias LIKE '%Ciudad de Lanús%'), 'https://upload.wikimedia.org/wikipedia/commons/9/93/Modificacion_flyer_para_Editat%C3%B3n_del_Centenario_del_Club_Atl%C3%A9tico_Lan%C3%BAs.png'),
+('Newell''s Old Boys', 'La Lepra', 'Rosario', '1903', (SELECT ID FROM Estadios WHERE Alias LIKE '%Coloso%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg.png'),
+('Platense', 'El Calamar', 'Vicente López', '1905', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Vicente López%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Escudo_del_Club_Alt%C3%A9tico_Platense.svg/1200px-Escudo_del_Club_Alt%C3%A9tico_Platense.svg.png'),
+('Racing Club', 'La Academia', 'Avellaneda', '1903', (SELECT ID FROM Estadios WHERE Alias LIKE '%Cilindro%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Racing_Club_%282014%29.svg/1200px-Escudo_de_Racing_Club_%282014%29.svg.png'),
+('River Plate', 'El Millonario', 'Ciudad Autónoma de Buenos Aires', '1901', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Liberti%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_del_C_A_River_Plate.svg/1200px-Escudo_del_C_A_River_Plate.svg.png'),
+('Rosario Central', 'El Canalla', 'Rosario', '1889', (SELECT ID FROM Estadios WHERE Alias LIKE '%Arroyito%'), 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Rosario_Central_logo.svg/1200px-Rosario_Central_logo.svg.png'),
+('San Lorenzo', 'El Ciclón', 'Ciudad Autónoma de Buenos Aires', '1908', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Bidegain%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg.png'),('Sarmiento', 'El Verde', 'Junín', '1911', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Eva Perón%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Escudo_del_Club_Atl%C3%A9tico_Sarmiento_de_Jun%C3%ADn.svg/244px-Escudo_del_Club_Atl%C3%A9tico_Sarmiento_de_Jun%C3%ADn.svg.png'),
+('Talleres', 'El Matador', 'Córdoba', '1903', (SELECT ID FROM Estadios WHERE Alias LIKE '%Boutique%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Escudo_Talleres_2015.svg/1200px-Escudo_Talleres_2015.svg.png'),
+('Tigre', 'El Matador de Victoria', 'Victoria', '1902', (SELECT ID FROM Estadios WHERE Alias LIKE '%Victoria%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Escudo_del_Club_Atl%C3%A9tico_Tigre.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Tigre.svg.png'),
+('Unión', 'El Tatengue', 'Santa Fe', '1907', (SELECT ID FROM Estadios WHERE Nombre LIKE '%15 de Abril%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg/1788px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg.png'),
+('Velez Sarsfield', 'El Fortín', 'Ciudad Autónoma de Buenos Aires', '1910', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Amalfitani%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png')
 GO
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen,Activo)
 VALUES ('Franco', 'Armani', '1986-10-16', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'ARQ', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png',1 ),
