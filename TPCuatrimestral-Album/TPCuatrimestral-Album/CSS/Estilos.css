@@ -347,6 +347,23 @@
 
 /*Estilos de la barra de navegación*/
 
+.navbar-nav .nav-link {
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+}
+
+.navbar-toggler {
+    font-size: 20px;
+    padding: 10px;
+}
+.navbar-nav .nav-link:hover {
+    background-color: #f8f9fa; 
+    color:#8490BB;
+    border-radius:10px;
+    text-shadow:grey;
+}
+
 
 
 
