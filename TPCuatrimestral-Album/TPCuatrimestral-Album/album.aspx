@@ -17,8 +17,11 @@
 
                             <div class="container d-flex justify-content-around" style="height: 33.33%;">
                                 <div class="borde-escudo d-flex justify-content-center align-items-center">
-                                    <div class="figurita-escudo d-flex flex-column">
-                                        <div class="imagen-escudo">
+                                    <div class="figurita-escudo d-flex flex-column align-items-center justify-content-center">
+                                        <div class="circulo-figurita d-flex justify-content-center">
+                                            <asp:Label ID="lblNumeroEscudo" runat="server" />
+                                        </div>
+                                        <%--<div class="imagen-escudo">
                                         </div>
                                         <div class="info-escudo d-flex flex-column">
                                             <div class="nombre-escudo d-flex justify-content-center">
@@ -29,12 +32,15 @@
                                                     <li class="mt-2">El millonario</li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="borde-estadio d-flex justify-content-center align-self-center align-items-center">
-                                    <div class="figurita-estadio d-flex flex-column">
-                                        <div class="imagen-estadio">
+                                    <div class="figurita-estadio d-flex flex-column align-items-center justify-content-center">
+                                        <div class="circulo-figurita d-flex justify-content-center">
+                                            <asp:Label ID="lblNumeroEstadio" runat="server" />
+                                        </div>
+                                        <%--<div class="imagen-estadio">
                                         </div>
                                         <div class="info-estadio d-flex flex-column">
                                             <div class="nombre-estadio d-flex justify-content-center mb-1">
@@ -48,7 +54,7 @@
                                                     <li>Argentino</li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +65,11 @@
 
 
                                 <div class="borde d-flex justify-content-center align-items-center">
-                                    <div class="figurita d-flex flex-column">
-                                        <div class="imagen">
+                                    <div class="figurita d-flex flex-column align-items-center justify-content-center">
+                                        <div class="circulo-figurita d-flex justify-content-center">
+                                            <asp:Label ID="lblNumeroJugadorPagina1" runat="server"><%=JugadoresPagina1++ %></asp:Label>
+                                        </div>
+                                        <%--<div class="imagen">
                                         </div>
                                         <div class="info d-flex flex-column">
                                             <div class="nombre d-flex justify-content-center">
@@ -74,7 +83,7 @@
                                                     <li>Argentino</li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <%   } %>
@@ -89,8 +98,11 @@
                                     <% for (int j = 0; j < 3; j++)
                                         { %>
                                     <div class="borde d-flex justify-content-center align-items-center">
-                                        <div class="figurita d-flex flex-column">
-                                            <div class="imagen">
+                                        <div class="figurita d-flex flex-column align-items-center justify-content-center">
+                                            <div class="circulo-figurita d-flex justify-content-center">
+                                                <asp:Label ID="lblNumeroJugadorPagina2" runat="server"><%=JugadoresPagina2++ %></asp:Label>
+                                            </div>
+                                            <%--<div class="imagen">
                                             </div>
                                             <div class="info d-flex flex-column">
                                                 <div class="nombre d-flex justify-content-center">
@@ -104,7 +116,7 @@
                                                         <li>Argentino</li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                     </div>
                                     <% } %>

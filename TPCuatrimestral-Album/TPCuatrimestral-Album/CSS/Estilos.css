@@ -378,6 +378,13 @@
     width: 2.5rem;
 }
 
+.circulo-figurita {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid #000;
+    border-radius: 1rem;
+}
+
 /*Estilos de la barra de navegación*/
 
 .navbar-nav .nav-link {

@@ -33,6 +33,42 @@ namespace TPCuatrimestral_Album
         protected global::System.Web.UI.WebControls.LinkButton AnteriorPagina;
 
         /// <summary>
+        /// Control lblNumeroEscudo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroEscudo;
+
+        /// <summary>
+        /// Control lblNumeroEstadio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroEstadio;
+
+        /// <summary>
+        /// Control lblNumeroJugadorPagina1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroJugadorPagina1;
+
+        /// <summary>
+        /// Control lblNumeroJugadorPagina2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroJugadorPagina2;
+
+        /// <summary>
         /// Control SiguientePagina.
         /// </summary>
         /// <remarks>
