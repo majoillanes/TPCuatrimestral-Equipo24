@@ -13,10 +13,11 @@ namespace TPCuatrimestral_Album
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
-           // gvLista.DataSource = figuritaNegocio.listar();
-           // gvLista.DataBind();
-            repeaterJugadores.DataSource = figuritaNegocio.listar();
+            FiguritaJugadorNegocio figuritaNegocio = new FiguritaJugadorNegocio();
+            // gvLista.DataSource = figuritaNegocio.listar();
+            // gvLista.DataBind();
+            Usuario usuario = (Usuario)Session["usuario"];
+            repeaterJugadores.DataSource = figuritaNegocio.listar(usuario.Id);
             repeaterJugadores.DataBind();
         }
 

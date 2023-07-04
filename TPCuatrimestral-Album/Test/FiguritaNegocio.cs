@@ -25,18 +25,18 @@ namespace Test
                     figurita.IDAlbum = (int)datos.Lector["IDAlbum"];
                     figurita.Activo = (bool)datos.Lector["Activo"];
                     figurita.Pegada = (bool)datos.Lector["Pegada"];
-                    figurita.Jugador = new Jugador();
-                    figurita.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
-                    figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
-                    figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
-                    figurita.Jugador.Imagen = (string)datos.Lector["Imagen"];
-                    figurita.Jugador.FechaDeNacimiento = ((DateTime)datos.Lector["FechaDeNacimiento"]).Date;
-                    figurita.Jugador.Nacionalidad = new Nacionalidad();
-                    figurita.Jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
-                    figurita.Jugador.Equipo = new Equipo();
-                    figurita.Jugador.Equipo.Nombre = (string)datos.Lector["Nombre"];
-                    figurita.Jugador.Posicion = new Posicion();
-                    figurita.Jugador.Posicion.Descripcion = (string)datos.Lector["Descripcion"];
+                    //figurita.Jugador = new Jugador();
+                    //figurita.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
+                    //figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
+                    //figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
+                    //figurita.Jugador.Imagen = (string)datos.Lector["Imagen"];
+                    //figurita.Jugador.FechaDeNacimiento = ((DateTime)datos.Lector["FechaDeNacimiento"]).Date;
+                    //figurita.Jugador.Nacionalidad = new Nacionalidad();
+                    //figurita.Jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
+                    //figurita.Jugador.Equipo = new Equipo();
+                    //figurita.Jugador.Equipo.Nombre = (string)datos.Lector["Nombre"];
+                    //figurita.Jugador.Posicion = new Posicion();
+                    //figurita.Jugador.Posicion.Descripcion = (string)datos.Lector["Descripcion"];
 
                     figuritas.Add(figurita);
                 }

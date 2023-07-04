@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace dominio2
 {
-    internal class FiguritaJugador
+    public class FiguritaJugador : Figurita
     {
+        public int ID { get; set; }
+        public int IDJugador { get; set; }
+        public int Ubicacion { get; set; }
+        public Jugador Jugador { get; set; }
     }
 }

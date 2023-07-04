@@ -45,6 +45,9 @@
     <Compile Include="Equipo.cs" />
     <Compile Include="Estadio.cs" />
     <Compile Include="Figurita.cs" />
+    <Compile Include="FiguritaEquipo.cs" />
+    <Compile Include="FiguritaEstadio.cs" />
+    <Compile Include="FiguritaJugador.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="Nacionalidad.cs" />
     <Compile Include="Posicion.cs" />

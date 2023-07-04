@@ -15,6 +15,6 @@ namespace dominio2
        // public int PrecioVenta { get; set; }
         public bool Pegada { get; set; }
         public bool Activo { get; set; }
-        public Jugador Jugador { get; set; }
+        //public Jugador Jugador { get; set; }
     }
 }

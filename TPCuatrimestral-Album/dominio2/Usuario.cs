@@ -18,5 +18,10 @@ namespace dominio2
         public Nivel Nivel  { get; set; }
         public List<Album> Albumes { get; set; }
         public List<Figurita> Figuritas { get; set; }
+
+        public Usuario(string email, string password) {
+            Email = email;
+            Clave = password;
+        }
     }
 }
