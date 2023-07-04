@@ -68,6 +68,11 @@ namespace Test
                 lector.Close();
             conexion.Close();
         }
+
+        internal void setearQuery(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

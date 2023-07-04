@@ -43,5 +43,10 @@ namespace TPCuatrimestral_Album
                 // Response.Redirect("../Error.aspx");
             }
         }
+
+        protected void btnCrearCuenta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
