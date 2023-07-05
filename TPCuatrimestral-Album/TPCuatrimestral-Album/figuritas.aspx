@@ -89,10 +89,10 @@
                                     </div>
                                     <div class="props-figurita">
                                         <ul>
-                                           <%-- <li><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></li>
+                                            <li><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></li>
                                             <li><%# Eval("Jugador.Posicion.Descripcion") %></li>
                                             <li><%# Eval("Jugador.Equipo.Nombre") %></li>
-                                            <li><%# Eval("Jugador.Nacionalidad.Gentilicio") %></li>--%>
+                                            <li><%# Eval("Jugador.Nacionalidad.Gentilicio") %></li>
                                         </ul>
                                     </div>
                                 </div>

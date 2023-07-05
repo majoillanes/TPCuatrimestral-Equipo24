@@ -87,6 +87,8 @@ CREATE TABLE Figuritas (
 IDFigurita INT PRIMARY KEY IDENTITY(1,1),
 IDAlbum INT FOREIGN KEY REFERENCES Albumes(ID),
 Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID),
+Ubicacion INT not null,
+IDUsuario INT FOREIGN KEY REFERENCES Usuarios(ID),
 Pegada BIT DEFAULT 0,
 Activo BIT DEFAULT 1
 )
@@ -108,7 +110,6 @@ ID INT PRIMARY KEY IDENTITY(1,1),
 IDFigurita INT FOREIGN KEY REFERENCES Figuritas(IDFigurita) NOT NULL,
 IDEstadios SMALLINT FOREIGN KEY REFERENCES Estadios(ID) NOT NULL
 )
-SELECT * FROM Equipos
 GO
 CREATE TABLE Usuarios_X_Figuritas(
 IDUsuario INT FOREIGN KEY REFERENCES Usuarios(ID) NOT NULL,
@@ -122,8 +123,6 @@ VALUES
 ('DEF','Defensor'),
 ('MED','Mediocampista'),
 ('DEL','Delantero')
-
-drop database ALBUM_DB
 
 INSERT INTO Estadios (Nombre, Alias, Capacidad, Barrio, Calle, Imagen)
 VALUES
@@ -205,16 +204,6 @@ values ('Legendaria', ''),
 
 --alter table Figuritas 
 --add IDJugador int foreign key references Jugadores (ID)
-
-insert into Figuritas (IDAlbum, Tipo, Pegada, Activo, IDJugador)
-values (1, 3, 0,0, 1)
-
-select * from Figuritas
-select * from Jugadores
-
-
-
-
 
 
 --SELECT DISTINCT A.Id, A.Nombre, A.Codigo, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS
