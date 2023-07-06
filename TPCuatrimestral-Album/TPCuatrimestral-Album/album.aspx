@@ -69,6 +69,34 @@
                                         <div class="circulo-figurita d-flex justify-content-center">
                                             <asp:Label ID="lblNumeroJugadorPagina1" runat="server"><%=JugadoresPagina1++ %></asp:Label>
                                         </div>
+                                        <%
+                                        int ubicacionJugadorPagina1 = JugadoresPagina1-1;
+                                        Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina1);
+                                        if (Figurita != null)
+                                        {%>
+                                        <div class="imagen">
+                                        </div>
+                                        <div class="info d-flex flex-column">
+                                            <div class="nombre d-flex justify-content-center">
+                                                <p><b><%= Figurita.Jugador.Nombres%> <%=Figurita.Jugador.Apellidos %></b></p>
+                                            </div>
+                                            <div class="props">
+                                                <ul class="d-flex justify-content-around flex-column">
+                                                    <li><%= Figurita.Jugador.FechaDeNacimiento.ToString("dd/MM/yyyy") %></li>
+                                                    <li><%= Figurita.Jugador.Posicion.Codigo %></li>
+                                                    <li><%= Figurita.Jugador.Equipo.Nombre %></li>
+                                                    <li><%= Figurita.Jugador.Nacionalidad.Gentilicio %></li>
+                                                </ul>
+                                            </div>
+                                        </div>--
+                                        <%} %>
+
+                                        <%else
+                                        {
+                                            // Código si no se encuentra la figurita
+                                        }
+                                        %> 
+
                                         <%--<div class="imagen">
                                         </div>
                                         <div class="info d-flex flex-column">
@@ -102,6 +130,33 @@
                                             <div class="circulo-figurita d-flex justify-content-center">
                                                 <asp:Label ID="lblNumeroJugadorPagina2" runat="server"><%=JugadoresPagina2++ %></asp:Label>
                                             </div>
+                                            <%
+                                        int ubicacionJugadorPagina2 = JugadoresPagina2-1;
+                                        Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina2);
+                                        if (Figurita != null )
+                                        {%>
+                                        <div class="imagen">
+                                        </div>
+                                        <div class="info d-flex flex-column">
+                                            <div class="nombre d-flex justify-content-center">
+                                                <p><b><%= Figurita.Jugador.Nombres %> <%=Figurita.Jugador.Apellidos %></b></p>
+                                            </div>
+                                            <div class="props">
+                                                <ul class="d-flex justify-content-around flex-column">
+                                                    <li><%= Figurita.Jugador.FechaDeNacimiento.ToString("dd/MM/yyyy") %></li>
+                                                    <li><%= Figurita.Jugador.Posicion.Codigo %></li>
+                                                    <li><%= Figurita.Jugador.Equipo.Nombre %></li>
+                                                    <li><%= Figurita.Jugador.Nacionalidad.Gentilicio %></li>
+                                                </ul>
+                                            </div>
+                                        </div>--
+                                        <%} %>
+
+                                        <%else
+                                        {
+                                            // Código si no se encuentra la figurita
+                                        }
+                                        %> 
                                             <%--<div class="imagen">
                                             </div>
                                             <div class="info d-flex flex-column">

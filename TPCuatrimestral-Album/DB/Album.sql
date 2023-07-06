@@ -155,6 +155,8 @@ VALUES
 ('Julio Humberto Grondona', 'El Viaducto', '18300', 'Sarandí', 'Julio Humberto Grondona 3660', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-arsenal-sarandi1-740x526.jpg'),
 ('Claudio Fabián Tapia', NULL, '4400', 'Barracas', 'Luna 1211', 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt8afb1e67b3bfd35b/64279c1de55f443779683e6d/01a.png?auto=webp&format=pjpg&width=3840&quality=60')
 GO
+
+select * from Nacionalidad
 INSERT INTO Equipos (Nombre, Alias, Ciudad, Fundacion, Estadio, Imagen)
 VALUES
 ('Argentinos Juniors', 'El Bicho', 'Ciudad Autónoma de Buenos Aires', '1904', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Maradona%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Asociacion_Atletica_Argentinos_Juniors.svg/1200px-Asociacion_Atletica_Argentinos_Juniors.svg.png'),
@@ -201,7 +203,7 @@ values ('Legendaria', ''),
 ('Especial', ''),
 ('Estándar', '')
 
-
+select * from Nacionalidad
 --alter table Figuritas 
 --add IDJugador int foreign key references Jugadores (ID)
 

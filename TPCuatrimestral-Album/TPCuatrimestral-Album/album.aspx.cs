@@ -15,8 +15,17 @@ namespace TPCuatrimestral_Album
         public Equipo Equipo { get; set; }
         public int JugadoresPagina1 { get; set; }
         public int JugadoresPagina2 { get; set; }
+        public List<FiguritaJugador> Figuritas {get;set;}
+        public FiguritaJugador Figurita { get; set;}
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuario"];
+            FiguritaJugadorNegocio figuritaNegocio = new FiguritaJugadorNegocio();
+            //List<FiguritaJugador> figuritas = new List<FiguritaJugador>();
+            Figuritas = figuritaNegocio.listar(usuario.Id);
+            // gvLista.DataSource = figuritaNegocio.listar();
+            // gvLista.DataBind();
+
             if (!IsPostBack)
             {
                 EquipoNegocio equipoNegocio = new EquipoNegocio();
@@ -31,11 +40,15 @@ namespace TPCuatrimestral_Album
                 numeros.Add(lblNumeroEstadio.Text);
                 Session.Add("Numeros", numeros);
 
+
+
                 JugadoresPagina1 = 3;
                 Session.Add("Pagina1", JugadoresPagina1);
 
                 JugadoresPagina2 = 5;
                 Session.Add("Pagina2", JugadoresPagina2);
+
+                Page.DataBind();
             }
             else
             {
@@ -50,8 +63,6 @@ namespace TPCuatrimestral_Album
                 JugadoresPagina1 = int.Parse(Session["Pagina1"].ToString());
                 JugadoresPagina2 = int.Parse(Session["Pagina2"].ToString());
             }
-
-            
 
         }
 
