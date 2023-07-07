@@ -50,6 +50,7 @@
     <Compile Include="FiguritaNegocio.cs" />
     <Compile Include="JugadorNegocio.cs" />
     <Compile Include="NacionalidadNegocio.cs" />
+    <Compile Include="PaqueteNegocio.cs" />
     <Compile Include="PosicionNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioNegocio.cs" />

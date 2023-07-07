@@ -47,6 +47,25 @@ namespace Test
             {
                 datos.cerrarConexion();
             }
+
+        }
+        public void Agregar(FiguritaJugador figuritaJugador)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"INSERT INTO Figuritas_Jugadores VALUES ({figuritaJugador.IDFigurita}, {figuritaJugador.IDJugador}, {figuritaJugador.TipoDeFigurita.Id})");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

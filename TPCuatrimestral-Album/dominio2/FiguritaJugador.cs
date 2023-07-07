@@ -10,7 +10,6 @@ namespace dominio2
     {
         public int ID { get; set; }
         public int IDJugador { get; set; }
-        public int Ubicacion { get; set; }
         public Jugador Jugador { get; set; }
     }
 }

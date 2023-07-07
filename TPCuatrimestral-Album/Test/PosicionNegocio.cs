@@ -36,5 +36,30 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+        public Posicion listar(string cod)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Posicion posicion = new Posicion();
+            try
+            {
+                datos.setearConsulta($"select Codigo, Descripcion from Posiciones WHERE Codigo = '{cod}'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    posicion.Codigo = (string)datos.Lector["Codigo"];
+                    posicion.Descripcion = (string)datos.Lector["Descripcion"];
+                }
+                return posicion;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

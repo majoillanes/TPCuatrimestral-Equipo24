@@ -50,6 +50,9 @@ namespace Test
         {
             Jugador jugador = new Jugador();
             AccesoDatos datos = new AccesoDatos();
+            PosicionNegocio posicionNegocio = new PosicionNegocio();
+            EquipoNegocio equipoNegocio = new EquipoNegocio();
+            NacionalidadNegocio nacionalidadNegocio = new NacionalidadNegocio();
             try
             {
                 datos.setearConsulta($"SELECT J.ID, J.Nombres, J.Apellidos, J.FechaDeNacimiento, J.Imagen, J.Activo, N.ISO_NAC, E.ID as IDE, P.Codigo FROM Jugadores J\r\nINNER JOIN Nacionalidad N ON N.ISO_NAC = J.Nacionalidad\r\nINNER JOIN Equipos E ON E.ID = J.Equipo\r\nINNER JOIN Posiciones P ON P.Codigo = J.Posicion WHERE J.ID={id}");
@@ -64,10 +67,54 @@ namespace Test
                     jugador.Activo = bool.Parse(datos.Lector["Activo"].ToString());
                     jugador.Nacionalidad = new Nacionalidad();
                     jugador.Nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
+                    jugador.Nacionalidad = nacionalidadNegocio.listar(jugador.Nacionalidad.ISO);
                     jugador.Equipo = new Equipo();
                     jugador.Equipo.ID = (Int16)datos.Lector["IDE"];
+                    jugador.Equipo = equipoNegocio.listar(jugador.Equipo.ID);
                     jugador.Posicion = new Posicion();
-                    jugador.Posicion.Codigo= (string)datos.Lector["Codigo"];
+                    jugador.Posicion.Codigo = (string)datos.Lector["Codigo"];
+                    jugador.Posicion = posicionNegocio.listar(jugador.Posicion.Codigo);
+                }
+                return jugador;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public Jugador listar(int id)
+        {
+            Jugador jugador = new Jugador();
+            AccesoDatos datos = new AccesoDatos();
+            EquipoNegocio equipoNegocio = new EquipoNegocio();
+            PosicionNegocio posicionNegocio = new PosicionNegocio();
+            NacionalidadNegocio nacionalidadNegocio = new NacionalidadNegocio();
+            try
+            {
+                datos.setearConsulta($"SELECT J.ID, J.Nombres, J.Apellidos, J.FechaDeNacimiento, J.Imagen, J.Activo, N.ISO_NAC, E.ID as IDE, P.Codigo FROM Jugadores J\r\nINNER JOIN Nacionalidad N ON N.ISO_NAC = J.Nacionalidad\r\nINNER JOIN Equipos E ON E.ID = J.Equipo\r\nINNER JOIN Posiciones P ON P.Codigo = J.Posicion WHERE J.ID={id}");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    jugador.IDJugador = (int)datos.Lector["ID"];
+                    jugador.Nombres = (string)datos.Lector["Nombres"];
+                    jugador.Apellidos = (string)datos.Lector["Apellidos"];
+                    jugador.FechaDeNacimiento = (DateTime)datos.Lector["FechaDeNacimiento"];
+                    jugador.Imagen = (string)datos.Lector["Imagen"];
+                    jugador.Activo = bool.Parse(datos.Lector["Activo"].ToString());
+                    jugador.Nacionalidad = new Nacionalidad();
+                    jugador.Nacionalidad.ISO = (string)datos.Lector["ISO_NAC"];
+                    jugador.Nacionalidad = nacionalidadNegocio.listar(jugador.Nacionalidad.ISO);
+                    jugador.Equipo = new Equipo();
+                    jugador.Equipo.ID = (Int16)datos.Lector["IDE"];
+                    jugador.Equipo = equipoNegocio.listar(jugador.Equipo.ID);
+                    jugador.Posicion = new Posicion();
+                    jugador.Posicion.Codigo = (string)datos.Lector["Codigo"];
+                    jugador.Posicion = posicionNegocio.listar(jugador.Posicion.Codigo);
                 }
                 return jugador;
             }
