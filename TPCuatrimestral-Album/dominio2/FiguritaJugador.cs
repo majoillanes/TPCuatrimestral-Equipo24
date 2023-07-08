@@ -9,7 +9,6 @@ namespace dominio2
     public class FiguritaJugador : Figurita
     {
         public int ID { get; set; }
-        public int IDJugador { get; set; }
         public Jugador Jugador { get; set; }
     }
 }

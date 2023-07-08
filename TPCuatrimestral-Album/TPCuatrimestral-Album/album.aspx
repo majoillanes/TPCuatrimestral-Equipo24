@@ -40,6 +40,33 @@
                                         <div class="circulo-figurita d-flex justify-content-center">
                                             <asp:Label ID="lblNumeroEstadio" runat="server" />
                                         </div>
+                                         <%
+                                        string numeroEstadio = lblNumeroEstadio.Text.ToString();
+                                        FiguritaEstadio = FiguritasEstadios.Find(x => x.Ubicacion.ToString().Equals(numeroEstadio));
+                                        if (FiguritaEstadio != null)
+                                        {%>
+                                        <div class="imagen">
+                                        </div>
+                                        <div class="info d-flex flex-column">
+                                            <div class="nombre d-flex justify-content-center">
+                                                <p><b><%= FiguritaEstadio.Estadio.Nombre %></b></p>
+                                            </div>
+                                            <div class="props">
+                                                <ul class="d-flex justify-content-around flex-column">
+                                                    <li><%= FiguritaEstadio.Estadio.Alias %></li>
+                                                    <li><%= FiguritaEstadio.Estadio.Capacidad %></li>
+                                                    <li><%= FiguritaEstadio.Estadio.Barrio %></li>
+                                                    <li><%= FiguritaEstadio.Estadio.Calle %></li>
+                                                </ul>
+                                            </div>
+                                        </div>--
+                                        <%} %>
+
+                                        <%else
+                                        {
+                                            // Código si no se encuentra la figurita
+                                        }
+                                        %> 
                                         <%--<div class="imagen-estadio">
                                         </div>
                                         <div class="info-estadio d-flex flex-column">

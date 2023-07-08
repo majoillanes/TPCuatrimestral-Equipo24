@@ -1,6 +1,6 @@
-﻿CREATE DATABASE ALBUM_DB
+﻿CREATE DATABASE ALBUM_DBPROD
 GO
-USE ALBUM_DB
+USE ALBUM_DBPROD
 GO
 CREATE TABLE Niveles (
 ID TINYINT PRIMARY KEY,
@@ -80,14 +80,13 @@ Nacionalidad VARCHAR(3) FOREIGN KEY REFERENCES Nacionalidad (ISO_NAC) NOT NULL,
 Equipo SMALLINT FOREIGN KEY REFERENCES Equipos (ID),
 Posicion VARCHAR(3) FOREIGN KEY REFERENCES Posiciones (Codigo) NOT NULL,
 Imagen VARCHAR(350),
-Tipo TINYINT FOREIGN KEY REFERENCES Tipos (ID),
 Activo BIT DEFAULT 1
 )
 GO
 CREATE TABLE Figuritas (
 IDFigurita INT PRIMARY KEY IDENTITY(1,1),
 --IDAlbum INT FOREIGN KEY REFERENCES Albumes(ID),
---Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID),
+Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID),
 Ubicacion SMALLINT,
 Pegada BIT DEFAULT 0,
 Activo BIT DEFAULT 1
@@ -97,6 +96,7 @@ CREATE TABLE Figuritas_Jugadores (
 ID INT PRIMARY KEY IDENTITY(1,1),
 IDFigurita INT FOREIGN KEY REFERENCES Figuritas(IDFigurita) NOT NULL,
 IDJugador INT FOREIGN KEY REFERENCES Jugadores(ID) NOT NULL,
+Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID) NOT NULL
 )
 
 GO
@@ -274,17 +274,17 @@ insert into Jugadores values
 
  --Barracas Central
 
-('Andres','Desabato', CONVERT(DATE, '21/04/1983', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'ARQ','https://www.barracascentral.com/images/2020/2021/plantel2023/1-_Desbato_Andrs-BRAZOS-ATRAS.jpg', 1), 
-('Mauro','Peinipil', CONVERT(DATE, '03/04/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2023/4-_Peinipil_Mauro-BRAZO-ATRAS.jpg', 1), 
-('Francisco','Alvarez', CONVERT(DATE, '26/02/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2022/2-FOSSA.jpg', 1), 
-('Juan','Diaz', CONVERT(DATE, '26/05/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2022/14-DIAZ.jpg', 1), 
-('Rodrigo','Insua', CONVERT(DATE, '16/12/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2023/6-_Insa_Rodrigo-BRAZOS-ATRAS.jpg', 1), 
-('Carlos ','Arce', CONVERT(DATE, '16/09/1990', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/19-_Arce_Carlos-BRAZOS-ATRAS.jpg', 1), 
-('Rodrigo ','Herrera', CONVERT(DATE, '07/04/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/5-_Herrera_Rodrigo-BRAZOS-ATRAS.jpg', 1), 
-('Facundo ','Mater', CONVERT(DATE, '23/07/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/33-_Mater_Facundo-BRAZOS-ATRAS.jpg', 1), 
-('Ivan ','Tapia', CONVERT(DATE, '23/11/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/10-_Tapia_Ivn-BRAZOS-ATRAS.jpg', 1), 
-('Brian ','Calderara', CONVERT(DATE, '10/01/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/21-_Calderara_Brian_-_BRAZOS-ATRAS.jpg', 1), 
-('Bruno ','Sepulveda', CONVERT(DATE, '17/09/1992', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEL','https://www.barracascentral.com/images/2020/2021/plantel2023/29-_Seplveda_Bruno-BRAZOS-ATRAS.jpg', 1), 
+('ANDRES','DESABATO', CONVERT(DATE, '21/04/1983', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'ARQ','https://www.barracascentral.com/images/2020/2021/plantel2023/1-_Desbato_Andrs-BRAZOS-ATRAS.jpg', 1), 
+('MAURO','PEINIPIL', CONVERT(DATE, '03/04/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2023/4-_Peinipil_Mauro-BRAZO-ATRAS.jpg', 1), 
+('FRANCISCO','ALVAREZ', CONVERT(DATE, '26/02/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2022/2-FOSSA.jpg', 1), 
+('JUAN','DIAZ', CONVERT(DATE, '26/05/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2022/14-DIAZ.jpg', 1), 
+('RODRIGO','INSUA', CONVERT(DATE, '16/12/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEF','https://www.barracascentral.com/images/2020/2021/plantel2023/6-_Insa_Rodrigo-BRAZOS-ATRAS.jpg', 1), 
+('CARLOS ','ARCE', CONVERT(DATE, '16/09/1990', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/19-_Arce_Carlos-BRAZOS-ATRAS.jpg', 1), 
+('RODRIGO ','HERRERA', CONVERT(DATE, '07/04/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/5-_Herrera_Rodrigo-BRAZOS-ATRAS.jpg', 1), 
+('FACUNDO ','MATER', CONVERT(DATE, '23/07/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/33-_Mater_Facundo-BRAZOS-ATRAS.jpg', 1), 
+('IVAN ','TAPIA', CONVERT(DATE, '23/11/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/10-_Tapia_Ivn-BRAZOS-ATRAS.jpg', 1), 
+('BRIAN ','CALDERARA', CONVERT(DATE, '10/01/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'MED','https://www.barracascentral.com/images/2020/2021/plantel2023/21-_Calderara_Brian_-_BRAZOS-ATRAS.jpg', 1), 
+('BRUNO ','SEPULVEDA', CONVERT(DATE, '17/09/1992', 103), 'ARG',(select ID from Equipos where Nombre like '%Barracas%'),'DEL','https://www.barracascentral.com/images/2020/2021/plantel2023/29-_Seplveda_Bruno-BRAZOS-ATRAS.jpg', 1), 
 
 --Belgrano
 
@@ -302,11 +302,11 @@ insert into Jugadores values
 
 --Boca
 
-('Sergio','Romero', CONVERT(DATE, '22/02/1987', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'ARQ','https://www.bocajuniors.com.ar/upload/images/thumbs/im/ag/349x283imagen3_e492e.jpg', 1),
-('Luis','Advíncula', CONVERT(DATE, '02/03/1990', 103), 'PER',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/advincula_a165f.jpg', 1),
+('Sergio','Romero', CONVERT(DATE, '22/02/1987', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'ARQ','https://www.bocajuniors.com.ar/upload/images/thumbs/im/ag/349x283imagen3_e492e.jpg', 1), 
+('Luis','Advíncula', CONVERT(DATE, '02/03/1990', 103), 'PER',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/advincula_a165f.jpg', 1), 
 ('Bruno','Valdez', CONVERT(DATE, '06/10/1992', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/valdez-bruno1_f1ad7.jpg', 1), 
 ('Nicolás','Figal', CONVERT(DATE, '03/04/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/figal_5e7ca.jpg', 1), 
-('Frank','Fabra', CONVERT(DATE, '22/02/1991', 103), 'COL',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/fabra_ab7d6.jpg', 1), 
+('Fabra','Fabra', CONVERT(DATE, '22/02/1991', 103), 'COL',(select ID from Equipos where Nombre like '%Boca%'),'DEF','https://www.bocajuniors.com.ar/upload/files/fabra_ab7d6.jpg', 1), 
 ('Esteban','Rolon', CONVERT(DATE, '25/03/1995', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'MED','https://www.bocajuniors.com.ar/upload/files/rolon_235f5.jpg', 1), 
 ('Alan','Varela', CONVERT(DATE, '04/07/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'MED','https://www.bocajuniors.com.ar/upload/files/varela_e1065.jpg', 1), 
 ('Guillermo','Fernández', CONVERT(DATE, '11/10/1991', 103), 'ARG',(select ID from Equipos where Nombre like '%Boca%'),'MED','https://www.bocajuniors.com.ar/upload/files/pol_225ef.jpg', 1), 
@@ -341,7 +341,6 @@ insert into Jugadores values
 ('Facundo','Farías', CONVERT(DATE, '28/08/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'MED','https://media.lacapital.com.ar/p/e8556b2f03ee79c796aa9a265ad8b6a7/adjuntos/204/imagenes/030/732/0030732952/1200x675/smart/facundo-fariasjpg.jpg', 1), 
 ('Santiago','Pierotti', CONVERT(DATE, '03/04/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'DEL','https://santafedeportivo.com/wp-content/uploads/2023/04/pierotti-colon-2023-primer-plano.jpg', 1),  
 ('Ramón','Ábila', CONVERT(DATE, '14/10/1989', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'DEL','https://image-service.onefootball.com/transform?w=280&h=210&dpr=2&image=https%3A%2F%2Fsantafedeportivo.com%2Fwp-content%2Fuploads%2F2022%2F10%2Fwanchope-colon-1-1-aldosivi-2022-telefono.jpg', 1), 
-
 
 --Defensa y Justicia
 
@@ -445,249 +444,260 @@ VALUES ('Lucas','Chaves',CONVERT(DATE,'09/08/1995',103),'ARG', (SELECT ID FROM E
 ('Juan','Gauto',CONVERT(DATE,'02/06/2004',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Hurac%'),'DEL','https://admin2.cahuracan.com/new/wp-content/uploads/2022/04/33.-gauto-cahuracan-.png.png',1)
 
 
---Independiente 1 legendaria 3 especiales 7 estandares
+--Independiente
 
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen, Activo)
 VALUES ('Rodrigo','Rey',CONVERT(DATE,'08/03/1991',103),'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Independiente%'), 'ARQ',
-'https://clubaindependiente.com.ar/img/plantel/2023/__33_rey.jpg',2,1),
-('Luciano','Gómez',CONVERT(DATE,'22/03/1996',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__19_gomez.jpg',3,1),
-('Cristian','Báez',CONVERT(DATE,'09/04/1990',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__13_baez.jpg',3,1),
-('Edgar','Elizalde',CONVERT(DATE,'27/02/2000',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__03_elizalde.jpg',3,1),
-('Ayrton','Costa',CONVERT(DATE,'12/07/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__79_costa.jpg',2,1),
-('Braian','Martínez',CONVERT(DATE,'18/08/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/30_-_mart%C3%ADnez.jpg',3,1),
-('Sergio','Ortíz',CONVERT(DATE,'23/02/2001',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__28_ortiz.jpg',3,1),
-('Iván','Marcone',CONVERT(DATE,'03/06/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__23_marcone.jpg',2,1),
-('Martín','Sarrafiore',CONVERT(DATE,'20/07/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__14_sarrafiore.jpg',3,1),
-('Martín','Cauteruccio',CONVERT(DATE,'14/04/1987',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEL','https://clubaindependiente.com.ar/img/plantel/2023/__09_cauteruccio.jpg',1,1),
-('Matías','Giménez',CONVERT(DATE,'06/03/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEL','https://clubaindependiente.com.ar/img/plantel/2023/__34_gimenez.jpg',3,1)
+'https://clubaindependiente.com.ar/img/plantel/2023/__33_rey.jpg',1),
+('Luciano','Gómez',CONVERT(DATE,'22/03/1996',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__19_gomez.jpg',1),
+('Cristian','Báez',CONVERT(DATE,'09/04/1990',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__13_baez.jpg',1),
+('Edgar','Elizalde',CONVERT(DATE,'27/02/2000',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__03_elizalde.jpg',1),
+('Ayrton','Costa',CONVERT(DATE,'12/07/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEF','https://clubaindependiente.com.ar/img/plantel/2023/__79_costa.jpg',1),
+('Braian','Martínez',CONVERT(DATE,'18/08/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/30_-_mart%C3%ADnez.jpg',1),
+('Sergio','Ortíz',CONVERT(DATE,'23/02/2001',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__28_ortiz.jpg',1),
+('Iván','Marcone',CONVERT(DATE,'03/06/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__23_marcone.jpg',1),
+('Martín','Sarrafiore',CONVERT(DATE,'20/07/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'MED','https://clubaindependiente.com.ar/img/plantel/2023/__14_sarrafiore.jpg',1),
+('Martín','Cauteruccio',CONVERT(DATE,'14/04/1987',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEL','https://clubaindependiente.com.ar/img/plantel/2023/__09_cauteruccio.jpg',1),
+('Matías','Giménez',CONVERT(DATE,'06/03/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Independiente%'),'DEL','https://clubaindependiente.com.ar/img/plantel/2023/__34_gimenez.jpg',1)
 
---Instituto 1 especial 10 estandares
+--Instituto
 
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen, Activo)
 VALUES ('Manuel','Roffo',CONVERT(DATE,'04/04/2000',103),'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Instituto%'), 'ARQ',
-'https://institutoacc.com.ar/wp-content/uploads/2022/08/54-Mediaday-Futbol-Macro-07032023-1-533x800.jpg',3,1),
-('Juan','Franco',CONVERT(DATE,'10/02/1992',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/14-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Ezequiel','Parnisari',CONVERT(DATE,'01/06/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/44-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Fernando','Alarcón',CONVERT(DATE,'16/06/1994',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/12-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Sebastián','Corda',CONVERT(DATE,'29/06/1995',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/18-Mediaday-Futbol-Macro-07032023-533x800.jpg',2,1),
-('Gabriel','Graciani',CONVERT(DATE,'28/11/1993',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/48-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Roberto','Bochi',CONVERT(DATE,'06/07/1987',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/60-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Gastón','Lodico',CONVERT(DATE,'28/05/1998',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/6-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Franco','Watson',CONVERT(DATE,'25/07/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/40-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Adrián','Martínez',CONVERT(DATE,'07/07/1992',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEL','https://institutoacc.com.ar/wp-content/uploads/2022/09/58-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1),
-('Santiago','Rodríguez',CONVERT(DATE,'23/08/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEL','https://institutoacc.com.ar/wp-content/uploads/2022/08/36-Mediaday-Futbol-Macro-07032023-533x800.jpg',3,1)
+'https://institutoacc.com.ar/wp-content/uploads/2022/08/54-Mediaday-Futbol-Macro-07032023-1-533x800.jpg',1),
+('Juan','Franco',CONVERT(DATE,'10/02/1992',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/14-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Ezequiel','Parnisari',CONVERT(DATE,'01/06/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/44-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Fernando','Alarcón',CONVERT(DATE,'16/06/1994',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/12-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Sebastián','Corda',CONVERT(DATE,'29/06/1995',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEF','https://institutoacc.com.ar/wp-content/uploads/2022/08/18-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Gabriel','Graciani',CONVERT(DATE,'28/11/1993',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/48-Mediaday-Futbol-Macro-07032023-533x800.jpg"',1),
+('Roberto','Bochi',CONVERT(DATE,'06/07/1987',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/60-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Gastón','Lodico',CONVERT(DATE,'28/05/1998',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/6-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Franco','Watson',CONVERT(DATE,'25/07/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'MED','https://institutoacc.com.ar/wp-content/uploads/2022/09/40-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Adrián','Martínez',CONVERT(DATE,'07/07/1992',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEL','https://institutoacc.com.ar/wp-content/uploads/2022/09/58-Mediaday-Futbol-Macro-07032023-533x800.jpg',1),
+('Santiago','Rodríguez',CONVERT(DATE,'23/08/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Instituto%'),'DEL','https://institutoacc.com.ar/wp-content/uploads/2022/08/36-Mediaday-Futbol-Macro-07032023-533x800.jpg',1)
 
 
 
---Lanús 3 especiales 8 estandares
+--Lanús
 
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen, Activo)
 VALUES 
 ('Lautaro','Morales',CONVERT(DATE,'16/12/1999',103),'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Lanús%'), 'ARQ',
-'https://clublanus.com/wp-content/uploads/2022/12/17-LautaroMorales-1-552x1024.png',3,1),
-('Juan','Cáceres',CONVERT(DATE,'01/06/2000',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/05/24-JuanCaceres-1-552x1024.png',3,1),
-('Felipe','Aguilar',CONVERT(DATE,'20/01/1993',103),'COL',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/01/33-FelipeAguilar-1-552x1024.png',3,1),
-('Cristian','Lema',CONVERT(DATE,'24/03/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2022/12/02-CristianLema-1-552x1024.png',3,1),
-('Juan','Sánchez Miño',CONVERT(DATE,'01/01/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/01/14-JuanSancheMino-552x1024.png',2,1),
-('Julián','Fernández',CONVERT(DATE,'23/03/1995',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2023/01/40-JulianFernandez-1-552x1024.png',3,1),
-('Luciano','Boggio',CONVERT(DATE,'10/03/1999',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2022/12/08-LucianoBoggio-1-552x1024.png',3,1),
-('Matías','Esquivel',CONVERT(DATE,'22/03/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2023/01/32-MatiasEsquivel-1-552x1024.png',3,1),
-('Franco','Troyansky',CONVERT(DATE,'06/03/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2023/02/20-FrancoTroyansky-1-552x1024.png',3,1),
-('José','Sand',CONVERT(DATE,'17/07/1989',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2022/12/9-JoseSand-1-552x1024.png',2,1),
-('Pedro','De La Vega',CONVERT(DATE,'07/02/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2022/12/10-PedroDeLaVega-1-552x1024.png',2,1)
+'https://clublanus.com/wp-content/uploads/2022/12/17-LautaroMorales-1-552x1024.png',1),
+('Juan','Cáceres',CONVERT(DATE,'01/06/2000',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/05/24-JuanCaceres-1-552x1024.png',1),
+('Felipe','Aguilar',CONVERT(DATE,'20/01/1993',103),'COL',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/01/33-FelipeAguilar-1-552x1024.png',1),
+('Cristian','Lema',CONVERT(DATE,'24/03/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2022/12/02-CristianLema-1-552x1024.png',1),
+('Juan','Sánchez Miño',CONVERT(DATE,'01/01/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEF','https://clublanus.com/wp-content/uploads/2023/01/14-JuanSancheMino-552x1024.png',1),
+('Julián','Fernández',CONVERT(DATE,'23/03/1995',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2023/01/40-JulianFernandez-1-552x1024.png',1),
+('Luciano','Boggio',CONVERT(DATE,'10/03/1999',103),'URY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2022/12/08-LucianoBoggio-1-552x1024.png',1),
+('Matías','Esquivel',CONVERT(DATE,'22/03/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'MED','https://clublanus.com/wp-content/uploads/2023/01/32-MatiasEsquivel-1-552x1024.png',1),
+('Franco','Troyansky',CONVERT(DATE,'06/03/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2023/02/20-FrancoTroyansky-1-552x1024.png',1),
+('José','Sand',CONVERT(DATE,'17/07/1989',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2022/12/9-JoseSand-1-552x1024.png',1),
+('Pedro','De La Vega',CONVERT(DATE,'07/02/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Lanús%'),'DEL','https://clublanus.com/wp-content/uploads/2022/12/10-PedroDeLaVega-1-552x1024.png',1)
 
 
---Newell's 3 especiales 8 estandares
+--Newell's
 
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen, Activo)
 VALUES 
 ('Lucas','Hoyos',CONVERT(DATE,'29/05/1989',103),'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Newell%'), 'ARQ',
-'https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Hoyos-Cintura.jpg',2,1),
+'https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Hoyos-Cintura.jpg',1),
 
-('Jherson','Mosquero',CONVERT(DATE,'18/09/1999',103),'COL',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Mosquera-Cintura.jpg',3,1),
-('Gustavo','Velázquez',CONVERT(DATE,'17/04/1991',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Velazquez-Frente.jpg',3,1),
-('Guillermo','Ortiz',CONVERT(DATE,'09/11/1992',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Ortiz-Frente.jpg',3,1),
-('Bruno','Pittón',CONVERT(DATE,'02/01/1993',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Pitton-Cintura.jpg',2,1),
-('Marcos','Portillo',CONVERT(DATE,'31/01/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Hoyos-Cintura.jpg',3,1),
-('Iván','Gómez',CONVERT(DATE,'28/02/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/IvanGomez-Cintura.jpg',3,1),
-('Cristian','Ferreira',CONVERT(DATE,'12/09/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Ferreira.jpg',3,1),
-('Brian','Aguirre',CONVERT(DATE,'06/01/2003',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Aguirre-CIntura.jpg',3,1),
-('Jorge','Recalde',CONVERT(DATE,'08/05/1992',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Recalde-Cintura.jpg',2,1),
-('Ramiro','Sordo',CONVERT(DATE,'29/06/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Sordo-Cintura.jpg',3,1)
+('Jherson','Mosquero',CONVERT(DATE,'18/09/1999',103),'COL',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Mosquera-Cintura.jpg',1),
+('Gustavo','Velázquez',CONVERT(DATE,'17/04/1991',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Velazquez-Frente.jpg',1),
+('Guillermo','Ortiz',CONVERT(DATE,'09/11/1992',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Ortiz-Frente.jpg',1),
+('Bruno','Pittón',CONVERT(DATE,'02/01/1993',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEF','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Pitton-Cintura.jpg',1),
+('Marcos','Portillo',CONVERT(DATE,'31/01/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Hoyos-Cintura.jpg',1),
+('Iván','Gómez',CONVERT(DATE,'28/02/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/IvanGomez-Cintura.jpg',1),
+('Cristian','Ferreira',CONVERT(DATE,'12/09/1999',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'MED','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Ferreira.jpg',1),
+('Brian','Aguirre',CONVERT(DATE,'06/01/2003',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Aguirre-CIntura.jpg',1),
+('Jorge','Recalde',CONVERT(DATE,'08/05/1992',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2023/06/Recalde-Cintura.jpg',1),
+('Ramiro','Sordo',CONVERT(DATE,'29/06/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Newell%'),'DEL','https://newellsoldboys.com.ar/wp-content/uploads/2022/09/Sordo-Cintura.jpg',1)
 
 
 
---Platense 1 especial 10 estandares
+--Platense
 
 INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen, Activo)
 VALUES ('Ramiro','Macagno',CONVERT(DATE,'18/03/1997',103),'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Platense%'), 'ARQ',
-'https://cap.org.ar/wp-content/uploads/2023/02/Ramiro-Macagno-12.png',3,1),
+'https://cap.org.ar/wp-content/uploads/2023/02/Ramiro-Macagno-12.png',1),
 
-('Nicolás','Morgantini',CONVERT(DATE,'11/09/1994',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/4-Nicolas-Morgantini.png',3,1),
-('Ignacio','Vázquez',CONVERT(DATE,'15/05/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/13-Ignacio-Vazquez-1.png',3,1),
-('Marco','Pellegrino',CONVERT(DATE,'18/07/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/31-Marco-Pellegrino-1.png',3,1),
-('Juan','Infante',CONVERT(DATE,'07/01/1996',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/3-Juan-Infante.png',3,1),
-('Ronaldo','Martínez',CONVERT(DATE,'25/04/1996',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/77-Ronaldo-Martinez.png',3,1),
-('Franco','Díaz',CONVERT(DATE,'28/08/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/8-Franco-Diaz.png',3,1),
-('Nicolás','Castro',CONVERT(DATE,'11/05/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/11-Nicolas-Castro.png',3,1),
-('Sasha','Marcich',CONVERT(DATE,'29/05/1998',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/18-Sasha-Marcich-1.png',3,1),
-('Vicente','Taborda',CONVERT(DATE,'14/06/2001',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEL','https://cap.org.ar/wp-content/uploads/2023/02/10-Vicente-Taborda.png',2,1),
-('Mauro','Quiroga',CONVERT(DATE,'07/12/1989',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEL','https://cap.org.ar/wp-content/uploads/2023/02/9-Mauro-Quiroga.png',3,1)
+('Nicolás','Morgantini',CONVERT(DATE,'11/09/1994',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/4-Nicolas-Morgantini.png',1),
+('Ignacio','Vázquez',CONVERT(DATE,'15/05/1997',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/13-Ignacio-Vazquez-1.png',1),
+('Marco','Pellegrino',CONVERT(DATE,'18/07/2002',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/31-Marco-Pellegrino-1.png',1),
+('Juan','Infante',CONVERT(DATE,'07/01/1996',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEF','https://cap.org.ar/wp-content/uploads/2023/02/3-Juan-Infante.png',1),
+('Ronaldo','Martínez',CONVERT(DATE,'25/04/1996',103),'PRY',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/77-Ronaldo-Martinez.png',1),
+('Franco','Díaz',CONVERT(DATE,'28/08/2000',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/8-Franco-Diaz.png',1),
+('Nicolás','Castro',CONVERT(DATE,'11/05/1990',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/11-Nicolas-Castro.png',1),
+('Sasha','Marcich',CONVERT(DATE,'29/05/1998',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'MED','https://cap.org.ar/wp-content/uploads/2023/02/18-Sasha-Marcich-1.png',1),
+('Vicente','Taborda',CONVERT(DATE,'14/06/2001',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEL','https://cap.org.ar/wp-content/uploads/2023/02/10-Vicente-Taborda.png',1),
+('Mauro','Quiroga',CONVERT(DATE,'07/12/1989',103),'ARG',(SELECT ID FROM Equipos WHERE Nombre LIKE'%Platense%'),'DEL','https://cap.org.ar/wp-content/uploads/2023/02/9-Mauro-Quiroga.png',1)
 
---Racing 1 legendaria 3 especiales 7 estandares
-
-INSERT INTO Jugadores VALUES
- ('Gabriel','Arias', CONVERT(DATE, '13/09/1987', 103), 'CHL',(select ID from Equipos where Nombre like '%Racing%'),'ARQ','https://www.racingclub.com.ar/img/futbol/plantel/880_arias.jpg?v=2.3',2, 1),
- ('Gabriel','Rojas', CONVERT(DATE, '22/06/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/1398_rojas.jpg?v=2.3',3, 1),
- ('Gonzalo','Piovi', CONVERT(DATE, '08/09/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/1219_piovi.jpg?v=2.3',3, 1),
- ('Leonardo','Sigali', CONVERT(DATE, '29/05/1987', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/794_sigali.jpg?v=2.3',3, 1),
- ('Iván','Pillud', CONVERT(DATE, '24/04/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/12_pillud.jpg?v=2.3',1, 1),
- ('Matías','Rojas', CONVERT(DATE, '03/11/1995', 103), 'PRY',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/992_rojas.jpg?v=2.3',3, 1),
- ('Nicolás','Oroz', CONVERT(DATE, '01/04/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/1033_moreno.jpg?v=2.3',3, 1),
- ('Juan','Nardoni', CONVERT(DATE, '14/07/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/1385_nardoni.jpg?v=2.3',3, 1),
- ('Gabriel','Hauche', CONVERT(DATE, '27/11/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1220_hauche.jpg?v=2.3',2, 1),
- ('Maximiliano','Romero', CONVERT(DATE, '09/01/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1374_romero.jpg?v=2.3',3, 1),
- ('Paolo','Guerrero', CONVERT(DATE, '01/01/1984', 103), 'PER',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1386_guerrero.jpg?v=2.3',2, 1)
-
- --River 2 legendarias 4 especiales 5 estandares
-
-INSERT INTO Jugadores VALUES 
-('Franco', 'Armani', CONVERT(DATE, '16/10/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'ARQ', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png',1, 1 ),
- ('Milton','Casco', CONVERT(DATE, '11/04/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%River%'),'DEF','https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1230-20-casco-imagengrillapaginaplantel.png',3, 1),
-('Jonatan', 'Maidana', CONVERT(DATE, '29/07/1985', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/4-04-maidana-imagengrillapaginaplantel.png',2,1 ),
-('Robert','Rojas', CONVERT(DATE, '30/04/1996', 103), 'PRY',(select ID from Equipos where Nombre like '%River%'),'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1666-02-rojas-imagengrillapaginaplantel.png',3, 1),
- ('Marcelo','Herrera', CONVERT(DATE, '03/11/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%River%'),'DEF','https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1829-15-herrera-imagengrillapaginaplantel.png',3, 1),
-('Ignacio', 'Fernandez', CONVERT(DATE, '12/01/1990', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-12/1254-nacho_270x360.png',2,1 ),
-('Nicolás', 'De La Cruz', CONVERT(DATE, '01/06/1997', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1623-11-delacruz-imagengrillapaginaplantel.png',2,1 ),
-('Enzo', 'Pérez', CONVERT(DATE, '22/02/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1498-24-perez-imagengrillapaginaplantel.png',1,1 ),
-('Rodrigo', 'Aliendro', CONVERT(DATE, '16/02/1991', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1830-27-aliendro-imagengrillapaginaplantel.png',3,1 ),
-('Lucas', 'Beltrán', CONVERT(DATE, '29/03/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/850-18-beltran-imagengrillapaginaplantel.png',3,1 ),
-('Miguel', 'Borja', CONVERT(DATE, '26/01/1993', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1831-09-borja-imagengrillapaginaplantel.png',3,1 )
-
---Rosario Central 3 especiales 8 estandares
-INSERT INTO Jugadores VALUES
-('Jorge', 'Broun', CONVERT(DATE, '26/05/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'ARQ', 'https://rosariocentral.com/wp-content/uploads/2021/06/JorgeBroun-1.png',2,1 ),
- ('Alan','Rodríguez', CONVERT(DATE, '15/08/2000', 103), 'PRY',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF','https://rosariocentral.com/wp-content/uploads/2023/02/AlanRodriguez-16.png',3, 1),
-('Facundo', 'Mallo', CONVERT(DATE, '16/01/1995', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEF', 'https://rosariocentral.com/wp-content/uploads/2023/02/FacundoMallo-15.png',3,1 ),
-('Carlos','Quintana', CONVERT(DATE, '11/02/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF', 'https://rosariocentral.com/wp-content/uploads/2023/02/CarlosQuintana-2.png',3, 1),
-('Damián','Martínez', CONVERT(DATE, '31/01/1990', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF','https://rosariocentral.com/wp-content/uploads/2021/07/DamianMartinez-4.png',3, 1),
-('Francis','Mac Allister', CONVERT(DATE, '30/10/1995', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'MED','https://rosariocentral.com/wp-content/uploads/2022/08/FrancisMacAllister-5.png',2, 1),
-('Víctor Ignacio', 'Malcorra', CONVERT(DATE, '24/07/1987', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2022/08/IgnacioMalcorra-10.png',2,1 ),
-('Kevin', 'Ortíz', CONVERT(DATE, '18/09/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2022/08/KevinOrtiz-45.png',3,1 ),
-('Jaminton', 'Campaz', CONVERT(DATE, '24/05/2000', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2023/02/JamintonCampaz13.png',3,1 ),
-('Alejo', 'Veliz', CONVERT(DATE, '19/09/2003', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEL', 'https://rosariocentral.com/wp-content/uploads/2022/02/AlejoVeliz-9.png',3,1 ),
-('Luca', 'Martínez Dupuy', CONVERT(DATE, '05/06/2001', 103), 'MEX', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEL', 'https://rosariocentral.com/wp-content/uploads/2021/07/MartinezDupuy-29.png',3,1 )
-
---San Lorenzo 1 legendaria 3 especiales 7 estandares
+--Racing
 
 INSERT INTO Jugadores VALUES
-('Augusto', 'Batalla', CONVERT(DATE, '30/04/1996', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'ARQ', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674850514.jpg',2,1 ),
-('Rafael','Pérez', CONVERT(DATE, '09/01/1990', 103), 'COL',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674851468.jpg',3, 1),
-('Gastón', 'Hernández', CONVERT(DATE, '19/01/1998', 103), 'Arg', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEF', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674856740.jpg',3,1 ),
-('Federico','Gattoni', CONVERT(DATE, '16/02/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847984.jpg',3, 1),
-('Gonzalo','Lujan', CONVERT(DATE, '27/04/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674849074.jpg',3, 1),
-('Carlos', 'Sánchez', CONVERT(DATE, '06/02/1986', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674855108.jpg',2,1 ),
-('Jalil','Elías', CONVERT(DATE, '25/04/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'MED','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847571.jpg',3, 1),
-('Nahuel', 'Barrios', CONVERT(DATE, '07/05/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674848557.jpg',2,1 ),
-('Iván', 'Leguizamón', CONVERT(DATE, '03/07/2002', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674854847.jpg',3,1 ),
-('Nicolás', 'Blandi', CONVERT(DATE, '13/01/1990', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEL', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847372.jpg',1,1 ),
-('Adam', 'Bareiro', CONVERT(DATE, '26/07/1996', 103), 'MEX', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEL', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674848360.jpg',3,1 )
+ ('Gabriel','Arias', CONVERT(DATE, '13/09/1987', 103), 'CHL',(select ID from Equipos where Nombre like '%Racing%'),'ARQ','https://www.racingclub.com.ar/img/futbol/plantel/880_arias.jpg?v=2.3', 1),
+ ('Gabriel','Rojas', CONVERT(DATE, '22/06/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/1398_rojas.jpg?v=2.3', 1),
+ ('Gonzalo','Piovi', CONVERT(DATE, '08/09/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/1219_piovi.jpg?v=2.3', 1),
+ ('Leonardo','Sigali', CONVERT(DATE, '29/05/1987', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/794_sigali.jpg?v=2.3', 1),
+ ('Iván','Pillud', CONVERT(DATE, '24/04/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEF','https://www.racingclub.com.ar/img/futbol/plantel/12_pillud.jpg?v=2.3', 1),
+ ('Matías','Rojas', CONVERT(DATE, '03/11/1995', 103), 'PRY',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/992_rojas.jpg?v=2.3', 1),
+ ('Nicolás','Oroz', CONVERT(DATE, '01/04/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/1033_moreno.jpg?v=2.3', 1),
+ ('Juan','Nardoni', CONVERT(DATE, '14/07/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'MED','https://www.racingclub.com.ar/img/futbol/plantel/1385_nardoni.jpg?v=2.3', 1),
+ ('Gabriel','Hauche', CONVERT(DATE, '27/11/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1220_hauche.jpg?v=2.3', 1),
+ ('Maximiliano','Romero', CONVERT(DATE, '09/01/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1374_romero.jpg?v=2.3', 1),
+ ('Paolo','Guerrero', CONVERT(DATE, '01/01/1984', 103), 'PER',(select ID from Equipos where Nombre like '%Racing%'),'DEL', 'https://www.racingclub.com.ar/img/futbol/plantel/1386_guerrero.jpg?v=2.3', 1)
 
---Sarmiento 1 especial 10 estandares
-
-INSERT INTO Jugadores VALUES
-('Sebastián', 'Meza', CONVERT(DATE, '14/03/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'ARQ', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-02.jpg',3,1 ),
-('Franco','Quinteros', CONVERT(DATE, '26/01/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-16.jpg',3, 1),
-('Juan Manuel', 'Insaurralde', CONVERT(DATE, '03/10/1984', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEF', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-06.jpg',3,1 ),
-('Alejandro','Donatti', CONVERT(DATE, '24/10/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-05.jpg',3, 1),
-('Gonzalo','Bettini', CONVERT(DATE, '26/09/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-13.jpg',3, 1),
-('Emiliano', 'Méndez', CONVERT(DATE, '15/02/1989', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'MED', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-31.jpg',3,1 ),
-('Manuel','Mónaco', CONVERT(DATE, '11/05/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'MED','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-26.jpg',3, 1),
-('Fernando', 'Martínez', CONVERT(DATE, '13/05/1994', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'MED', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-32.jpg',3,1 ),
-('Javier', 'Toledo', CONVERT(DATE, '24/04/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-33.jpg',3,1 ),
-('Lisandro', 'López', CONVERT(DATE, '02/03/1983', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-09.jpg',2,1 ),
-('Luciano', 'Gondou', CONVERT(DATE, '22/06/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-17.jpg',3,1 )
-
---Talleres 3 especiales 8 estandares
+ --River
 
 INSERT INTO Jugadores VALUES
-('Guido', 'Herrera', CONVERT(DATE, '29/02/1992', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'ARQ', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/01/WEB_HERRERA-GUIDO-1.png',2,1 ),
-('Gastón','Benavídez', CONVERT(DATE, '23/10/1995', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF','https://www.clubtalleres.com.ar/wp-content/uploads/2022/03/WEB_BENAVIDEZ-GASTON-1.png',3, 1),
-('Matías', 'Catalán', CONVERT(DATE, '19/08/1992', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEF', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_CATALAN-MATIAS-2.png',3,1 ),
-('Juan','Rodríguez', CONVERT(DATE, '28/02/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_JUAN-GRABRIEL-RODRIGUEZ-2.png',3, 1),
-('Juan Carlos','Portillo', CONVERT(DATE, '18/04/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF','https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_JUAN-CARLOS-PORTILLO-1.png',3, 1),
-('Diego', 'Ortegoza', CONVERT(DATE, '19/04/1997', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'MED', 'https://www.clubtalleres.com.ar/wp-content/uploads/2022/07/WEB_ORTEGOZA-DIEGO-1.png',3,1 ),
-('Rodrigo','Villagra', CONVERT(DATE, '14/02/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'MED','https://www.clubtalleres.com.ar/wp-content/uploads/2021/08/WEB_VILLAGRA-RODRIGO-1.png',3, 1),
-('Rodrigo', 'Garro', CONVERT(DATE, '04/01/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'MED', 'https://www.clubtalleres.com.ar/wp-content/uploads/2022/03/WEB_GARRO-RODRIGO-1.png',3,1 ),
-('Diego', 'Valoyes', CONVERT(DATE, '22/09/1996', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/01/WEB_VALOYES-DIEGO-1.png',2,1 ),
-('Michael', 'Santos', CONVERT(DATE, '13/03/1993', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/03/WEB_SANTOS-MICHAEL-1.png',2,1 ),
-('Nahuel', 'Bustos', CONVERT(DATE, '04/07/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_BUSTOS-NAHUEL-2.png',3,1 )
+('Franco', 'Armani', CONVERT(DATE, '16/10/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'ARQ', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png',1 ),
+ ('Milton','Casco', CONVERT(DATE, '11/04/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%River%'),'DEF','https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1230-20-casco-imagengrillapaginaplantel.png', 1),
+('Jonatan', 'Maidana', CONVERT(DATE, '29/07/1985', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/4-04-maidana-imagengrillapaginaplantel.png',1 ),
+('Robert','Rojas', CONVERT(DATE, '30/04/1996', 103), 'PRY',(select ID from Equipos where Nombre like '%River%'),'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1666-02-rojas-imagengrillapaginaplantel.png', 1),
+ ('Marcelo','Herrera', CONVERT(DATE, '03/11/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%River%'),'DEF','https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1829-15-herrera-imagengrillapaginaplantel.png', 1),
+('Ignacio', 'Fernandez', CONVERT(DATE, '12/01/1990', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-12/1254-nacho_270x360.png',1 ),
+('Nicolás', 'De La Cruz', CONVERT(DATE, '01/06/1997', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1623-11-delacruz-imagengrillapaginaplantel.png',1 ),
+('Enzo', 'Pérez', CONVERT(DATE, '22/02/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1498-24-perez-imagengrillapaginaplantel.png',1 ),
+('Rodrigo', 'Aliendro', CONVERT(DATE, '16/02/1991', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1830-27-aliendro-imagengrillapaginaplantel.png',1 ),
+('Lucas', 'Beltrán', CONVERT(DATE, '29/03/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/850-18-beltran-imagengrillapaginaplantel.png',1 ),
+('Miguel', 'Borja', CONVERT(DATE, '26/01/1993', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1831-09-borja-imagengrillapaginaplantel.png',1 )
 
---Tigre 2 especiales 9 estandares
+--Rosario Central
+INSERT INTO Jugadores VALUES
+('Jorge', 'Broun', CONVERT(DATE, '26/05/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'ARQ', 'https://rosariocentral.com/wp-content/uploads/2021/06/JorgeBroun-1.png',1 ),
+ ('Alan','Rodríguez', CONVERT(DATE, '15/08/2000', 103), 'PRY',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF','https://rosariocentral.com/wp-content/uploads/2023/02/AlanRodriguez-16.png', 1),
+('Facundo', 'Mallo', CONVERT(DATE, '16/01/1995', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEF', 'https://rosariocentral.com/wp-content/uploads/2023/02/FacundoMallo-15.png',1 ),
+('Carlos','Quintana', CONVERT(DATE, '11/02/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF', 'https://rosariocentral.com/wp-content/uploads/2023/02/CarlosQuintana-2.png', 1),
+('Damián','Martínez', CONVERT(DATE, '31/01/1990', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'DEF','https://rosariocentral.com/wp-content/uploads/2021/07/DamianMartinez-4.png', 1),
+('Francis','Mac Allister', CONVERT(DATE, '30/10/1995', 103), 'ARG',(select ID from Equipos where Nombre like '%Rosario Central%'),'MED','https://rosariocentral.com/wp-content/uploads/2022/08/FrancisMacAllister-5.png', 1),
+('Víctor Ignacio', 'Malcorra', CONVERT(DATE, '24/07/1987', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2022/08/IgnacioMalcorra-10.png',1 ),
+('Kevin', 'Ortíz', CONVERT(DATE, '18/09/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2022/08/KevinOrtiz-45.png',1 ),
+('Jaminton', 'Campaz', CONVERT(DATE, '24/05/2000', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'MED', 'https://rosariocentral.com/wp-content/uploads/2023/02/JamintonCampaz13.png',1 ),
+('Alejo', 'Veliz', CONVERT(DATE, '19/09/2003', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEL', 'https://rosariocentral.com/wp-content/uploads/2022/02/AlejoVeliz-9.png',1 ),
+('Luca', 'Martínez Dupuy', CONVERT(DATE, '05/06/2001', 103), 'MEX', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Rosario Central%'), 'DEL', 'https://rosariocentral.com/wp-content/uploads/2021/07/MartinezDupuy-29.png',1 )
+
+--San Lorenzo
 
 INSERT INTO Jugadores VALUES
-('Gonzalo', 'Marinelli', CONVERT(DATE, '07/02/1989', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'ARQ', 'https://desdelaventana.com.ar/zixpanel/cache/med-fecha_2019-09-20_hora_07-54hs_nro-random_782.png',2,1 ),
-('Lautaro','Montoya', CONVERT(DATE, '07/10/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF','https://pbs.twimg.com/media/FmYcV4sX0AwIlGA?format=jpg&name=900x900',3,1),
-('Víctor', 'Cabrera', CONVERT(DATE, '07/02/1993', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEF', 'https://lh3.googleusercontent.com/-AmRwF--hxI0/YCby91xtNYI/AAAAAAAAdwA/qvIhgY0fhhMml30PphdYnu8_GLV09VVbACLcBGAsYHQ/image.png',3,1 ),
-('Brian','Luciatti', CONVERT(DATE, '18/02/1993', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF', 'https://sortitoutsi.net/uploads/media/UCvRtvolahlMJimCTCqjrcyKlMREQV4CYB8V5cO5.png',3, 1),
-('Lucas','Blondel', CONVERT(DATE, '14/09/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF','https://www.ceroacero.es/img/jogadores/07/916207_ori__20220728160348_lucas_blondel.png',3, 1),
-('Sebastián', 'Prediger', CONVERT(DATE, '04/09/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'MED', 'https://www.ceroacero.es//img/jogadores/65/779665_med__20210505203942_sebastian_prediger.png',3,1 ),
-('Agustín','Cardozo', CONVERT(DATE, '30/05/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'MED','https://scontent.faep25-1.fna.fbcdn.net/v/t1.6435-9/102335744_3107061909383315_2127397949972414464_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=973b4a&_nc_ohc=RpZbm5Z2K3IAX8o_UIK&_nc_ht=scontent.faep25-1.fna&oh=00_AfAPN1l7_rRWp6DVRE2mZVUe0Z0DNOAp-oUN20icvqKWbg&oe=64CFE1D0',3, 1),
-('Aaron', 'Molinas', CONVERT(DATE, '02/08/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'MED', 'https://pbs.twimg.com/media/FuLG_IvXwAIPyF2?format=jpg&name=900x900',3,1 ),
-('Blas', 'Armoa', CONVERT(DATE, '03/02/2000', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://www.moopio.com/system/entries/images/002/904/885/original/cronica-el-tigre-de-argentina-anuncio-a-blas-armoa-como-su-flamante-refuerzo.png?1644783645',3,1 ),
-('Mateo', 'Retegui', CONVERT(DATE, '29/04/1999', 103), 'ITA', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://blogger.googleusercontent.com/img/a/AVvXsEjzWghazirxGqaWrAW7mY-ph4ThPw-FokGvSe-IaJMnbXME7u3fi16VMap74ZCqzCC4kx0d3IiuMgPWhfCYPIYQ86r89-Wib4aKsujGL4263et5hffFsZNBfaVd_tQ6Ng04-i4c5YJgmzkNhQMSFxwePzf-LxD42oHMgX7pw9iZQyKuZfPHLprJPNpeAQ',2,1 ),
-('Facundo', 'Colidio', CONVERT(DATE, '04/01/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://img.a.transfermarkt.technology/portrait/big/491705-1625049595.jpg?lm=1',3,1 )
+('Augusto', 'Batalla', CONVERT(DATE, '30/04/1996', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'ARQ', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674850514.jpg',1 ),
+('Rafael','Pérez', CONVERT(DATE, '09/01/1990', 103), 'COL',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674851468.jpg', 1),
+('Gastón', 'Hernández', CONVERT(DATE, '19/01/1998', 103), 'Arg', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEF', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674856740.jpg',1 ),
+('Federico','Gattoni', CONVERT(DATE, '16/02/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847984.jpg', 1),
+('Gonzalo','Lujan', CONVERT(DATE, '27/04/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'DEF','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674849074.jpg', 1),
+('Carlos', 'Sánchez', CONVERT(DATE, '06/02/1986', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674855108.jpg',1 ),
+('Jalil','Elías', CONVERT(DATE, '25/04/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%San Lorenzo%'),'MED','https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847571.jpg', 1),
+('Nahuel', 'Barrios', CONVERT(DATE, '07/05/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674848557.jpg',1 ),
+('Iván', 'Leguizamón', CONVERT(DATE, '03/07/2002', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'MED', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674854847.jpg',1 ),
+('Nicolás', 'Blandi', CONVERT(DATE, '13/01/1990', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEL', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674847372.jpg',1 ),
+('Adam', 'Bareiro', CONVERT(DATE, '26/07/1996', 103), 'MEX', (SELECT ID FROM Equipos WHERE Nombre LIKE '%San Lorenzo%'), 'DEL', 'https://sanlorenzo.com.ar/img/plantel/futbol/2023/g/01-27_1674848360.jpg',1 )
+
+--Sarmiento
+
+INSERT INTO Jugadores VALUES
+('Sebastián', 'Meza', CONVERT(DATE, '14/03/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'ARQ', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-02.jpg',1 ),
+('Franco','Quinteros', CONVERT(DATE, '26/01/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-16.jpg', 1),
+('Juan Manuel', 'Insaurralde', CONVERT(DATE, '03/10/1984', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEF', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-06.jpg',1 ),
+('Alejandro','Donatti', CONVERT(DATE, '24/10/1986', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-05.jpg', 1),
+('Gonzalo','Bettini', CONVERT(DATE, '26/09/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'DEF','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-13.jpg', 1),
+('Emiliano', 'Méndez', CONVERT(DATE, '15/02/1989', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'MED', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-31.jpg',1 ),
+('Manuel','Mónaco', CONVERT(DATE, '11/05/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Sarmiento%'),'MED','https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-26.jpg', 1),
+('Fernando', 'Martínez', CONVERT(DATE, '13/05/1994', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'MED', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-32.jpg',1 ),
+('Javier', 'Toledo', CONVERT(DATE, '24/04/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-33.jpg',1 ),
+('Lisandro', 'López', CONVERT(DATE, '02/03/1983', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-09.jpg',1 ),
+('Luciano', 'Gondou', CONVERT(DATE, '22/06/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Sarmiento%'), 'DEL', 'https://clubatleticosarmiento.com/wp-content/uploads/2023/02/plantel-profesional-1-17.jpg',1 )
+
+--Talleres
+
+INSERT INTO Jugadores VALUES
+('Guido', 'Herrera', CONVERT(DATE, '29/02/1992', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'ARQ', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/01/WEB_HERRERA-GUIDO-1.png',1 ),
+('Gastón','Benavídez', CONVERT(DATE, '23/10/1995', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF','https://www.clubtalleres.com.ar/wp-content/uploads/2022/03/WEB_BENAVIDEZ-GASTON-1.png', 1),
+('Matías', 'Catalán', CONVERT(DATE, '19/08/1992', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEF', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_CATALAN-MATIAS-2.png',1 ),
+('Juan','Rodríguez', CONVERT(DATE, '28/02/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_JUAN-GRABRIEL-RODRIGUEZ-2.png', 1),
+('Juan Carlos','Portillo', CONVERT(DATE, '18/04/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'DEF','https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_JUAN-CARLOS-PORTILLO-1.png', 1),
+('Diego', 'Ortegoza', CONVERT(DATE, '19/04/1997', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'MED', 'https://www.clubtalleres.com.ar/wp-content/uploads/2022/07/WEB_ORTEGOZA-DIEGO-1.png',1 ),
+('Rodrigo','Villagra', CONVERT(DATE, '14/02/2001', 103), 'ARG',(select ID from Equipos where Nombre like '%Talleres%'),'MED','https://www.clubtalleres.com.ar/wp-content/uploads/2021/08/WEB_VILLAGRA-RODRIGO-1.png', 1),
+('Rodrigo', 'Garro', CONVERT(DATE, '04/01/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'MED', 'https://www.clubtalleres.com.ar/wp-content/uploads/2022/03/WEB_GARRO-RODRIGO-1.png',1 ),
+('Diego', 'Valoyes', CONVERT(DATE, '22/09/1996', 103), 'COL', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/01/WEB_VALOYES-DIEGO-1.png',1 ),
+('Michael', 'Santos', CONVERT(DATE, '13/03/1993', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2021/03/WEB_SANTOS-MICHAEL-1.png',1 ),
+('Nahuel', 'Bustos', CONVERT(DATE, '04/07/1998', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Talleres%'), 'DEL', 'https://www.clubtalleres.com.ar/wp-content/uploads/2023/02/WEB_BUSTOS-NAHUEL-2.png',1 )
+
+--Tigre
+
+INSERT INTO Jugadores VALUES
+('Gonzalo', 'Marinelli', CONVERT(DATE, '07/02/1989', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'ARQ', 'https://desdelaventana.com.ar/zixpanel/cache/med-fecha_2019-09-20_hora_07-54hs_nro-random_782.png',1 ),
+('Lautaro','Montoya', CONVERT(DATE, '07/10/1994', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF','https://pbs.twimg.com/media/FmYcV4sX0AwIlGA?format=jpg&name=900x900', 1),
+('Víctor', 'Cabrera', CONVERT(DATE, '07/02/1993', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEF', 'https://lh3.googleusercontent.com/-AmRwF--hxI0/YCby91xtNYI/AAAAAAAAdwA/qvIhgY0fhhMml30PphdYnu8_GLV09VVbACLcBGAsYHQ/image.png',1 ),
+('Brian','Luciatti', CONVERT(DATE, '18/02/1993', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF', 'https://sortitoutsi.net/uploads/media/UCvRtvolahlMJimCTCqjrcyKlMREQV4CYB8V5cO5.png', 1),
+('Lucas','Blondel', CONVERT(DATE, '14/09/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'DEF','https://www.ceroacero.es/img/jogadores/07/916207_ori__20220728160348_lucas_blondel.png', 1),
+('Sebastián', 'Prediger', CONVERT(DATE, '04/09/1986', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'MED', 'https://www.ceroacero.es//img/jogadores/65/779665_med__20210505203942_sebastian_prediger.png',1 ),
+('Agustín','Cardozo', CONVERT(DATE, '30/05/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Tigre%'),'MED','https://scontent.faep25-1.fna.fbcdn.net/v/t1.6435-9/102335744_3107061909383315_2127397949972414464_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=973b4a&_nc_ohc=RpZbm5Z2K3IAX8o_UIK&_nc_ht=scontent.faep25-1.fna&oh=00_AfAPN1l7_rRWp6DVRE2mZVUe0Z0DNOAp-oUN20icvqKWbg&oe=64CFE1D0', 1),
+('Aaron', 'Molinas', CONVERT(DATE, '02/08/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'MED', 'https://pbs.twimg.com/media/FuLG_IvXwAIPyF2?format=jpg&name=900x900',1 ),
+('Blas', 'Armoa', CONVERT(DATE, '03/02/2000', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://www.moopio.com/system/entries/images/002/904/885/original/cronica-el-tigre-de-argentina-anuncio-a-blas-armoa-como-su-flamante-refuerzo.png?1644783645',1 ),
+('Mateo', 'Retegui', CONVERT(DATE, '29/04/1999', 103), 'ITA', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://blogger.googleusercontent.com/img/a/AVvXsEjzWghazirxGqaWrAW7mY-ph4ThPw-FokGvSe-IaJMnbXME7u3fi16VMap74ZCqzCC4kx0d3IiuMgPWhfCYPIYQ86r89-Wib4aKsujGL4263et5hffFsZNBfaVd_tQ6Ng04-i4c5YJgmzkNhQMSFxwePzf-LxD42oHMgX7pw9iZQyKuZfPHLprJPNpeAQ',1 ),
+('Facundo', 'Colidio', CONVERT(DATE, '04/01/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Tigre%'), 'DEL', 'https://img.a.transfermarkt.technology/portrait/big/491705-1625049595.jpg?lm=1',1 )
 
 -- Union
 INSERT INTO Jugadores VALUES
-('Sebastián', 'Moyano', CONVERT(DATE, '26/08/1980', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'ARQ', 'https://i0.wp.com/sinmordaza.com/wp-content/uploads/2020/05/251968_arquero-thumbnail-1280x720-70.jpg?resize=741%2C486&ssl=1',3,1 ),
-('Federico','Vera', CONVERT(DATE, '24/03/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF','https://img.fminside.net/facesfm22/14180612.png',3, 1),
-('Claudio','Corvalán', CONVERT(DATE, '23/03/1989', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF', 'https://www.clubaunion.com.ar/wp-content/uploads/2020/07/03-Claudio-Corvalan.png',2, 1),
-('Franco','Calderón', CONVERT(DATE, '13/05/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF','https://www.clubaunion.com.ar/wp-content/uploads/2020/07/02-Franco-Calderon.png',3, 1),
-('Kevin', 'Zenón', CONVERT(DATE, '30/07/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEF', 'https://www.tugoyanoticias.com.ar/images/2021/mayo/KEVIN_ZENON1.jpg',3,1 ),
-('Enzo', 'Roldán', CONVERT(DATE, '08/12/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/256/501/22_360.png',3,1 ),
-('Yeison','Gordillo', CONVERT(DATE, '25/06/1992', 103), 'COL',(select ID from Equipos where Nombre like '%Unión%'),'MED','https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/y/yei/large/28699.png',3, 1),
-('Mauro', 'Luna Diale', CONVERT(DATE, '26/04/1999', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/253/908/21_360.png',3,1 ),
-('Luciano', 'Aued', CONVERT(DATE, '01/03/1987', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/206/152/22_360.png',3,1 ),
-('Imanol', 'Machuca', CONVERT(DATE, '15/01/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEL', 'https://cdn.sofifa.net/players/259/790/22_360.png',3,1 ),
-('Jerónimo', 'Dómina', CONVERT(DATE, '17/10/2006', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEL', 'https://imagecache.365scores.com/image/upload/f_png,w_250,h_250,c_limit,q_auto:eco,d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/Athletes/124971',3,1 )
+('Sebastián', 'Moyano', CONVERT(DATE, '26/08/1980', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'ARQ', 'https://i0.wp.com/sinmordaza.com/wp-content/uploads/2020/05/251968_arquero-thumbnail-1280x720-70.jpg?resize=741%2C486&ssl=1',1 ),
+('Federico','Vera', CONVERT(DATE, '24/03/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF','https://img.fminside.net/facesfm22/14180612.png', 1),
+('Claudio','Corvalán', CONVERT(DATE, '23/03/1989', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF', 'https://www.clubaunion.com.ar/wp-content/uploads/2020/07/03-Claudio-Corvalan.png', 1),
+('Franco','Calderón', CONVERT(DATE, '13/05/1998', 103), 'ARG',(select ID from Equipos where Nombre like '%Unión%'),'DEF','https://www.clubaunion.com.ar/wp-content/uploads/2020/07/02-Franco-Calderon.png', 1),
+('Kevin', 'Zenón', CONVERT(DATE, '30/07/2001', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEF', 'https://www.tugoyanoticias.com.ar/images/2021/mayo/KEVIN_ZENON1.jpg',1 ),
+('Enzo', 'Roldán', CONVERT(DATE, '08/12/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/256/501/22_360.png',1 ),
+('Yeison','Gordillo', CONVERT(DATE, '25/06/1992', 103), 'COL',(select ID from Equipos where Nombre like '%Unión%'),'MED','https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/y/yei/large/28699.png', 1),
+('Mauro', 'Luna Diale', CONVERT(DATE, '26/04/1999', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/253/908/21_360.png',1 ),
+('Luciano', 'Aued', CONVERT(DATE, '01/03/1987', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'MED', 'https://cdn.sofifa.net/players/206/152/22_360.png',1 ),
+('Imanol', 'Machuca', CONVERT(DATE, '15/01/2000', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEL', 'https://cdn.sofifa.net/players/259/790/22_360.png',1 ),
+('Jerónimo', 'Dómina', CONVERT(DATE, '17/10/2006', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Unión%'), 'DEL', 'https://imagecache.365scores.com/image/upload/f_png,w_250,h_250,c_limit,q_auto:eco,d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/Athletes/124971',1 )
 
---Velez Velez 1 legendaria 3 especiales 7 estandares
+--Velez
 
-select * from Jugadores
+ESTOY HABLANDO  XD 
 INSERT INTO Jugadores VALUES
-('Leonardo', 'Burián', CONVERT(DATE, '21/01/1984', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'ARQ', 'https://velez.com.ar/img/plantel/2023/lburian23.jpg',3,1 ),
-('Francisco','Ortega', CONVERT(DATE, '19/03/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF','https://velez.com.ar/img/plantel/2023/fortega23.jpg',3, 1),
-('Diego', 'Godín', CONVERT(DATE, '16/02/1986', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEF', 'https://velez.com.ar/img/plantel/2023/godin_perfil-1.jpg',1,1 ),--especial
-('Valentín','Gómez', CONVERT(DATE, '26/06/2003', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF', 'https://velez.com.ar/img/plantel/2023/perfil_gomez.jpg',2, 1),
-('Tomás','Guidara', CONVERT(DATE, '13/03/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF','https://velez.com.ar/img/plantel/2023/tguidara23.jpg',3, 1),
-('Juan', 'Méndez', CONVERT(DATE, '28/04/1997', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'MED', 'https://velez.com.ar/img/plantel/2023/jmendez__1_.jpg',3,1 ),
-('Nicolás','Garayalde', CONVERT(DATE, '21/07/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'MED','https://velez.com.ar/img/plantel/2023/ngarayalde23.jpg',3, 1),
-('José', 'Florentín', CONVERT(DATE, '05/07/1996', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'MED', 'https://velez.com.ar/img/plantel/2023/jflorentin23.jpg',3,1 ),
-('Walter', 'Bou', CONVERT(DATE, '25/08/1993', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/wbou23.jpg',2,1 ),
-('Lucas', 'Janson', CONVERT(DATE, '18/08/1994', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/ljanson23.jpg',2,1 ),
-('Abiel', 'Osorio', CONVERT(DATE, '13/06/2002', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/aosorio23.jpg',3,1 )
+('Leonardo', 'Burián', CONVERT(DATE, '21/01/1984', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'ARQ', 'https://velez.com.ar/img/plantel/2023/lburian23.jpg',1 ),
+('Francisco','Ortega', CONVERT(DATE, '19/03/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF','https://velez.com.ar/img/plantel/2023/fortega23.jpg', 1),
+('Diego', 'Godín', CONVERT(DATE, '16/02/1986', 103), 'URY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEF', 'https://velez.com.ar/img/plantel/2023/godin_perfil-1.jpg',1 ),
+('Valentín','Gómez', CONVERT(DATE, '26/06/2003', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF', 'https://velez.com.ar/img/plantel/2023/perfil_gomez.jpg', 1),
+('Tomás','Guidara', CONVERT(DATE, '13/03/1996', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'DEF','https://velez.com.ar/img/plantel/2023/tguidara23.jpg', 1),
+('Juan', 'Méndez', CONVERT(DATE, '28/04/1997', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'MED', 'https://velez.com.ar/img/plantel/2023/jmendez__1_.jpg',1 ),
+('Nicolás','Garayalde', CONVERT(DATE, '21/07/1999', 103), 'ARG',(select ID from Equipos where Nombre like '%Velez%'),'MED','https://velez.com.ar/img/plantel/2023/ngarayalde23.jpg', 1),
+('José', 'Florentín', CONVERT(DATE, '05/07/1996', 103), 'PRY', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'MED', 'https://velez.com.ar/img/plantel/2023/jflorentin23.jpg',1 ),
+('Walter', 'Bou', CONVERT(DATE, '25/08/1993', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/wbou23.jpg',1 ),
+('Lucas', 'Janson', CONVERT(DATE, '18/08/1994', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/ljanson23.jpg',1 ),
+('Abiel', 'Osorio', CONVERT(DATE, '13/06/2002', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/aosorio23.jpg',1 )
 
 --SELECT DISTINCT A.Id, A.Nombre, A.Codigo, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS
 --Categoria, A.Precio, A.IdMarca, A.IdCategoria FROM ARTICULOS A LEFT JOIN MARCAS M ON M.ID = A.IdMarca
 --LEFT JOIN CATEGORIAS C ON C.ID = A.IdCategoria
 
+
+select * from Niveles
 insert into Niveles 
 values
 (1,'ADMIN'),
 (2,'USER')
-
-INSERT INTO Usuarios (Nombre, Apellido, Email, Clave, Nivel) VALUES
-('pru', 'eba', 'prueba@mail.com', 'test', 2)
-
-
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
-select * from Tipos
-select * from Equipos
+INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',1000,2)
 
---River Boca 2 legendarias 4 especiales 5 estandares
---Independiente Racing San Lorenzo Velez Estudiantes 1 legendaria 3 especiales 7 estandares
---Newells Central Lanus Argentinos Talleres Colon Huracan 3 especiales 8 estandares
---Belgrano Union Arsenal Banfield Gimnasia Tucuman Tigre 2 especiales 9 estandares
---el resto 1 especial 10 estandares
+select * FROM Figuritas
+
+select * from Figuritas_Jugadores
+
+select * from Jugadores
+
+select * FROM Usuarios_X_Figuritas
+
+select * FROM Jugadores WHERE ID = 51
+
+select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF 
+inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
+Inner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita
+Inner join Jugadores j on fj.IDJugador = j.ID 
+Inner join Posiciones p on p.Codigo = j.Posicion
+Inner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad
+inner join Equipos e on e.ID = j.Equipo
+WHERE UxF.IDUsuario = 1
+
+select * FROM ESTAdios

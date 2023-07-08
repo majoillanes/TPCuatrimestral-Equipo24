@@ -9,7 +9,7 @@ namespace Test
 {
     public class PaqueteNegocio
     {
-        public void GenerarFiguritas()
+        public void GenerarFiguritas(Usuario usuario)
         {
             FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
             Figurita figurita = new Figurita();
@@ -25,14 +25,14 @@ namespace Test
             {
                 figuritaNegocio.Agregar(figurita); // Crea las 5 figuritas
                 figuritaJugador.Jugador = new Jugador();
-                figuritaJugador.IDJugador = random.Next(1, 308);
-                figuritaJugador.Jugador = jugadorNegocio.listar(figuritaJugador.IDJugador);
+                figuritaJugador.Jugador.IDJugador = random.Next(1, 308);
+                figuritaJugador.Jugador = jugadorNegocio.listar(figuritaJugador.Jugador.IDJugador);
                 figuritaJugador.IDFigurita = figuritaNegocio.Listar().Last().IDFigurita;
                 figuritaJugador.TipoDeFigurita = new TipoDeFigurita();
                 figuritaJugador.TipoDeFigurita.Id = 3;
-                figuritaJugador.Ubicacion = figuritaJugador.IDJugador + 2 * jugadorNegocio.listar(figuritaJugador.IDJugador).Equipo.ID;
+                figuritaJugador.Ubicacion = (Int16)(figuritaJugador.Jugador.IDJugador + 2 * jugadorNegocio.listar(figuritaJugador.Jugador.IDJugador).Equipo.ID);
                 //listaFiguritas.Add(figuritaJugador);
-                figuritaJugadorNegocio.Agregar(figuritaJugador);
+                figuritaJugadorNegocio.Agregar(figuritaJugador, usuario);
             }
 
             //return listaFiguritas;
@@ -56,8 +56,8 @@ namespace Test
                     figuritaJugador.ID = (int)datos.Lector["ID"];
                     figuritaJugador.IDFigurita = (int)datos.Lector["IDFigurita"];
                     figuritaJugador.Jugador = new Jugador();
-                    figuritaJugador.IDJugador = (int)datos.Lector["IDJugador"];
-                    figuritaJugador.Jugador = jugadorNegocio.listar(figuritaJugador.IDJugador);
+                    figuritaJugador.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
+                    figuritaJugador.Jugador = jugadorNegocio.listar(figuritaJugador.Jugador.IDJugador);
                     figuritaJugador.TipoDeFigurita = new TipoDeFigurita();
                     figuritaJugador.TipoDeFigurita.Id = (byte)datos.Lector["Tipo"];
                     figuritas.Add(figuritaJugador);

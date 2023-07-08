@@ -34,8 +34,9 @@ namespace TPCuatrimestral_Album
         {
             Mostrar = true;
             //Session.Add("M", Mostrar);
+            Usuario usuario = (Usuario)Session["usuario"];
             PaqueteNegocio paqueteNegocio = new PaqueteNegocio();
-            paqueteNegocio.GenerarFiguritas();
+            paqueteNegocio.GenerarFiguritas(usuario);
             repeaterJugadores.DataSource = paqueteNegocio.MasRecientes();
             repeaterJugadores.DataBind();
         }

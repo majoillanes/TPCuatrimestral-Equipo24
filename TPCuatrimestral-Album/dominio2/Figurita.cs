@@ -13,7 +13,7 @@ namespace dominio2
         public TipoDeFigurita TipoDeFigurita { get; set; }
         //public int IDAlbum { get; set; }
         // public int PrecioVenta { get; set; }
-        public int Ubicacion { get; set; }
+        public Int16 Ubicacion { get; set; }
         public bool Pegada { get; set; }
         public bool Activo { get; set; }
         //public Jugador Jugador { get; set; }

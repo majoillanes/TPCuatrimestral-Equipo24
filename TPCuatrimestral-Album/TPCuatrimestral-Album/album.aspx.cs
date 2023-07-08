@@ -17,12 +17,15 @@ namespace TPCuatrimestral_Album
         public int JugadoresPagina2 { get; set; }
         public List<FiguritaJugador> Figuritas {get;set;}
         public FiguritaJugador Figurita { get; set;}
+        public List<FiguritaEstadio> FiguritasEstadios { get; set; }
+        public FiguritaEstadio FiguritaEstadio { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = (Usuario)Session["usuario"];
             FiguritaJugadorNegocio figuritaNegocio = new FiguritaJugadorNegocio();
-            //List<FiguritaJugador> figuritas = new List<FiguritaJugador>();
             Figuritas = figuritaNegocio.listar(usuario.Id);
+            FiguritaEstadioNegocio figuritaEstadioNegocio = new FiguritaEstadioNegocio();
+            FiguritasEstadios = figuritaEstadioNegocio.listar(usuario.Id);
             // gvLista.DataSource = figuritaNegocio.listar();
             // gvLista.DataBind();
 

@@ -16,13 +16,13 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"select f.Pegada, fj.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Figuritas f\r\nInner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita\r\nInner join Jugadores j on fj.IDJugador = j.ID\r\nInner join Posiciones p on p.Codigo = j.Posicion\r\nInner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad\r\ninner join Equipos e on e.ID = j.Equipo\r\nWHERE fj.IDUsuario ={idUsuario}");
+                datos.setearConsulta($"select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF \r\ninner join Figuritas f ON f.IDFigurita= UxF.IDFigurita\r\nInner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita\r\nInner join Jugadores j on fj.IDJugador = j.ID \r\nInner join Posiciones p on p.Codigo = j.Posicion\r\nInner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad\r\ninner join Equipos e on e.ID = j.Equipo\r\nWHERE UxF.IDUsuario = {idUsuario}");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     FiguritaJugador figurita = new FiguritaJugador();
                     figurita.Pegada = (bool)datos.Lector["Pegada"];
-                    figurita.Ubicacion = (int)datos.Lector["Ubicacion"];
+                    figurita.Ubicacion = (Int16)datos.Lector["Ubicacion"];
                     figurita.Jugador = new Jugador();
                     figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
                     figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
@@ -49,12 +49,12 @@ namespace Test
             }
 
         }
-        public void Agregar(FiguritaJugador figuritaJugador)
+        public void Agregar(FiguritaJugador figuritaJugador, Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"INSERT INTO Figuritas_Jugadores VALUES ({figuritaJugador.IDFigurita}, {figuritaJugador.IDJugador}, {figuritaJugador.TipoDeFigurita.Id})");
+                datos.setearConsulta($"INSERT INTO Figuritas_Jugadores VALUES ({figuritaJugador.IDFigurita}, {figuritaJugador.Jugador.IDJugador}, {figuritaJugador.TipoDeFigurita.Id}); Update Figuritas SET Ubicacion ={figuritaJugador.Ubicacion} WHERE IDFigurita = {figuritaJugador.IDFigurita} ; insert into Usuarios_X_Figuritas values ({usuario.Id},{figuritaJugador.IDFigurita})");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -68,7 +68,7 @@ namespace Test
                     figurita.IDFigurita = (int)accesoDatos.Lector["IDFigurita"];
                     figurita.TipoDeFigurita = new TipoDeFigurita();
                     figurita.TipoDeFigurita.Id = (byte)accesoDatos.Lector["Tipo"];
-                    figurita.Ubicacion = accesoDatos.Lector["Ubicacion"] is DBNull ? 0 : (Int16)accesoDatos.Lector["Ubicacion"];
+                    figurita.Ubicacion = (Int16)accesoDatos.Lector["Ubicacion"];
                     figurita.Pegada = (bool)accesoDatos.Lector["Pegada"];
                     figurita.Activo = (bool)accesoDatos.Lector["Activo"];
 
