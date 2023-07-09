@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace dominio2
 {
-    public class FiguritaEquipo
+    public class FiguritaEquipo : Figurita
     {
+        public int ID { get; set; }
+        public Equipo Equipo { get; set; }
     }
 }

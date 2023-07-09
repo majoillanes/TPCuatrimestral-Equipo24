@@ -21,6 +21,32 @@
                                         <div class="circulo-figurita d-flex justify-content-center">
                                             <asp:Label ID="lblNumeroEscudo" runat="server" />
                                         </div>
+                                        <%
+                                        string numeroEquipo = lblNumeroEscudo.Text.ToString();
+                                        FiguritaEquipo = FiguritasEquipos.Find(x => x.Ubicacion.ToString().Equals(numeroEquipo));
+                                        if (FiguritaEquipo != null)
+                                        {%>
+                                        <div class="imagen">
+                                        </div>
+                                        <div class="info d-flex flex-column">
+                                            <div class="nombre d-flex justify-content-center">
+                                                <p><b><%= FiguritaEquipo.Equipo.Nombre %></b></p>
+                                            </div>
+                                            <div class="props">
+                                                <ul class="d-flex justify-content-around flex-column">
+                                                    <li><%= FiguritaEquipo.Equipo.Alias %></li>
+                                                    <li><%= FiguritaEquipo.Equipo.Ciudad %></li>
+                                                    <li><%= FiguritaEquipo.Equipo.Fundacion %></li>
+                                                </ul>
+                                            </div>
+                                        </div>--
+                                        <%} %>
+
+                                        <%else
+                                        {
+                                            // Código si no se encuentra la figurita
+                                        }
+                                        %> 
                                         <%--<div class="imagen-escudo">
                                         </div>
                                         <div class="info-escudo d-flex flex-column">
