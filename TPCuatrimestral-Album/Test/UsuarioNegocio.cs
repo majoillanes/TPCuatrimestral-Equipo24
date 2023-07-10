@@ -17,7 +17,7 @@ namespace Test
             {
                 datos.setearConsulta($"select u.ID,u.Nombre, n.Nombre as NombreNivel from Usuarios U Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = '{usuario.Email}' and u.Clave = '{usuario.Clave}'");
                 datos.ejecutarLectura();
-                while (datos.Lector.Read())
+                if (datos.Lector.Read())
                 {
                     usuario.Id = (int)datos.Lector["ID"];
                     usuario.Nombre = (string)datos.Lector["Nombre"];
@@ -25,7 +25,7 @@ namespace Test
                     usuario.Nivel.Nombre = (string)datos.Lector["NombreNivel"];
                     return true;
                 }
-
+                return false;
             }
             catch (Exception ex)
             {
@@ -35,8 +35,6 @@ namespace Test
             {
                 datos.cerrarConexion();
             }
-
-            return false;
         }
         public void crearUsuario(Usuario usuario)
         {

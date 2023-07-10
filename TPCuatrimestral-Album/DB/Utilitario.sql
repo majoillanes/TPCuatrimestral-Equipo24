@@ -700,4 +700,31 @@ Inner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad
 inner join Equipos e on e.ID = j.Equipo
 WHERE UxF.IDUsuario = 1
 
-select * FROM ESTAdios
+select * FROM ESTAdios order by nombre  desc
+
+
+select f.Pegada, f.Ubicacion, E.Nombre, E.Alias,E.Ciudad, E.Fundacion, E.Imagen
+from Usuarios_X_Figuritas UxF
+Inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
+Inner join Figuritas_Equipos fe ON f.IDFigurita=fe.IDFigurita
+Inner join Equipos E on fe.IDEquipo = E.ID 
+WHERE UxF.IDUsuario = 1
+
+select * From Figuritas
+update Figuritas set Ubicacion = 2 where IDFigurita = 16
+insert into Figuritas values (3,1,0,1)
+
+select * from Figuritas_Estadios
+insert into Figuritas_Equipos values (17,1)
+select * from Usuarios_X_Figuritas
+insert into Usuarios_X_Figuritas values (1,17)
+
+select * From Usuarios
+select * From Niveles
+insert into Usuarios values ('Matias','Admin','msdasdasAdmin@mail.com','password',0,1 )
+
+select u.ID,u.Nombre, n.Id as NID, n.Nombre as NombreNivel from Usuarios U 
+Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = 'matiasAdmin@mail.com'
+
+
+delete Usuarios
