@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,15 @@ namespace TPCuatrimestral_Album
 {
     public partial class Formulario_web12 : System.Web.UI.Page
     {
+        public Usuario Usuario { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Usuario = (Usuario)Session["usuario"];
+            if (Usuario == null)
+            {
+                Session.Add("error", "Debes iniciar sesión");
+                Response.Redirect("error.aspx", false);
+            }
         }
 
         protected void btnFiguritas_Click(object sender, EventArgs e)

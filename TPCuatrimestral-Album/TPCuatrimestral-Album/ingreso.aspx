@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ingreso.aspx.cs" Inherits="TPCuatrimestral_Album.Formulario_web11" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ingreso.aspx.cs" Inherits="TPCuatrimestral_Album.Formulario_web11" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -22,19 +22,18 @@
                             </div>
                             <div class="row g-2 align-items-center p-2">
                                 <div class="col">
+                                    <asp:Label ID="lblApellido" runat="server" CssClass="form-label" Text="Apellido:"></asp:Label>
+                                </div>
+                                <div class="col-auto">
+                                    <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row g-2 align-items-center p-2">
+                                <div class="col">
                                     <asp:Label ID="lblMail" runat="server" CssClass="form-label" Text="EMail"></asp:Label>
                                 </div>
                                 <div class="col-auto">
-                                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-
-                            <div class="row g-2 align-items-center p-2">
-                                <div class="col">
-                                    <asp:Label ID="lblUsuario" runat="server" CssClass="form-label" Text="Usuario"></asp:Label>
-                                </div>
-                                <div class="col-auto">
-                                    <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtMailRegistro" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 

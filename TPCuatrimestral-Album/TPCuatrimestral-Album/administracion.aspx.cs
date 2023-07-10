@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,15 @@ namespace TPCuatrimestral_Album
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+        public Usuario Usuario { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Usuario = (Usuario)Session["usuario"];
+            if (!Usuario.EsAdmin(Usuario))
+            {
+                Session.Add("error", "No tienes permisos de Administrador");
+                Response.Redirect("error.aspx",false);
+            }
         }
         protected void btnNacionalidadAdmin_Click(object sender, EventArgs e)
         {

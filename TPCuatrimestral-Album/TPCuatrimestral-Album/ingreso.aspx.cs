@@ -32,21 +32,37 @@ namespace TPCuatrimestral_Album
                 else
                 {
                     Session.Add("error", "user o pass incorrectos");
-                    Response.Redirect("../Error.aspx", false);
+                    Response.Redirect("../error.aspx", false);
                 }
 
             }
             catch (Exception ex)
             {
-                throw ex;
-                // Session.Add("error", ex.ToString());
-                // Response.Redirect("../Error.aspx");
+                 Session.Add("error", ex.ToString());
+                 Response.Redirect("error.aspx");
             }
         }
 
         protected void btnCrearCuenta_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                Usuario usuario = new Usuario();
+                usuario.Nombre = txtNombre.Text;
+                usuario.Apellido = txtApellido.Text;
+                usuario.Email = txtMailRegistro.Text;
+                usuario.Clave = txtPass.Text;
+                usuarioNegocio.crearUsuario(usuario);
+                usuarioNegocio.ingresar(usuario);
+                Session.Add("usuario", usuario);
+                Response.Redirect("menu.aspx",false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("error.aspx",false);
+            }
         }
     }
 }

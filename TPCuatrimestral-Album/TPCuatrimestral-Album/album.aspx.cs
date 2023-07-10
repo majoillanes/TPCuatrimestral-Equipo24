@@ -21,15 +21,24 @@ namespace TPCuatrimestral_Album
         public FiguritaEstadio FiguritaEstadio { get; set; }
         public List<FiguritaEquipo> FiguritasEquipos { get; set; }
         public FiguritaEquipo FiguritaEquipo { get; set; }
+        public Usuario Usuario { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuario"];
+            Usuario = (Usuario)Session["usuario"];
+            
+            if (Usuario == null || !Usuario.EsUsuario(Usuario))
+            {
+                Session.Add("error", "Debes iniciar sesión");
+                Response.Redirect("error.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+                return;
+            }
             FiguritaJugadorNegocio figuritaNegocio = new FiguritaJugadorNegocio();
-            Figuritas = figuritaNegocio.listar(usuario.Id);
+            Figuritas = figuritaNegocio.listar(Usuario.Id);
             FiguritaEstadioNegocio figuritaEstadioNegocio = new FiguritaEstadioNegocio();
-            FiguritasEstadios = figuritaEstadioNegocio.listar(usuario.Id);
+            FiguritasEstadios = figuritaEstadioNegocio.listar(Usuario.Id);
             FiguritaEquipoNegocio figuritaEquipoNegocio = new FiguritaEquipoNegocio();
-            FiguritasEquipos = figuritaEquipoNegocio.listar(usuario.Id);
+            FiguritasEquipos = figuritaEquipoNegocio.listar(Usuario.Id);
             // gvLista.DataSource = figuritaNegocio.listar();
             // gvLista.DataBind();
 

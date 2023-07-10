@@ -23,6 +23,7 @@
                                         </div>
                                         <%
                                         string numeroEquipo = lblNumeroEscudo.Text.ToString();
+                                        if(FiguritasEquipos != null)
                                         FiguritaEquipo = FiguritasEquipos.Find(x => x.Ubicacion.ToString().Equals(numeroEquipo));
                                         if (FiguritaEquipo != null)
                                         {%>
@@ -68,6 +69,7 @@
                                         </div>
                                          <%
                                         string numeroEstadio = lblNumeroEstadio.Text.ToString();
+                                        if(FiguritasEstadios != null) 
                                         FiguritaEstadio = FiguritasEstadios.Find(x => x.Ubicacion.ToString().Equals(numeroEstadio));
                                         if (FiguritaEstadio != null)
                                         {%>
@@ -93,21 +95,6 @@
                                             // Código si no se encuentra la figurita
                                         }
                                         %> 
-                                        <%--<div class="imagen-estadio">
-                                        </div>
-                                        <div class="info-estadio d-flex flex-column">
-                                            <div class="nombre-estadio d-flex justify-content-center mb-1">
-                                                <p><b>Estadio Monumental</b></p>
-                                            </div>
-                                            <div class="props">
-                                                <ul class="d-flex justify-content-around">
-                                                    <li>16/10/1986</li>
-                                                    <li>ARQ</li>
-                                                    <li>River</li>
-                                                    <li>Argentino</li>
-                                                </ul>
-                                            </div>
-                                        </div>--%>
                                     </div>
                                 </div>
                             </div>
@@ -124,6 +111,7 @@
                                         </div>
                                         <%
                                         int ubicacionJugadorPagina1 = JugadoresPagina1-1;
+                                        if (Figuritas != null)
                                         Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina1);
                                         if (Figurita != null)
                                         {%>
@@ -170,7 +158,7 @@
                                 <%   } %>
                             </div>
                         </div>
-                        <div class="pagina2" style="background-image: url('<% =Equipo.Imagen %>');">
+                        <div class="pagina2" style="background-image: url('<%=(Equipo != null ? Equipo.Imagen : string.Empty) %>');">
                             <div class="opacidad-img py-2">
                                 <% for (int i = 0; i < 3; i++)
                                     { %>
@@ -185,6 +173,7 @@
                                             </div>
                                             <%
                                         int ubicacionJugadorPagina2 = JugadoresPagina2-1;
+                                        if (Figuritas != null)
                                         Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina2);
                                         if (Figurita != null )
                                         {%>

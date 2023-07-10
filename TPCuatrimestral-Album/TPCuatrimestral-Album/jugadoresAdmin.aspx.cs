@@ -11,10 +11,18 @@ namespace TPCuatrimestral_Album
 {
     public partial class jugadoresAdmin : System.Web.UI.Page
     {
+        public Usuario Usuario { get; set; }
+
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-           JugadorNegocio jugadorNegocio = new JugadorNegocio();
+            Usuario = (Usuario)Session["usuario"];
+            if (!Usuario.EsAdmin(Usuario))
+            {
+                Session.Add("error", "No tienes permisos de Administrador");
+                Response.Redirect("error.aspx", false);
+            }
+            JugadorNegocio jugadorNegocio = new JugadorNegocio();
             Session.Add("listaJugadores", jugadorNegocio.listar());
             gvJugadores.DataSource = Session["listaJugadores"];
             gvJugadores.DataBind();

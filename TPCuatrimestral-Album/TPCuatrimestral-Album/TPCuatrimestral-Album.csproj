@@ -71,6 +71,7 @@
     <Content Include="album.aspx" />
     <Content Include="bonosRecompensas.aspx" />
     <Content Include="equipoAdmin.aspx" />
+    <Content Include="error.aspx" />
     <Content Include="estadisticas.aspx" />
     <Content Include="estadiosAdmin.aspx" />
     <Content Include="formularioEstadio.aspx" />
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="equipoAdmin.aspx.designer.cs">
       <DependentUpon>equipoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
     <Compile Include="estadisticas.aspx.cs">
       <DependentUpon>estadisticas.aspx</DependentUpon>
