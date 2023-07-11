@@ -27,18 +27,6 @@ namespace Test
                     //figurita.Ubicacion = datos.Lector["Ubicacion"] is DBNull ? 0 : (Int16)datos.Lector["Ubicacion"];
                     figurita.Activo = (bool)datos.Lector["Activo"];
                     figurita.Pegada = (bool)datos.Lector["Pegada"];
-                    //figurita.Jugador = new Jugador();
-                    //figurita.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
-                    //figurita.Jugador.Nombres = (string)datos.Lector["Nombres"];
-                    //figurita.Jugador.Apellidos = (string)datos.Lector["Apellidos"];
-                    //figurita.Jugador.Imagen = (string)datos.Lector["Imagen"];
-                    //figurita.Jugador.FechaDeNacimiento = ((DateTime)datos.Lector["FechaDeNacimiento"]).Date;
-                    //figurita.Jugador.Nacionalidad = new Nacionalidad();
-                    //figurita.Jugador.Nacionalidad.Gentilicio = (string)datos.Lector["GENTILICIO_NAC"];
-                    //figurita.Jugador.Equipo = new Equipo();
-                    //figurita.Jugador.Equipo.Nombre = (string)datos.Lector["Nombre"];
-                    //figurita.Jugador.Posicion = new Posicion();
-                    //figurita.Jugador.Posicion.Descripcion = (string)datos.Lector["Descripcion"];
 
                     figuritas.Add(figurita);
                 }
@@ -92,6 +80,25 @@ namespace Test
             try
             {
                 accesoDatos.setearConsulta($"INSERT INTO Figuritas (Tipo) VALUES ({figurita.TipoDeFigurita.Id})");
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void pegar(int ubicacion)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta($"Update Figuritas set Pegada = 1 WHERE ubicacion = {ubicacion}");
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)

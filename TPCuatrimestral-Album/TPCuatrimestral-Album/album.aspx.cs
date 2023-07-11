@@ -39,11 +39,12 @@ namespace TPCuatrimestral_Album
             FiguritasEstadios = figuritaEstadioNegocio.listar(Usuario.Id);
             FiguritaEquipoNegocio figuritaEquipoNegocio = new FiguritaEquipoNegocio();
             FiguritasEquipos = figuritaEquipoNegocio.listar(Usuario.Id);
-            // gvLista.DataSource = figuritaNegocio.listar();
-            // gvLista.DataBind();
+            
 
             if (!IsPostBack)
             {
+                
+
                 EquipoNegocio equipoNegocio = new EquipoNegocio();
                 Equipo = equipoNegocio.listar().First();
                 lblNumeroPagina.Text = "1";
@@ -56,8 +57,6 @@ namespace TPCuatrimestral_Album
                 numeros.Add(lblNumeroEstadio.Text);
                 Session.Add("Numeros", numeros);
 
-
-
                 JugadoresPagina1 = 3;
                 Session.Add("Pagina1", JugadoresPagina1);
 
@@ -65,6 +64,7 @@ namespace TPCuatrimestral_Album
                 Session.Add("Pagina2", JugadoresPagina2);
 
                 Page.DataBind();
+                CargarFiguritasJugadores();
             }
             else
             {
@@ -113,6 +113,8 @@ namespace TPCuatrimestral_Album
                 JugadoresPagina2 = int.Parse(Session["Pagina2"].ToString());
                 JugadoresPagina2 -= 13;
                 Session["Pagina2"] = JugadoresPagina2;
+
+                CargarFiguritasJugadores();
             }
         }
 
@@ -141,7 +143,25 @@ namespace TPCuatrimestral_Album
                 JugadoresPagina2 = int.Parse(Session["Pagina2"].ToString());
                 JugadoresPagina2 += 13;
                 Session["Pagina2"] = JugadoresPagina2;
+
+                CargarFiguritasJugadores();
             }
+        }
+
+        public void CargarFiguritasJugadores()
+        {
+            int inicio = Int32.Parse(lblNumeroEscudo.Text.ToString());
+            int fin = JugadoresPagina2 + 8;
+            repeaterJugadores.DataSource = Figuritas.Where(f => !f.Pegada && f.Ubicacion >= inicio && f.Ubicacion <= fin);
+            repeaterJugadores.DataBind();
+        }
+
+        protected void btnPegar_Click(object sender, EventArgs e)
+        {
+            FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
+            string ubicacion = ((Button)sender).CommandArgument;
+            figuritaNegocio.pegar(Int32.Parse(ubicacion));
+            Response.Redirect("album.aspx", false);
         }
     }
 }
