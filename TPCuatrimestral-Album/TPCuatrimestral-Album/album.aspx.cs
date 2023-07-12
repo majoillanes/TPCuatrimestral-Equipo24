@@ -65,6 +65,8 @@ namespace TPCuatrimestral_Album
 
                 Page.DataBind();
                 CargarFiguritasJugadores();
+                CargarFiguritasEquipos();
+                CargarFiguritasEstadios();
             }
             else
             {
@@ -115,6 +117,8 @@ namespace TPCuatrimestral_Album
                 Session["Pagina2"] = JugadoresPagina2;
 
                 CargarFiguritasJugadores();
+                CargarFiguritasEquipos();
+                CargarFiguritasEstadios();
             }
         }
 
@@ -145,6 +149,8 @@ namespace TPCuatrimestral_Album
                 Session["Pagina2"] = JugadoresPagina2;
 
                 CargarFiguritasJugadores();
+                CargarFiguritasEquipos();
+                CargarFiguritasEstadios();
             }
         }
 
@@ -154,6 +160,22 @@ namespace TPCuatrimestral_Album
             int fin = JugadoresPagina2 + 8;
             repeaterJugadores.DataSource = Figuritas.Where(f => !f.Pegada && f.Ubicacion >= inicio && f.Ubicacion <= fin);
             repeaterJugadores.DataBind();
+        }
+
+        public void CargarFiguritasEquipos()
+        {
+            int inicio = Int32.Parse(lblNumeroEscudo.Text.ToString());
+            int fin = JugadoresPagina2 + 8;
+            repeaterEquipos.DataSource = FiguritasEquipos.Where(f => !f.Pegada && f.Ubicacion >= inicio && f.Ubicacion <= fin);
+            repeaterEquipos.DataBind();
+        }
+
+        public void CargarFiguritasEstadios()
+        {
+            int inicio = Int32.Parse(lblNumeroEscudo.Text.ToString());
+            int fin = JugadoresPagina2 + 8;
+            repeaterEstadios.DataSource = FiguritasEstadios.Where(f => !f.Pegada && f.Ubicacion >= inicio && f.Ubicacion <= fin);
+            repeaterEstadios.DataBind();
         }
 
         protected void btnPegar_Click(object sender, EventArgs e)

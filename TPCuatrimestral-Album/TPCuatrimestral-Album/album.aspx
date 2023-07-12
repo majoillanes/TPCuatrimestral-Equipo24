@@ -26,7 +26,7 @@
                                             string numeroEquipo = lblNumeroEscudo.Text.ToString();
                                             if (FiguritasEquipos != null)
                                                 FiguritaEquipo = FiguritasEquipos.Find(x => x.Ubicacion.ToString().Equals(numeroEquipo));
-                                            if (FiguritaEquipo != null)
+                                            if (FiguritaEquipo != null && FiguritaEquipo.Pegada)
                                             {%>
                                         <div class="imagen">
                                         </div>
@@ -43,24 +43,6 @@
                                             </div>
                                         </div>
                                         <%} %>
-
-                                        <%else
-                                            {
-                                                // Código si no se encuentra la figurita
-                                            }
-                                        %>
-                                        <%--<div class="imagen-escudo">
-                                        </div>
-                                        <div class="info-escudo d-flex flex-column">
-                                            <div class="nombre-escudo d-flex justify-content-center">
-                                                <p><b>River Plate</b></p>
-                                            </div>
-                                            <div class="props">
-                                                <ul class="d-flex flex-row">
-                                                    <li class="mt-2">El millonario</li>
-                                                </ul>
-                                            </div>
-                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="borde-estadio d-flex justify-content-center align-self-center align-items-center">
@@ -72,7 +54,7 @@
                                             string numeroEstadio = lblNumeroEstadio.Text.ToString();
                                             if (FiguritasEstadios != null)
                                                 FiguritaEstadio = FiguritasEstadios.Find(x => x.Ubicacion.ToString().Equals(numeroEstadio));
-                                            if (FiguritaEstadio != null)
+                                            if (FiguritaEstadio != null && FiguritaEstadio.Pegada)
                                             {%>
                                         <div class="imagen">
                                         </div>
@@ -254,6 +236,55 @@
                                             <li><%# Eval("Jugador.Equipo.Nombre") %></li>
                                             <li><%# Eval("Jugador.Nacionalidad.Gentilicio") %></li>
                                             <li><%# Eval("Ubicacion") %></li>
+                                            <asp:Button ID="btnPegar" runat="server" Text="Pegar" OnClick="btnPegar_Click" CommandArgument='<%# Eval("Ubicacion") %>' CommandName="FiguritaUbicacion" AutoPostBack="false"  PostBack="false"/>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+             <asp:Repeater ID="repeaterEquipos" runat="server">
+                <ItemTemplate>
+                    <div class="container d-flex justify-content-center mt-2">
+                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
+                            <div class="figurita-figurita d-flex flex-column">
+                                <div class="imagen-figurita" style="background-image:url('<%# Eval("Equipo.Imagen") %>')"></div>
+                                <div class="info-figurita d-flex flex-column">
+                                    <div class="nombre-figurita d-flex justify-content-center">
+                                        <p><b><%# Eval("Equipo.Nombre") %></b></p>
+                                    </div>
+                                    <div class="props-figurita">
+                                        <ul>
+                                            <li><%# Eval("Equipo.Alias") %></li>
+                                            <li><%# Eval("Equipo.Ciudad") %></li>
+                                            <li><%# Eval("Equipo.Fundacion") %></li>
+                                            <asp:Button ID="btnPegar" runat="server" Text="Pegar" OnClick="btnPegar_Click" CommandArgument='<%# Eval("Ubicacion") %>' CommandName="FiguritaUbicacion" AutoPostBack="false"  PostBack="false"/>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+             <asp:Repeater ID="repeaterEstadios" runat="server">
+                <ItemTemplate>
+                    <div class="container d-flex justify-content-center mt-2">
+                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
+                            <div class="figurita-figurita d-flex flex-column">
+                                <div class="imagen-figurita" style="background-image:url('<%# Eval("Estadio.Imagen") %>')"></div>
+                                <div class="info-figurita d-flex flex-column">
+                                    <div class="nombre-figurita d-flex justify-content-center">
+                                        <p><b><%# Eval("Estadio.Nombre") %></b></p>
+                                    </div>
+                                    <div class="props-figurita">
+                                        <ul>
+                                            <li><%# Eval("Estadio.Alias") %></li>
+                                            <li><%# Eval("Estadio.Capacidad") %></li>
+                                            <li><%# Eval("Estadio.Barrio") %></li>
+                                            <li><%# Eval("Estadio.Calle") %></li>
                                             <asp:Button ID="btnPegar" runat="server" Text="Pegar" OnClick="btnPegar_Click" CommandArgument='<%# Eval("Ubicacion") %>' CommandName="FiguritaUbicacion" AutoPostBack="false"  PostBack="false"/>
                                         </ul>
                                     </div>
