@@ -54,7 +54,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"INSERT INTO Figuritas_Jugadores VALUES ({figuritaJugador.IDFigurita}, {figuritaJugador.Jugador.IDJugador}, {figuritaJugador.TipoDeFigurita.Id}); Update Figuritas SET Ubicacion ={figuritaJugador.Ubicacion} WHERE IDFigurita = {figuritaJugador.IDFigurita} ; insert into Usuarios_X_Figuritas values ({usuario.Id},{figuritaJugador.IDFigurita})");
+                datos.setearConsulta($"INSERT INTO Figuritas_Jugadores VALUES ({figuritaJugador.IDFigurita}, {figuritaJugador.Jugador.IDJugador}); Update Figuritas SET Ubicacion ={figuritaJugador.Ubicacion} WHERE IDFigurita = {figuritaJugador.IDFigurita} ; insert into Usuarios_X_Figuritas values ({usuario.Id},{figuritaJugador.IDFigurita})");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

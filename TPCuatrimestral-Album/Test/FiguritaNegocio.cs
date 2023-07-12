@@ -56,7 +56,7 @@ namespace Test
                     figurita.IDFigurita = (int)accesoDatos.Lector["IDFigurita"];
                     figurita.TipoDeFigurita = new TipoDeFigurita();
                     figurita.TipoDeFigurita.Id = (byte)accesoDatos.Lector["Tipo"];
-                    figurita.Ubicacion = (Int16)accesoDatos.Lector["Ubicacion"];
+                    figurita.Ubicacion = accesoDatos.Lector["Ubicacion"] is DBNull ? (Int16)0 : (Int16)accesoDatos.Lector["Ubicacion"];
                     figurita.Pegada = (bool)accesoDatos.Lector["Pegada"];
                     figurita.Activo = (bool)accesoDatos.Lector["Activo"];
 
@@ -80,6 +80,25 @@ namespace Test
             try
             {
                 accesoDatos.setearConsulta($"INSERT INTO Figuritas (Tipo) VALUES ({figurita.TipoDeFigurita.Id})");
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void ActualizarUbicacion(Figurita figurita)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta($"Update Figuritas set ubicacion = {figurita.Ubicacion} WHERE IDFigurita = {figurita.IDFigurita}");
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)

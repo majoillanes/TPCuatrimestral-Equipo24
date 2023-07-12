@@ -31,6 +31,7 @@ namespace Test
                 figuritaJugador.TipoDeFigurita = new TipoDeFigurita();
                 figuritaJugador.TipoDeFigurita.Id = 3;
                 figuritaJugador.Ubicacion = (Int16)(figuritaJugador.Jugador.IDJugador + 2 * jugadorNegocio.listar(figuritaJugador.Jugador.IDJugador).Equipo.ID);
+                figuritaNegocio.ActualizarUbicacion(figuritaJugador);
                 //listaFiguritas.Add(figuritaJugador);
                 figuritaJugadorNegocio.Agregar(figuritaJugador, usuario);
             }
@@ -48,7 +49,7 @@ namespace Test
             List<Figurita> figuritas = new List<Figurita>();
             try
             {
-                datos.setearConsulta("SELECT TOP 5 ID, IDFigurita, IDJugador, Tipo FROM Figuritas_Jugadores ORDER BY IDFigurita DESC");
+                datos.setearConsulta("SELECT TOP 5 ID, IDFigurita, IDJugador FROM Figuritas_Jugadores ORDER BY IDFigurita DESC");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -59,7 +60,7 @@ namespace Test
                     figuritaJugador.Jugador.IDJugador = (int)datos.Lector["IDJugador"];
                     figuritaJugador.Jugador = jugadorNegocio.listar(figuritaJugador.Jugador.IDJugador);
                     figuritaJugador.TipoDeFigurita = new TipoDeFigurita();
-                    figuritaJugador.TipoDeFigurita.Id = (byte)datos.Lector["Tipo"];
+                    //figuritaJugador.TipoDeFigurita.Id = (byte)datos.Lector["Tipo"];
                     figuritas.Add(figuritaJugador);
                 }
                 return figuritas;
