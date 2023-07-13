@@ -14,6 +14,10 @@ namespace TPCuatrimestral_Album
         public bool Mostrar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnAbrir.Enabled = false;
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            if (usuarioNegocio.consultarUltimoPaquete((Usuario)Session["usuario"]).Date < DateTime.Now.Date)
+                btnAbrir.Enabled = true;
             //PaqueteNegocio paqueteNegocio = new PaqueteNegocio();
             //if (!IsPostBack) Mostrar = false;
             //else
@@ -34,11 +38,14 @@ namespace TPCuatrimestral_Album
         {
             Mostrar = true;
             //Session.Add("M", Mostrar);
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario usuario = (Usuario)Session["usuario"];
             PaqueteNegocio paqueteNegocio = new PaqueteNegocio();
             paqueteNegocio.GenerarFiguritas(usuario);
             repeaterJugadores.DataSource = paqueteNegocio.MasRecientes();
             repeaterJugadores.DataBind();
+            usuarioNegocio.actualizarFechaPaquete(usuario);
+            btnAbrir.Enabled=false;
         }
     }
 }

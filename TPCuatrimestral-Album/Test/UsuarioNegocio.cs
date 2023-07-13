@@ -53,5 +53,48 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+
+        public DateTime consultarUltimoPaquete(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            DateTime ultimoPaquete = new DateTime();
+            try
+            {
+                datos.setearConsulta($"SELECT ISNULL(UltimoPaquete, '0001-01-01') AS UltimoPaquete FROM Usuarios WHERE ID = {usuario.Id}");
+
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    ultimoPaquete = (DateTime)datos.Lector["UltimoPaquete"];
+                }
+                return ultimoPaquete;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void actualizarFechaPaquete(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"update Usuarios set UltimoPaquete = GETDATE() WHERE ID = {usuario.Id}");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

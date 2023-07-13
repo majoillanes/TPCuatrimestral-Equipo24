@@ -14,6 +14,7 @@ namespace dominio2
         public string Email { get; set; }
         public string Clave { get; set; }
         public decimal Monedas { get; set; }
+        public DateTime UltimoPaqute { get; set; }
         public Nivel Nivel  { get; set; }
         public List<Album> Albumes { get; set; }
         public List<Figurita> Figuritas { get; set; }

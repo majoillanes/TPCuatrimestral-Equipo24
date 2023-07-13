@@ -1,6 +1,6 @@
-﻿CREATE DATABASE ALBUM_DBPROD
+﻿CREATE DATABASE ALBUM_DBPROD54
 GO
-USE ALBUM_DBPROD
+USE ALBUM_DBPROD54
 GO
 CREATE TABLE Niveles (
 ID TINYINT PRIMARY KEY,
@@ -18,6 +18,7 @@ Nombre VARCHAR(50) NOT NULL,
 Apellido VARCHAR(50) NOT NULL,
 Email VARCHAR(100) UNIQUE,
 Clave VARCHAR(100) NOT NULL,
+UltimoPaquete Date null,
 Monedas INT DEFAULT 0,
 Nivel TINYINT FOREIGN KEY REFERENCES Niveles(ID) 
 )
@@ -195,26 +196,11 @@ VALUES
 ('Tigre', 'El Matador de Victoria', 'Victoria', '1902', (SELECT ID FROM Estadios WHERE Alias LIKE '%Victoria%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Escudo_del_Club_Atl%C3%A9tico_Tigre.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Tigre.svg.png'),
 ('Unión', 'El Tatengue', 'Santa Fe', '1907', (SELECT ID FROM Estadios WHERE Nombre LIKE '%15 de Abril%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg/1788px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg.png'),
 ('Velez Sarsfield', 'El Fortín', 'Ciudad Autónoma de Buenos Aires', '1910', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Amalfitani%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png')
---GO
---INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen,Activo)
---VALUES ('Franco', 'Armani', '1986-10-16', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'ARQ', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png',1 ),
---('Jonatan', 'Maidana', '1985-07-29', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/4-04-maidana-imagengrillapaginaplantel.png',1 ),
---('Ignacio', 'Fernandez', '1990-01-12', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-12/1254-nacho_270x360.png',1 ),
---('Lucas', 'Beltrán', '2001-03-29', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/850-18-beltran-imagengrillapaginaplantel.png',1 )
-
-
---insert into Albumes
---values ('Liga Profesional Argentina 2023')
-
 
 insert into Tipos (Nombre, Descripcion)
 values ('Legendaria', ''),
 ('Especial', ''),
 ('Estándar', '')
-
-
---alter table Figuritas 
---add IDJugador int foreign key references Jugadores (ID)
 
 insert into Jugadores values
 -- ('','', CONVERT(DATE, '//19', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'','', 1), 
@@ -683,58 +669,5 @@ values
 (2,'USER')
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
-INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',1000,2)
+INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',null,1000,2)
 
---select * from Figuritas
-
-----select * FROM Figuritas
-
---select * from Figuritas_Jugadores
-
-----select * from Jugadores
-
-----select * FROM Usuarios_X_Figuritas
-
-----select * FROM Jugadores WHERE ID = 51
-
---select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF 
---inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
---Inner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita
---Inner join Jugadores j on fj.IDJugador = j.ID 
---Inner join Posiciones p on p.Codigo = j.Posicion
---Inner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad
---inner join Equipos e on e.ID = j.Equipo
---WHERE UxF.IDUsuario = 1
-
-----select * FROM ESTAdios order by nombre  desc
-
-
-----select f.Pegada, f.Ubicacion, E.Nombre, E.Alias,E.Ciudad, E.Fundacion, E.Imagen
-----from Usuarios_X_Figuritas UxF
-----Inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
-----Inner join Figuritas_Equipos fe ON f.IDFigurita=fe.IDFigurita
-----Inner join Equipos E on fe.IDEquipo = E.ID 
-----WHERE UxF.IDUsuario = 1
-
---select * From Figuritas
---update Figuritas set Ubicacion = 2 where IDFigurita = 16
---insert into Figuritas values (3,1,0,1)
-
-----select * from Figuritas_Estadios
---insert into Figuritas_Equipos values (17,1)
-----select * from Usuarios_X_Figuritas
---insert into Usuarios_X_Figuritas values (1,17)
-
-----select * From Usuarios
-----select * From Niveles
---insert into Usuarios values ('Matias','Admin','msdasdasAdmin@mail.com','password',0,1 )
-
---select u.ID,u.Nombre, n.Id as NID, n.Nombre as NombreNivel from Usuarios U 
---Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = 'matiasAdmin@mail.com'
-
-
---select * from Usuarios
-
-
---delete Usuarios where ID = 2
---drop database ALBUM_DBPROD
