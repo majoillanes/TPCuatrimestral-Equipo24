@@ -12,8 +12,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="CSS/Estilos.css" rel="stylesheet" />
-    <div class="navBar">
-     <nav class="navbar navbar-expand-lg">
+    
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="navBar">
+         <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="menu.aspx">
         <img class="icon" src="Images/LogoLiga.png" alt="Banner">
     </a>
@@ -22,6 +28,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            <%if (dominio2.Usuario.EsUsuario((dominio2.Usuario)Session["usuario"]))
+                {  %>
             <li class="nav-item active">
                 <a class="nav-link" href="menu.aspx">Inicio</a>
             </li>
@@ -49,24 +57,26 @@
              <li class="nav-item">
                 <a class="nav-link" href="estadisticas.aspx">Estadísticas</a>
             </li>
+            <%} %>
+            <%if (dominio2.Usuario.EsAdmin((dominio2.Usuario)Session["usuario"]))
+                {  %>
              <li class="nav-item">
                 <a class="nav-link" href="administracion.aspx">Administración</a>
             </li>
+            <%} %>
              <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
+                 <div>
+                 <asp:Button ID="btnSalir" CssClass="btn btn-light" runat="server" Text="Salir" OnClick="btnSalir_Click"/> 
+                 </div>
             </li>
         </ul>
     </div>
 </nav>
         </div>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="principal">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
+        </div> 
     </form>
 
 </body>

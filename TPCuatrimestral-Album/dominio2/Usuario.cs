@@ -31,5 +31,9 @@ namespace dominio2
         {
             return (usuario != null && usuario.Nivel.Nombre.Equals("USER"));
         }
+        public static bool SesionActiva(Usuario usuario)
+        {
+            return (usuario != null);
+        }
     }
 }
