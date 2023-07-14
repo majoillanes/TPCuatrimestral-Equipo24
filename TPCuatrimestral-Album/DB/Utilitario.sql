@@ -18,7 +18,6 @@ Nombre VARCHAR(50) NOT NULL,
 Apellido VARCHAR(50) NOT NULL,
 Email VARCHAR(100) UNIQUE,
 Clave VARCHAR(100) NOT NULL,
-UltimoPaquete Date null,
 Monedas INT DEFAULT 0,
 Nivel TINYINT FOREIGN KEY REFERENCES Niveles(ID) 
 )
@@ -200,7 +199,22 @@ VALUES
 ('Tigre', 'El Matador de Victoria', 'Victoria', '1902', (SELECT ID FROM Estadios WHERE Alias LIKE '%Victoria%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Escudo_del_Club_Atl%C3%A9tico_Tigre.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_Tigre.svg.png'),
 ('Unión', 'El Tatengue', 'Santa Fe', '1907', (SELECT ID FROM Estadios WHERE Nombre LIKE '%15 de Abril%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg/1788px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg.png'),
 ('Velez Sarsfield', 'El Fortín', 'Ciudad Autónoma de Buenos Aires', '1910', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Amalfitani%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png')
+--GO
+--INSERT INTO Jugadores (Nombres, Apellidos, FechaDeNacimiento, Nacionalidad, Equipo, Posicion, Imagen,Activo)
+--VALUES ('Franco', 'Armani', '1986-10-16', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'ARQ', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png',1 ),
+--('Jonatan', 'Maidana', '1985-07-29', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEF', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/4-04-maidana-imagengrillapaginaplantel.png',1 ),
+--('Ignacio', 'Fernandez', '1990-01-12', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'MED', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-12/1254-nacho_270x360.png',1 ),
+--('Lucas', 'Beltrán', '2001-03-29', 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%River%'), 'DEL', 'https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/850-18-beltran-imagengrillapaginaplantel.png',1 )
 
+
+--insert into Albumes
+--values ('Liga Profesional Argentina 2023')
+
+
+
+
+--alter table Figuritas 
+--add IDJugador int foreign key references Jugadores (ID)
 
 insert into Jugadores values
 -- ('','', CONVERT(DATE, '//19', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'','', 1), 
@@ -669,10 +683,6 @@ values
 (2,'USER')
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
-<<<<<<< Updated upstream
-INSERT INTO Usuarios values ('admin','admin', 'admin@mail.com', 'password',null,1000,1)
-select * from Usuarios
-=======
 INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',1000,2)
 
 --select * from Figuritas
@@ -727,4 +737,3 @@ INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',100
 
 --delete Usuarios where ID = 2
 --drop database ALBUM_DBPROD
->>>>>>> Stashed changes

@@ -43,12 +43,11 @@ namespace TPCuatrimestral_Album
             Usuario usuario = (Usuario)Session["usuario"];
             PaqueteNegocio paqueteNegocio = new PaqueteNegocio();
             paqueteNegocio.GenerarFiguritas(usuario);
-<<<<<<< Updated upstream
-            repeaterJugadores.DataSource = paqueteNegocio.MasRecientes();
-            repeaterJugadores.DataBind();
+//<<<<<<< Updated upstream
+//            repeaterJugadores.DataSource = paqueteNegocio.MasRecientes();
+//            repeaterJugadores.DataBind();
             usuarioNegocio.actualizarFechaPaquete(usuario);
             btnAbrir.Enabled=false;
-=======
             //repeaterFiguritas.DataSource = paqueteNegocio.MasRecientes();
             //repeaterFiguritas.DataBind();
             figuritas = paqueteNegocio.MasRecientes();
@@ -127,7 +126,6 @@ namespace TPCuatrimestral_Album
             {
                 accesoDatos.cerrarConexion();
             }
->>>>>>> Stashed changes
         }
     }
 }
