@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Test;
 
 namespace TPCuatrimestral_Album
 {
@@ -16,44 +17,17 @@ namespace TPCuatrimestral_Album
 
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
-          
-            string remitente = txtNombre.Text;
-            string asunto = txtAsunto.Text;
-            string mensaje = txtMensaje.Text;
-
-           
-            if (string.IsNullOrEmpty(remitente) || string.IsNullOrEmpty(asunto) || string.IsNullOrEmpty(mensaje))
-            {
-               
-                lblMensaje.Text = "Por favor complete todos los campos obligatorios.";
-                lblMensaje.CssClass = "error";
-                return;
-            }
-
+            EmailService emailService = new EmailService();
+            emailService.armarCorreo(txtCorreo.Text, txtAsunto.Text, txtMensaje.Text);
             try
             {
-               
-                EmailHelp emailHelper = new EmailHelp();
-
-               
-                emailHelper.enviarEmail(remitente, asunto, mensaje);
-
-               
-                lblMensaje.Text = "El correo electrónico se envió correctamente.";
-                lblMensaje.CssClass = "exito";
+                emailService.enviarEmail();
             }
             catch (Exception ex)
             {
-                
-                lblMensaje.Text = "Ocurrió un error al enviar el correo electrónico: " + ex.Message;
-                lblMensaje.CssClass = "error";
+                Session.Add("error", ex);
             }
-
         }
 
-        private void enviarEmail(string remitente, string asunto, string mensaje)
-        {
-            //throw new NotImplementedException();
-        }
     }
 }

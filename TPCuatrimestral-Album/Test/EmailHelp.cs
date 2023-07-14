@@ -24,7 +24,7 @@ namespace Test
             server.Host = "smtp-mail.outlook.com";
         }
 
-        public void enviarEmail(string remitente, string asunto, string mensaje)
+        public void armarEmail(string remitente, string asunto, string mensaje)
         {
             email = new MailMessage();
             email.From = new MailAddress(remitente);
@@ -33,7 +33,7 @@ namespace Test
             email.IsBodyHtml = true;
             email.Body = mensaje;
 
-            enviarEmail();
+            //enviarEmail();
         }
 
         public void enviarEmail()
