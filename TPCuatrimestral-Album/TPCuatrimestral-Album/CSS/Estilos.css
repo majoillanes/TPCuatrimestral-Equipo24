@@ -276,6 +276,7 @@
 
 .imagen {
     height: 55%;
+    width: 100%;
     background-image: url("https://www.cariverplate.com.ar/imagenes/jugadores/2022-08/1638-01-armani-imagengrillapaginaplantel.png");
     background-size: cover;
 }
@@ -283,6 +284,7 @@
 .info {
     background: linear-gradient(rgb(251, 226, 226), rgb(229, 7, 26), rgb(251,226,226));
     height: 45%;
+    width:100%;
 }
 
 .nombre {

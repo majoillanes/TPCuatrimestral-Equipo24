@@ -18,8 +18,9 @@ Nombre VARCHAR(50) NOT NULL,
 Apellido VARCHAR(50) NOT NULL,
 Email VARCHAR(100) UNIQUE,
 Clave VARCHAR(100) NOT NULL,
+UltimoPaquete Date null,
 Monedas INT DEFAULT 0,
-Nivel TINYINT FOREIGN KEY REFERENCES Niveles(ID) 
+Nivel TINYINT FOREIGN KEY REFERENCES Niveles(ID)
 )
 --GO
 --CREATE TABLE Usuarios_X_Albumes(
@@ -683,7 +684,8 @@ values
 (2,'USER')
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
-INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',1000,2)
+INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',null,1000,2)
+INSERT INTO Usuarios values ('Ad','Min', 'admin@mail.com', 'admin',null,1000,1)
 
 --select * from Figuritas
 

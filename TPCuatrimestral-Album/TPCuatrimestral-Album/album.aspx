@@ -28,7 +28,7 @@
                                                 FiguritaEquipo = FiguritasEquipos.Find(x => x.Ubicacion.ToString().Equals(numeroEquipo));
                                             if (FiguritaEquipo != null && FiguritaEquipo.Pegada)
                                             {%>
-                                        <div class="imagen">
+                                        <div class="imagen" style="background-image:url('<%=FiguritaEquipo.Equipo.Imagen%>')">
                                         </div>
                                         <div class="info d-flex flex-column">
                                             <div class="nombre d-flex justify-content-center">
@@ -56,7 +56,7 @@
                                                 FiguritaEstadio = FiguritasEstadios.Find(x => x.Ubicacion.ToString().Equals(numeroEstadio));
                                             if (FiguritaEstadio != null && FiguritaEstadio.Pegada)
                                             {%>
-                                        <div class="imagen">
+                                        <div class="imagen" style="background-image:url('<%=FiguritaEstadio.Estadio.Imagen%>')">
                                         </div>
                                         <div class="info d-flex flex-column">
                                             <div class="nombre d-flex justify-content-center">
@@ -98,8 +98,10 @@
                                             if (Figuritas != null)
                                                 Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina1);
                                             if (Figurita != null && Figurita.Pegada)
-                                            {%>
-                                        <div class="imagen">
+                                            {
+
+                                                %>
+                                        <div class="imagen" style="background-image:url('<%= Figurita.Jugador.Imagen %>')">
                                         </div>
                                         <div class="info d-flex flex-column">
                                             <div class="nombre d-flex justify-content-center">
@@ -161,7 +163,7 @@
                                                     Figurita = Figuritas.Find(x => x.Ubicacion == ubicacionJugadorPagina2);
                                                 if (Figurita != null && Figurita.Pegada)
                                                 {%>
-                                            <div class="imagen">
+                                            <div class="imagen" style="background-image:url('<%= Figurita.Jugador.Imagen%>')">
                                             </div>
                                             <div class="info d-flex flex-column">
                                                 <div class="nombre d-flex justify-content-center">
