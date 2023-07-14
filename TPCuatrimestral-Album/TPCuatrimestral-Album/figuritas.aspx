@@ -106,6 +106,7 @@
                     <div class="container d-flex justify-content-center mt-2">
                         <div class="borde-figurita container d-flex justify-content-center align-items-center">
                             <div class="figurita-figurita d-flex flex-column">
+                                <div class="imagen-figurita" style="background-image: url('<%# Eval("Equipo.Imagen") %>')"></div>
                                 <div class="info-figurita d-flex flex-column">
                                     <div class="nombre-figurita d-flex justify-content-center">
                                         <p><b><%# Eval("Equipo.Nombre") %></b></p>
@@ -128,6 +129,7 @@
                     <div class="container d-flex justify-content-center mt-2">
                         <div class="borde-figurita container d-flex justify-content-center align-items-center">
                             <div class="figurita-figurita d-flex flex-column">
+                                <div class="imagen-figurita" style="background-image: url('<%# Eval("Estadio.Imagen") %>')"></div>
                                 <div class="info-figurita d-flex flex-column">
                                     <div class="nombre-figurita d-flex justify-content-center">
                                         <p><b><%# Eval("Estadio.Nombre") %></b></p>
