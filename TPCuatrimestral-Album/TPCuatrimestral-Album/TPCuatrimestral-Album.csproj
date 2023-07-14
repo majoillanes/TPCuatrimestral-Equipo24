@@ -70,6 +70,7 @@
     <Content Include="CSS\Estilos.css" />
     <Content Include="album.aspx" />
     <Content Include="bonosRecompensas.aspx" />
+    <Content Include="EmailHelp.aspx" />
     <Content Include="equipoAdmin.aspx" />
     <Content Include="error.aspx" />
     <Content Include="estadisticas.aspx" />
@@ -105,6 +106,13 @@
     </Compile>
     <Compile Include="bonosRecompensas.aspx.designer.cs">
       <DependentUpon>bonosRecompensas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmailHelp.aspx.cs">
+      <DependentUpon>EmailHelp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmailHelp.aspx.designer.cs">
+      <DependentUpon>EmailHelp.aspx</DependentUpon>
     </Compile>
     <Compile Include="equipoAdmin.aspx.cs">
       <DependentUpon>equipoAdmin.aspx</DependentUpon>

@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="EmailHelp.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="EquipoNegocio.cs" />
     <Compile Include="EstadioNegocio.cs" />

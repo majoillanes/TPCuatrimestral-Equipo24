@@ -23,14 +23,19 @@
             <img class="icons" src="Images/perfil.png" alt="Perfil">
         </li>
         <div class="descrip">
-            <span class="icon-descrip"><%= Usuario.Nombre %></span> <!--Deberíamos traer de la base-->
-            <span class="icon-descrip"><%= Usuario.Email %></span> <!--Deberíamos traer de la base-->
+            <span class="icon-descrip"><%= Usuario.Nombre %></span> 
+            <span class="icon-descrip"><%= Usuario.Email %></span> 
             </div>
         <li>
+            <a id="linkToCopy" href="inicio.aspx" onClick="CopyLinkToClipboard()" class="icons">
             <img class="icons" src="Images/amigos.png" alt="Invitar amigos">
+                </a>
+            <a id="linkToCopy2" href="inicio.aspx" onClick="CopyLinkToClipboard()" class="icons">
             <span class="icon-description">Invitar amigos</span>
-            <!--Hacemos un enlace a redes o que directamente copie enlace a la app?-->
+                </a>
+           
         </li>
+
         <li>
             <img class="icons" src="Images/novedades.png" alt="Novedades">
             <span class="icon-description">Novedades</span>
@@ -42,9 +47,13 @@
             <!--Lo dejo aunque no lo lleguemos a desarrollar pero queda lindo-->
         </li>
         <li>
-            <img class="icons" src="Images/help.png" alt="Help">
-            <span class="icon-description">Help</span>
-            <!--Redireccionamos al form de contacto?-->
+            <a href="EmailHelp.aspx" class="icons">
+            <img class="icons" src="Images/help.png" alt="Help" >
+                </a>
+            <a href="EmailHelp.aspx"> 
+            <span class="icon-description" >Help</span>
+                </a>
+ 
         </li>
     </ul>
 
@@ -52,4 +61,16 @@
     <div class="container d-flex justify-content-center mt-4">
         <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
     </div>
+<script>
+    function CopyLinkToClipboard() {
+        var link = document.getElementById("linkToCopy");
+        var tempInput = document.createElement("input");
+        tempInput.setAttribute("value", link.href);
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("¡Enlace copiado al portapapeles!");
+    }
+</script>
 </asp:Content>
