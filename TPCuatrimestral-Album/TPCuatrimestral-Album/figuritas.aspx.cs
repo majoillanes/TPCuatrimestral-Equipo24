@@ -19,6 +19,14 @@ namespace TPCuatrimestral_Album
             Usuario usuario = (Usuario)Session["usuario"];
             repeaterJugadores.DataSource = figuritaNegocio.listar(usuario.Id);
             repeaterJugadores.DataBind();
+
+            FiguritaEquipoNegocio figuritaEquipoNegocio = new FiguritaEquipoNegocio();
+            repeaterEquipos.DataSource = figuritaEquipoNegocio.listar(usuario.Id);
+            repeaterEquipos.DataBind();
+
+            FiguritaEstadioNegocio figuritaEstadioNegocio = new FiguritaEstadioNegocio();
+            repeaterEstadios.DataSource = figuritaEstadioNegocio.listar(usuario.Id);
+            repeaterEstadios.DataBind();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

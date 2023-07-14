@@ -1,6 +1,6 @@
-﻿CREATE DATABASE ALBUM_DBPROD54
+﻿CREATE DATABASE ALBUM_DBPROD
 GO
-USE ALBUM_DBPROD54
+USE ALBUM_DBPROD
 GO
 CREATE TABLE Niveles (
 ID TINYINT PRIMARY KEY,
@@ -657,16 +657,10 @@ INSERT INTO Jugadores VALUES
 ('Lucas', 'Janson', CONVERT(DATE, '18/08/1994', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/ljanson23.jpg',2,1 ),
 ('Abiel', 'Osorio', CONVERT(DATE, '13/06/2002', 103), 'ARG', (SELECT ID FROM Equipos WHERE Nombre LIKE '%Velez%'), 'DEL', 'https://velez.com.ar/img/plantel/2023/aosorio23.jpg',3,1 )
 
---SELECT DISTINCT A.Id, A.Nombre, A.Codigo, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS
---Categoria, A.Precio, A.IdMarca, A.IdCategoria FROM ARTICULOS A LEFT JOIN MARCAS M ON M.ID = A.IdMarca
---LEFT JOIN CATEGORIAS C ON C.ID = A.IdCategoria
 
-
---select * from Niveles
 insert into Niveles 
 values
 (1,'ADMIN'),
 (2,'USER')
---idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
 INSERT INTO Usuarios values ('admin','admin', 'admin@mail.com', 'password',null,1000,1)
