@@ -82,7 +82,7 @@
                     <div class="container d-flex justify-content-center mt-2">
                         <div class="borde-figurita container d-flex justify-content-center align-items-center">
                             <div class="figurita-figurita d-flex flex-column">
-                                <div class="imagen-figurita" style="background-image:url('<%# Eval("Jugador.Imagen") %>')"></div>
+                                <div class="imagen-figurita" style="background-image: url('<%# Eval("Jugador.Imagen") %>')"></div>
                                 <div class="info-figurita d-flex flex-column">
                                     <div class="nombre-figurita d-flex justify-content-center">
                                         <p><b><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></b></p>
@@ -101,9 +101,55 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <div class="container d-flex justify-content-center mt-4">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
-            </div>
+            <asp:Repeater ID="repeaterEquipos" runat="server">
+                <ItemTemplate>
+                    <div class="container d-flex justify-content-center mt-2">
+                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
+                            <div class="figurita-figurita d-flex flex-column">
+                                <div class="info-figurita d-flex flex-column">
+                                    <div class="nombre-figurita d-flex justify-content-center">
+                                        <p><b><%# Eval("Equipo.Nombre") %></b></p>
+                                    </div>
+                                    <div class="props-figurita">
+                                        <ul>
+                                            <li><%# Eval("Equipo.Alias") %></li>
+                                            <li><%# Eval("Equipo.Ciudad") %></li>
+                                            <li><%# Eval("Equipo.Fundacion") %></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <asp:Repeater ID="repeaterEstadios" runat="server">
+                <ItemTemplate>
+                    <div class="container d-flex justify-content-center mt-2">
+                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
+                            <div class="figurita-figurita d-flex flex-column">
+                                <div class="info-figurita d-flex flex-column">
+                                    <div class="nombre-figurita d-flex justify-content-center">
+                                        <p><b><%# Eval("Estadio.Nombre") %></b></p>
+                                    </div>
+                                    <div class="props-figurita">
+                                        <ul>
+                                            <li><%# Eval("Estadio.Alias") %></li>
+                                            <li><%# Eval("Estadio.Capacidad") %></li>
+                                            <li><%# Eval("Estadio.Barrio") %></li>
+                                            <li><%# Eval("Estadio.Calle") %></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+
+        </div>
+        <div class="container d-flex justify-content-center mt-4">
+            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
         </div>
     </div>
 
