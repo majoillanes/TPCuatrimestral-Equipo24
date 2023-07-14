@@ -45,5 +45,98 @@ namespace Test
             }
 
         }
+        public void Agregar(FiguritaEstadio figuritaEstadio, Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"INSERT INTO Figuritas_Estadios VALUES ({figuritaEstadio.IDFigurita}, {figuritaEstadio.Estadio.ID}); Update Figuritas SET Ubicacion ={figuritaEstadio.Ubicacion} WHERE IDFigurita = {figuritaEstadio.IDFigurita} ; insert into Usuarios_X_Figuritas values ({usuario.Id},{figuritaEstadio.IDFigurita})");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public int ListarIDPorIDFigurita(int IDFigurita)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idFiguritaEstadio = new int();
+                accesoDatos.setearConsulta($"SELECT ID FROM Figuritas_Estadios WHERE IDFigurita = {IDFigurita}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idFiguritaEstadio = (int)accesoDatos.Lector["ID"];
+                }
+                return idFiguritaEstadio;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public int ListarIDEstadioPorID(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idEstadio = new int();
+                accesoDatos.setearConsulta($"SELECT IDEstadios FROM Figuritas_Estadios WHERE ID = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idEstadio = (Int16)accesoDatos.Lector["IDEstadios"];
+                }
+                return idEstadio;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public bool EsEstadio(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idEstadio = -1;
+                accesoDatos.setearConsulta($"SELECT IDEstadio FROM Figuritas_Estadios WHERE IDFigurita = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idEstadio = (int)accesoDatos.Lector["IDEstadio"];
+                }
+                if (idEstadio == -1)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

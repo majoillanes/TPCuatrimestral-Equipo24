@@ -231,5 +231,49 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+        public int RandomSegunTipo(int tipo)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            int num = new int(), rand, id = new int();
+            try
+            {
+                accesoDatos.setearConsulta($"SELECT COUNT(ID) AS Total FROM Jugadores WHERE Tipo = {tipo}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read()) 
+                {
+                    num = (int)accesoDatos.Lector["Total"];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            try
+            {
+                Random random = new Random();
+                rand = random.Next(1, num);
+                accesoDatos.setearConsulta($"SELECT TOP {rand} ID AS Seleccionado FROM Jugadores WHERE Tipo = {tipo} ORDER BY ID ASC");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    id = (int)accesoDatos.Lector["Seleccionado"];
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

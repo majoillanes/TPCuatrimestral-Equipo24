@@ -100,6 +100,36 @@ namespace Test
                 datos.cerrarConexion();
             }
         }
+        public Estadio listar(int ID)
+        {
+            Estadio estadio = new Estadio();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"SELECT ID, Nombre, Alias, Capacidad, Barrio, Calle, Imagen,Activo FROM Estadios WHERE ID ='{ID}'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    estadio.ID = (Int16)datos.Lector["ID"];
+                    estadio.Nombre = (string)datos.Lector["Nombre"];
+                    estadio.Alias = datos.Lector["Alias"] is DBNull ? "-" : (string)datos.Lector["Alias"];
+                    estadio.Capacidad = (string)datos.Lector["Capacidad"];
+                    estadio.Barrio = (string)datos.Lector["Barrio"];
+                    estadio.Calle = (string)datos.Lector["Calle"];
+                    estadio.Imagen = (string)datos.Lector["Imagen"];
+                    estadio.Activo = bool.Parse(datos.Lector["Activo"].ToString());
+                }
+                return estadio;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public Estadio listarddl(Int16 ID)
         {
             Estadio estadio = new Estadio();

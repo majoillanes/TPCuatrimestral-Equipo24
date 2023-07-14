@@ -43,5 +43,97 @@ namespace Test
             }
 
         }
+        public void Agregar(FiguritaEquipo figuritaEquipo, Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"INSERT INTO Figuritas_Equipos VALUES ({figuritaEquipo.IDFigurita}, {figuritaEquipo.Equipo.ID}); Update Figuritas SET Ubicacion ={figuritaEquipo.Ubicacion} WHERE IDFigurita = {figuritaEquipo.IDFigurita} ; insert into Usuarios_X_Figuritas values ({usuario.Id},{figuritaEquipo.IDFigurita})");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public int ListarIDPorIDFigurita(int IDFigurita)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idFiguritaEquipo = new int();
+                accesoDatos.setearConsulta($"SELECT ID FROM Figuritas_Equipos WHERE IDFigurita = {IDFigurita}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idFiguritaEquipo = (int)accesoDatos.Lector["ID"];
+                }
+                return idFiguritaEquipo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public bool EsEquipo(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idEquipo = -1;
+                accesoDatos.setearConsulta($"SELECT IDEquipo FROM Figuritas_Equipos WHERE IDFigurita = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idEquipo = (int)accesoDatos.Lector["IDEquipo"];
+                }
+                if (idEquipo == -1)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public int ListarIDEquipoPorID(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idEquipo = new int();
+                accesoDatos.setearConsulta($"SELECT IDEquipo FROM Figuritas_Equipos WHERE ID = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idEquipo = (Int16)accesoDatos.Lector["IDEquipo"];
+                }
+                return idEquipo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

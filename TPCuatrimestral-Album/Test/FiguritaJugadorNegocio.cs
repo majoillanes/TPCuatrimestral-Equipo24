@@ -106,6 +106,79 @@ namespace Test
 
         }
 
+        public int ListarIDPorIDFigurita(int IDFigurita)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idFiguritaJugador = new int();
+                accesoDatos.setearConsulta($"SELECT ID FROM Figuritas_Jugadores WHERE IDFigurita = {IDFigurita}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idFiguritaJugador = (int)accesoDatos.Lector["ID"];
+
+                }
+                return idFiguritaJugador;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public int ListarIDJugadorPorID(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idJugador = new int();
+                accesoDatos.setearConsulta($"SELECT IDJugador FROM Figuritas_Jugadores WHERE ID = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idJugador = (int)accesoDatos.Lector["IDJugador"];
+                }
+                return idJugador;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public int EsJugador(int ID)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                int idJugador = -1;
+                accesoDatos.setearConsulta($"SELECT ID FROM Figuritas_Jugadores WHERE IDFigurita = {ID}");
+                accesoDatos.ejecutarLectura();
+                while (accesoDatos.Lector.Read())
+                {
+                    idJugador = (int)accesoDatos.Lector["ID"];
+                }
+                return idJugador;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
         public List<FiguritaJugador> entre(int idUsuario, int inicio, int fin)
         {
             List<FiguritaJugador> figuritas = new List<FiguritaJugador>();

@@ -52,7 +52,7 @@ Capacidad VARCHAR(5) NOT NULL CHECK (Capacidad LIKE '%[0-9]%'),
 Barrio VARCHAR(50),
 Calle VARCHAR(150),
 Imagen VARCHAR(250),
-Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID),
+Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID) DEFAULT 3,
 Activo BIT DEFAULT 1
 )
 GO
@@ -64,7 +64,7 @@ Ciudad VARCHAR(80) NOT NULL,
 Fundacion VARCHAR(4) NOT NULL CHECK (Fundacion LIKE '%[0-9]%'),
 Estadio SMALLINT NOT NULL FOREIGN KEY REFERENCES Estadios (ID),
 Imagen VARCHAR(250),
-Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID),
+Tipo TINYINT FOREIGN KEY REFERENCES Tipos(ID) DEFAULT 2,
 Activo BIT DEFAULT 1
 )
 GO
@@ -128,6 +128,11 @@ INSERT INTO Nacionalidad(PAIS_NAC,GENTILICIO_NAC,ISO_NAC)VALUES('Paraguay','PARA
 INSERT INTO Nacionalidad(PAIS_NAC,GENTILICIO_NAC,ISO_NAC)VALUES('Perú','PERUANA','PER');
 INSERT INTO Nacionalidad(PAIS_NAC,GENTILICIO_NAC,ISO_NAC)VALUES('Uruguay','URUGUAYA','URY');
 
+insert into Tipos (Nombre, Descripcion)
+values ('Legendaria', ''),
+('Especial', ''),
+('Estándar', '')
+
 INSERT INTO Posiciones 
 VALUES
 ('ARQ','Arquero'),
@@ -135,37 +140,36 @@ VALUES
 ('MED','Mediocampista'),
 ('DEL','Delantero')
 
-
-INSERT INTO Estadios (Nombre, Alias, Capacidad, Barrio, Calle, Imagen)
+INSERT INTO Estadios (Nombre, Alias, Capacidad, Barrio, Calle, Imagen, Tipo)
 VALUES
-('Antonio Vespucio Liberti', 'Monumental', '83196', 'Nuñez', 'Av. Pres. Figueroa Alcorta 7597', 'https://image-service.onefootball.com/transform?w=280&h=210&dpr=2&image=https%3A%2F%2Fwp-images.onefootball.com%2Fwp-content%2Fuploads%2Fsites%2F12%2F2022%2F02%2FESTADIO-MONUMENTAL-DE-NU%25C3%2591EZ-1000x750.jpg'),
-('Alberto J. Armando', 'La Bombonera', '57200', 'La Boca', 'Brandsen 805', 'https://s1.eestatic.com/2023/02/08/deportes/futbol/internacional/739937044_230754838_1706x960.jpg'),
-('Presidente Perón', 'El Cilindro de Avellaneda', '51389', 'Avellaneda', 'Pasaje Mozart y Corbatta', 'https://fotos.perfil.com/2020/10/30/3110estadioracingdrone-1069268.jpg'),
-('José Amalfitani', NULL, '49747', 'Liniers', 'Av Juan B Justo 9200', 'https://velezsarsfield.com.ar/img/contenido/club/gr/estadio-02.jpg'),
-('Tomás Adolfo Ducó', 'El Palacio', '48314', 'Parque Patricios', 'Av. Amancio Alcorta 2570', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/cancha-huracan-parque-patricios3-740x486.png'),
-('Pedro Bidegain', 'El Nuevo Gasometro', '47964', 'Nueva Pompeya', 'Av. Perito Moreno 2145', 'https://www.infobae.com/new-resizer/7zpQJjqq9uXJ_eCTQNDW4PsLszo=/1200x628/filters:format(webp):quality(85)//s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/12/04155244/nuevo-gasometro-captura-1920-1024x575.jpg'),
-('Néstor Díaz Pérez', 'Ciudad de Lanús', '45319', 'Lanús', 'Calle Ramón Cabrero 2007', 'https://fotos.perfil.com/2020/11/12/1211estadiolanus-1075716.jpg'),
-('Ricardo Enrique Bochini', 'Libertadores de América', '42069', 'Avellaneda', 'Ricardo Enrique Bochini 751', 'https://cogelamochila.com/wp-content/uploads/2020/12/LDA.jpg'),
-('Marcelo Bielsa', 'El Coloso del Parque', '42000', 'Rosario', 'Av. Int. Morcillo 2501-2699', 'https://i.pinimg.com/736x/c2/3c/41/c23c41bd9ee722b0f5223351d92041f1.jpg'),
-('Dr. Lisandro de la Torre', 'Gigante de Arroyito', '41654', 'Rosario', 'Cordiviola 1100', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-gigante-arroyito-central1-1-640x480.jpg'),
-('Francisco Cabasés', 'La Boutique', '18000', 'Barrio Jardín', 'Avendaño y Valdivia', 'https://i.pinimg.com/originals/c7/c2/80/c7c280fb13edacbeecc0003fabd25693.jpg'),
-('Feliciano Gambarte', 'La Bodega', '17000', 'Godoy Cruz', 'Flores 630', 'https://www.ole.com.ar/2021/04/11/ehK4bU325_1200x630__1.jpg'),
-('Brigadier Estanislao López', 'El Cementerio de los Elefantes', '46000', 'Santa Fe', 'Av. Juan José Paso 3535', 'https://www.lavoz.com.ar/resizer/J_554RFDubMX0bMolnpdc8jmkqo=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/6NMSFOTBWRFPTGY6OJHOL7EELU.jpg'),
-('Monumental José Fierro', NULL, '35200', 'Villa 9 de Julio', '25 de mayo 1351', 'https://cdn.resfu.com/img_data/estadios/original_new/186.jpg?size=720x&lossy=1'),
-('Florencio Solá', NULL, '34901', 'Banfield', 'Gral. Arenales 900', 'https://media.eldiariosur.com/p/880a32e8afcf58593742132d13a14ec1/adjuntos/291/imagenes/000/421/0000421512/1200x675/smart/lencho-solajpg.jpg'),
-('Ciudad de Vicente López', NULL, '28530', 'Florida', 'Zufriategui 2021', 'https://cap.org.ar/wp-content/uploads/2021/02/DJI_0131.jpg'),
-('José Luis Hirschi', 'Estadio UNO', '32530', 'La Plata', 'Avenida 1 y 57 1900', 'https://media.lacapital.com.ar/p/a16378077335ba98858f9c2ddac52b24/adjuntos/204/imagenes/029/815/0029815894/1200x675/smart/estadio-estudiantesjpg.jpg'),
-('Julio César Villagra', 'El Gigante de Alberdi', '31500', 'Alberdi', 'Dr. Arturo Orgaz 510', 'https://telefe-static2.akamaized.net/media/486794/whatsapp-image-2023-04-06-at-141922.jpeg?v=20230406183416000&format=extraLarge&width=929&height=523&mode=crop'),
-('Estadio 15 de Abril', NULL, '30000', 'Santa Fe', 'Av. López y Planes 3553', 'https://www.clubaunion.com.ar/wp-content/uploads/2020/08/IMG-20180713-WA0006.jpg'),
-('Alfredo Terrera', NULL, '16000', 'Santiago del Estero', 'Granadero Saavedra 200', 'https://i.ytimg.com/vi/r9KN3eWcqvs/maxresdefault.jpg'),
-('José Dellagiovanna', 'Coliseo de Victoria', '26282', 'Victoria', 'Av. Pres. Perón 2698', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/03/estadio-tigre-victoria-640x360.jpg'),
-('Juan Domingo Perón', 'Monumental de Alta Córdoba', '26000', 'Alta Córdoba', 'Jujuy 2602', 'https://i.pinimg.com/originals/92/aa/c8/92aac89180e6ce37808f15a4b3af3b8e.jpg'),
-('Diego Armando Maradona', NULL, '26000', 'La Paternal', 'Gavilán 2151', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-argentinos-juniors3-740x545.jpg'),
-('Eva Perón', NULL, '22000', 'Junín', 'Necochea 25', 'https://laverdadonline.com/wp-content/uploads/2019/04/estadio.jpg'),
-('Juan Carmelo Zerillo', 'El Bosque', '21500', 'La Plata', 'Av. 60 1904 La Plata', 'https://cogelamochila.com/wp-content/uploads/2022/02/EEKKrwqXkAAzqHg-1220x600.jpg'),
-('Norberto Tomaghello', NULL, '20000', 'Gobernador Costa', 'Av. Humahuaca 244', 'https://pbs.twimg.com/media/FMjWk3vXMAYD3E4?format=jpg&name=medium'),
-('Julio Humberto Grondona', 'El Viaducto', '18300', 'Sarandí', 'Julio Humberto Grondona 3660', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-arsenal-sarandi1-740x526.jpg'),
-('Claudio Fabián Tapia', NULL, '4400', 'Barracas', 'Luna 1211', 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt8afb1e67b3bfd35b/64279c1de55f443779683e6d/01a.png?auto=webp&format=pjpg&width=3840&quality=60')
+('Antonio Vespucio Liberti', 'Monumental', '83196', 'Nuñez', 'Av. Pres. Figueroa Alcorta 7597', 'https://image-service.onefootball.com/transform?w=280&h=210&dpr=2&image=https%3A%2F%2Fwp-images.onefootball.com%2Fwp-content%2Fuploads%2Fsites%2F12%2F2022%2F02%2FESTADIO-MONUMENTAL-DE-NU%25C3%2591EZ-1000x750.jpg',3),
+('Alberto J. Armando', 'La Bombonera', '57200', 'La Boca', 'Brandsen 805', 'https://s1.eestatic.com/2023/02/08/deportes/futbol/internacional/739937044_230754838_1706x960.jpg',3),
+('Presidente Perón', 'El Cilindro de Avellaneda', '51389', 'Avellaneda', 'Pasaje Mozart y Corbatta', 'https://fotos.perfil.com/2020/10/30/3110estadioracingdrone-1069268.jpg',3),
+('José Amalfitani', NULL, '49747', 'Liniers', 'Av Juan B Justo 9200', 'https://velezsarsfield.com.ar/img/contenido/club/gr/estadio-02.jpg',3),
+('Tomás Adolfo Ducó', 'El Palacio', '48314', 'Parque Patricios', 'Av. Amancio Alcorta 2570', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/cancha-huracan-parque-patricios3-740x486.png',3),
+('Pedro Bidegain', 'El Nuevo Gasometro', '47964', 'Nueva Pompeya', 'Av. Perito Moreno 2145', 'https://www.infobae.com/new-resizer/7zpQJjqq9uXJ_eCTQNDW4PsLszo=/1200x628/filters:format(webp):quality(85)//s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/12/04155244/nuevo-gasometro-captura-1920-1024x575.jpg',3),
+('Néstor Díaz Pérez', 'Ciudad de Lanús', '45319', 'Lanús', 'Calle Ramón Cabrero 2007', 'https://fotos.perfil.com/2020/11/12/1211estadiolanus-1075716.jpg',3),
+('Ricardo Enrique Bochini', 'Libertadores de América', '42069', 'Avellaneda', 'Ricardo Enrique Bochini 751', 'https://cogelamochila.com/wp-content/uploads/2020/12/LDA.jpg',3),
+('Marcelo Bielsa', 'El Coloso del Parque', '42000', 'Rosario', 'Av. Int. Morcillo 2501-2699', 'https://i.pinimg.com/736x/c2/3c/41/c23c41bd9ee722b0f5223351d92041f1.jpg',3),
+('Dr. Lisandro de la Torre', 'Gigante de Arroyito', '41654', 'Rosario', 'Cordiviola 1100', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-gigante-arroyito-central1-1-640x480.jpg',3),
+('Francisco Cabasés', 'La Boutique', '18000', 'Barrio Jardín', 'Avendaño y Valdivia', 'https://i.pinimg.com/originals/c7/c2/80/c7c280fb13edacbeecc0003fabd25693.jpg',3),
+('Feliciano Gambarte', 'La Bodega', '17000', 'Godoy Cruz', 'Flores 630', 'https://www.ole.com.ar/2021/04/11/ehK4bU325_1200x630__1.jpg',3),
+('Brigadier Estanislao López', 'El Cementerio de los Elefantes', '46000', 'Santa Fe', 'Av. Juan José Paso 3535', 'https://www.lavoz.com.ar/resizer/J_554RFDubMX0bMolnpdc8jmkqo=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/6NMSFOTBWRFPTGY6OJHOL7EELU.jpg',3),
+('Monumental José Fierro', NULL, '35200', 'Villa 9 de Julio', '25 de mayo 1351', 'https://cdn.resfu.com/img_data/estadios/original_new/186.jpg?size=720x&lossy=1',3),
+('Florencio Solá', NULL, '34901', 'Banfield', 'Gral. Arenales 900', 'https://media.eldiariosur.com/p/880a32e8afcf58593742132d13a14ec1/adjuntos/291/imagenes/000/421/0000421512/1200x675/smart/lencho-solajpg.jpg',3),
+('Ciudad de Vicente López', NULL, '28530', 'Florida', 'Zufriategui 2021', 'https://cap.org.ar/wp-content/uploads/2021/02/DJI_0131.jpg',3),
+('José Luis Hirschi', 'Estadio UNO', '32530', 'La Plata', 'Avenida 1 y 57 1900', 'https://media.lacapital.com.ar/p/a16378077335ba98858f9c2ddac52b24/adjuntos/204/imagenes/029/815/0029815894/1200x675/smart/estadio-estudiantesjpg.jpg',3),
+('Julio César Villagra', 'El Gigante de Alberdi', '31500', 'Alberdi', 'Dr. Arturo Orgaz 510', 'https://telefe-static2.akamaized.net/media/486794/whatsapp-image-2023-04-06-at-141922.jpeg?v=20230406183416000&format=extraLarge&width=929&height=523&mode=crop',3),
+('Estadio 15 de Abril', NULL, '30000', 'Santa Fe', 'Av. López y Planes 3553', 'https://www.clubaunion.com.ar/wp-content/uploads/2020/08/IMG-20180713-WA0006.jpg',3),
+('Alfredo Terrera', NULL, '16000', 'Santiago del Estero', 'Granadero Saavedra 200', 'https://i.ytimg.com/vi/r9KN3eWcqvs/maxresdefault.jpg',3),
+('José Dellagiovanna', 'Coliseo de Victoria', '26282', 'Victoria', 'Av. Pres. Perón 2698', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/03/estadio-tigre-victoria-640x360.jpg',3),
+('Juan Domingo Perón', 'Monumental de Alta Córdoba', '26000', 'Alta Córdoba', 'Jujuy 2602', 'https://i.pinimg.com/originals/92/aa/c8/92aac89180e6ce37808f15a4b3af3b8e.jpg',3),
+('Diego Armando Maradona', NULL, '26000', 'La Paternal', 'Gavilán 2151', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-argentinos-juniors3-740x545.jpg',3),
+('Eva Perón', NULL, '22000', 'Junín', 'Necochea 25', 'https://laverdadonline.com/wp-content/uploads/2019/04/estadio.jpg',3),
+('Juan Carmelo Zerillo', 'El Bosque', '21500', 'La Plata', 'Av. 60 1904 La Plata', 'https://cogelamochila.com/wp-content/uploads/2022/02/EEKKrwqXkAAzqHg-1220x600.jpg',3),
+('Norberto Tomaghello', NULL, '20000', 'Gobernador Costa', 'Av. Humahuaca 244', 'https://pbs.twimg.com/media/FMjWk3vXMAYD3E4?format=jpg&name=medium',3),
+('Julio Humberto Grondona', 'El Viaducto', '18300', 'Sarandí', 'Julio Humberto Grondona 3660', 'https://www.estadiosdeargentina.com.ar/wp-content/uploads/2014/01/estadio-arsenal-sarandi1-740x526.jpg',3),
+('Claudio Fabián Tapia', NULL, '4400', 'Barracas', 'Luna 1211', 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt8afb1e67b3bfd35b/64279c1de55f443779683e6d/01a.png?auto=webp&format=pjpg&width=3840&quality=60',3)
 GO
 INSERT INTO Equipos (Nombre, Alias, Ciudad, Fundacion, Estadio, Imagen)
 VALUES
@@ -197,17 +201,13 @@ VALUES
 ('Unión', 'El Tatengue', 'Santa Fe', '1907', (SELECT ID FROM Estadios WHERE Nombre LIKE '%15 de Abril%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg/1788px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n.svg.png'),
 ('Velez Sarsfield', 'El Fortín', 'Ciudad Autónoma de Buenos Aires', '1910', (SELECT ID FROM Estadios WHERE Nombre LIKE '%Amalfitani%'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png')
 
-insert into Tipos (Nombre, Descripcion)
-values ('Legendaria', ''),
-('Especial', ''),
-('Estándar', '')
 
 insert into Jugadores values
 -- ('','', CONVERT(DATE, '//19', 103), 'ARG',(select ID from Equipos where Nombre like '%Colón%'),'','', 1), 
 
 --Argentinos
  ('Federico','Lanzillotta', CONVERT(DATE, '01/12/1992', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'ARQ','https://www.footballdatabase.eu/images/photos/players/a_203/203097.jpg', 3, 1), 
- ('Kevin','Mac Allister', CONVERT(DATE, '07/11/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'DEF','https://www.worldfootball.net/player_summary/kevin-mac-allister/', 2, 1), 
+ ('Kevin','Mac Allister', CONVERT(DATE, '07/11/1997', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'DEF','https://www.footballdatabase.eu/images/photos/players/2016-2017/a_287/287820.jpg', 2, 1), 
  ('Santiago','Montiel', CONVERT(DATE, '22/11/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'DEF','https://static-img.zz.pt/jogadores/07/1000307__20230423210510_santiago_montiel.jpg',3, 1), 
  ('Miguel','Torren', CONVERT(DATE, '12/08/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'DEF','https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQPmCRiFs5A0ePyLG5Lo6kpIVjLJv4_H8CwoPfjOIrYUnXy4OqSmfHERdfDrisL1BUj', 3, 1), 
  ('Marco','Di Cesare', CONVERT(DATE, '30/01/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Argentinos%'),'DEF','https://www.playmakerstats.com/img/jogadores/91/774591_med__20210420141857_marco_di_cesare.png', 3, 1), 
@@ -278,7 +278,7 @@ insert into Jugadores values
 
 ('Nahuel','Losada', CONVERT(DATE, '17/04/1993', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'ARQ','https://lc.cx/OZ4nII', 3,1), 
 ('Alex','Ibacache', CONVERT(DATE, '11/01/1999', 103), 'CHL',(select ID from Equipos where Nombre like '%Belgrano%'),'DEF','https://oneftbl-cms.imgix.net/https%3A%2F%2Fwww.radioagricultura.cl%2Fwp-content%2Fuploads%2F2023%2F03%2Fibacache-.jpg?auto=format%2Ccompress&crop=faces&dpr=2&fit=crop&h=630&q=25&w=840&s=b81d26454a3921b38d77cd2f5973b502', 3,1), 
-('Nicolás','Meriano', CONVERT(DATE, '09/11/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'DEF','https://lc.cx/DVZSjy', 3,1), 
+('Nicolás','Meriano', CONVERT(DATE, '09/11/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'DEF','https://scontent.cdninstagram.com/v/t51.2885-15/275108529_356113186377354_7332641264716157908_n.jpg?stp=dst-jpg_e15&_nc_ht=scontent.cdninstagram.com&_nc_cat=106&_nc_ohc=FNEdk6DvMkAAX-bfYDT&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjc4NjU4MjEzNTQ5NjA5ODc4NQ%3D%3D.2-ccb7-5&oh=00_AfADCCz2CD7w5XzRPVCy_xmSmwTjgAcyfMIwHWajdohL2Q&oe=64B6E599&_nc_sid=10d13b', 3,1), 
 ('Alejandro','Rébola', CONVERT(DATE, '24/07/1988', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'DEF','https://www.lavoz.com.ar/resizer/wFfGIPbLhG36AmcBkHsIjJb61eY=/800x450/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/7GZIKEPZFVH7FENUYTCD6HRBPY.jpg', 3,1), 
 ('Juan','Barinaga', CONVERT(DATE, '10/10/2000', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'DEF','http://belgrano.sandboxmap.com/wp-content/uploads/2000/10/JUAN-BARINAGA-2-768x1024.jpg', 3,1), 
 ('Bruno','Zapelli', CONVERT(DATE, '16/05/2002', 103), 'ARG',(select ID from Equipos where Nombre like '%Belgrano%'),'MED','http://belgrano.sandboxmap.com/wp-content/uploads/2002/05/BRUNO-ZAPELLI-1-375x500.jpg', 2, 1), 
@@ -669,5 +669,62 @@ values
 (2,'USER')
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
+<<<<<<< Updated upstream
 INSERT INTO Usuarios values ('admin','admin', 'admin@mail.com', 'password',null,1000,1)
 select * from Usuarios
+=======
+INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',1000,2)
+
+--select * from Figuritas
+
+----select * FROM Figuritas
+
+--select * from Figuritas_Jugadores
+
+----select * from Jugadores
+----select * FROM Usuarios_X_Figuritas
+
+----select * FROM Jugadores WHERE ID = 51
+	
+--select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF 
+--inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
+--Inner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita
+--Inner join Jugadores j on fj.IDJugador = j.ID 
+--Inner join Posiciones p on p.Codigo = j.Posicion
+--Inner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad
+--inner join Equipos e on e.ID = j.Equipo
+--WHERE UxF.IDUsuario = 1
+
+----select * FROM ESTAdios order by nombre  desc
+
+
+----select f.Pegada, f.Ubicacion, E.Nombre, E.Alias,E.Ciudad, E.Fundacion, E.Imagen
+----from Usuarios_X_Figuritas UxF
+----Inner join Figuritas f ON f.IDFigurita= UxF.IDFigurita
+----Inner join Figuritas_Equipos fe ON f.IDFigurita=fe.IDFigurita
+----Inner join Equipos E on fe.IDEquipo = E.ID 
+----WHERE UxF.IDUsuario = 1
+
+--select * From Tipos
+--update Figuritas set Ubicacion = 2 where IDFigurita = 16
+--insert into Figuritas values (3,1,0,1)
+
+----select * from Figuritas_Estadios
+--insert into Figuritas_Equipos values (17,1)
+----select * from Usuarios_X_Figuritas
+--insert into Usuarios_X_Figuritas values (1,17)
+
+----select * From Usuarios
+----select * From Niveles
+--insert into Usuarios values ('Matias','Admin','msdasdasAdmin@mail.com','password',0,1 )
+
+--select u.ID,u.Nombre, n.Id as NID, n.Nombre as NombreNivel from Usuarios U 
+--Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = 'matiasAdmin@mail.com'
+
+
+--select * from Usuarios
+
+
+--delete Usuarios where ID = 2
+--drop database ALBUM_DBPROD
+>>>>>>> Stashed changes

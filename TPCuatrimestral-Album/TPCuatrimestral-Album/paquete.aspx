@@ -29,31 +29,85 @@
 
     <div class="container-xl mt-3">
         <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
-            <asp:Repeater ID="repeaterJugadores" runat="server">
-                <ItemTemplate>
-                    <div class="container d-flex justify-content-center mt-2">
-                        <div class="borde-figurita container d-flex justify-content-center align-items-center">
-                            <div class="figurita-figurita d-flex flex-column">
-                                <div class="imagen-figurita" style="background-image: url('<%# Eval("Jugador.Imagen") %>')"></div>
-                                <div class="info-figurita d-flex flex-column">
-                                    <div class="nombre-figurita d-flex justify-content-center">
-                                        <p><b><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></b></p>
-                                    </div>
-                                    <div class="props-figurita">
-                                        <ul>
-                                             <li><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></li>
-                                            <li><%# Eval("Jugador.Posicion.Descripcion") %></li>
-                                            <li><%# Eval("Jugador.Equipo.Nombre") %></li>
-                                            <li><%# Eval("Jugador.Nacionalidad.Gentilicio") %></li>
-                                        </ul>
-                                    </div>
-                                </div>
+            <%--            <asp:Repeater ID="repeaterFiguritas" runat="server">
+                <ItemTemplate>--%>
+            <% foreach (dominio2.Figurita figurita in figuritas)
+                { 
+                if (EsJugador(figurita.IDFigurita) != -1)
+                {            %>
+            <div class="container d-flex justify-content-center mt-2">
+                <div class="borde-figurita container d-flex justify-content-center align-figuritas-center">
+                    <div class="figurita-figurita d-flex flex-column">
+                        <div class="imagen-figurita" style="background-image: url('<%: ((dominio2.FiguritaJugador)figurita).Jugador.Imagen %>')"></div>
+                        <div class="info-figurita d-flex flex-column">
+                            <div class="nombre-figurita d-flex justify-content-center">
+                                <p><b><%: ((dominio2.FiguritaJugador)figurita).Jugador.Nombres %></b> <b><%: ((dominio2.FiguritaJugador)figurita).Jugador.Apellidos%></b></p>
+                            </div>
+                            <div class="props-figurita">
+                                <ul>
+                                    <li><%: ((dominio2.FiguritaJugador)figurita).Jugador.Equipo.Nombre %></li>
+                                    <li><%: ((dominio2.FiguritaJugador)figurita).Jugador.Posicion.Descripcion %></li>
+                                    <li><%: ((dominio2.FiguritaJugador)figurita).Jugador.FechaDeNacimiento.ToString("dd/MM/yyyy") %></li>
+                                    <li><%: ((dominio2.FiguritaJugador)figurita).Jugador.Nacionalidad.Gentilicio %></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                </div>
+            </div>
+            
+
+            <%}
+                else if (EsEquipo(figurita.IDFigurita))
+                {%>
+            <div class="container d-flex justify-content-center mt-2">
+                <div class="borde-figurita container d-flex justify-content-center align-figuritas-center">
+                    <div class="figurita-figurita d-flex flex-column">
+                        <div class="imagen-figurita" style="background-image: url('<%: ((dominio2.FiguritaEquipo)figurita).Equipo.Imagen %>')"></div>
+                        <div class="info-figurita d-flex flex-column">
+                            <div class="nombre-figurita d-flex justify-content-center">
+                                <p><b><%: ((dominio2.FiguritaEquipo)figurita).Equipo.Nombre %></b></p>
+                            </div>
+                            <div class="props-figurita">
+                                <ul>
+                                    <li><%: ((dominio2.FiguritaEquipo)figurita).Equipo.Alias %></li>
+                                    <li><%: ((dominio2.FiguritaEquipo)figurita).Equipo.Ciudad %></li>
+                                    <li><%: ((dominio2.FiguritaEquipo)figurita).Equipo.Fundacion %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%} else
+                {            %>
+            <div class="container d-flex justify-content-center mt-2">
+                <div class="borde-figurita container d-flex justify-content-center align-figuritas-center">
+                    <div class="figurita-figurita d-flex flex-column">
+                        <div class="imagen-figurita" style="background-image: url('<%: ((dominio2.FiguritaEstadio)figurita).Estadio.Imagen %>')"></div>
+                        <div class="info-figurita d-flex flex-column">
+                            <div class="nombre-figurita d-flex justify-content-center">
+                                <p><b><%: ((dominio2.FiguritaEstadio)figurita).Estadio.Nombre %></b></p>
+                            </div>
+                            <div class="props-figurita">
+                                <ul>
+                                    <li><%: ((dominio2.FiguritaEstadio)figurita).Estadio.Alias %></li>
+                                    <li><%: ((dominio2.FiguritaEstadio)figurita).Estadio.Barrio %></li>
+                                    <li><%: ((dominio2.FiguritaEstadio)figurita).Estadio.Capacidad %></li>
+                                    <li><%: ((dominio2.FiguritaEstadio)figurita).Estadio.Calle %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%} %>
+            <%--                </ItemTemplate>
+            </asp:Repeater>--%>
+            <%} %>
         </div>
     </div>
-        <%} %>
+    <% }
+    %>
 </asp:Content>
