@@ -10,9 +10,10 @@ namespace TPCuatrimestral_Album
 {
     public partial class EmailHelp : System.Web.UI.Page
     {
+        public bool Enviado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack) Enviado = false;
         }
 
         protected void btnEnviar_Click(object sender, EventArgs e)
@@ -22,6 +23,11 @@ namespace TPCuatrimestral_Album
             try
             {
                 emailService.enviarEmail();
+                txtCorreo.Text=string.Empty;
+                txtAsunto.Text=string.Empty;    
+                txtMensaje.Text=string.Empty;
+                txtNombre.Text=string.Empty;
+                Enviado = true;
             }
             catch (Exception ex)
             {

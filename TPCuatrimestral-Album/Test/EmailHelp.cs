@@ -8,6 +8,7 @@ using System.Net;
 
 
 
+
 namespace Test
 {
     public class EmailHelp
@@ -33,20 +34,22 @@ namespace Test
             email.IsBodyHtml = true;
             email.Body = mensaje;
 
-            //enviarEmail();
         }
-
+ 
         public void enviarEmail()
         {
             try
             {
-                server.Send(email);
+                server.Send(email);              
             }
+            
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
     }
 }
 

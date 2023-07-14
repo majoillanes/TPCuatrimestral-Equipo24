@@ -45,7 +45,12 @@
                 </div>
             </div>
         </div>
-        </div>
-            
- 
+    </div>
+ <%if (Enviado)
+     { %>           
+ <div class="d-flex justify-content-center">
+     <h1>¡Mensaje Enviado!</h1>
+ </div>
+    <%} %>
+
 </asp:Content>
