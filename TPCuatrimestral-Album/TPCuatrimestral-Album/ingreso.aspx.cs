@@ -11,6 +11,8 @@ namespace TPCuatrimestral_Album
 {
     public partial class Formulario_web11 : System.Web.UI.Page
     {
+        public bool HayErrorRegistro { get; set; }
+        public bool HayErrorIngreso { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,8 +33,7 @@ namespace TPCuatrimestral_Album
                 }
                 else
                 {
-                    Session.Add("error", "user o pass incorrectos");
-                    Response.Redirect("../error.aspx", false);
+                    HayErrorIngreso = true;
                 }
 
             }
@@ -55,19 +56,28 @@ namespace TPCuatrimestral_Album
                 usuario.Apellido = txtApellido.Text;
                 usuario.Email = txtMailRegistro.Text;
                 usuario.Clave = txtPass.Text;
-                usuarioNegocio.crearUsuario(usuario);
-                usuarioNegocio.ingresar(usuario);
-                Session.Add("usuario", usuario);
-                string asunto = "Bienvenida";
-                string cuerpo = $"<h1>Bienvenido!</h1> <br><p>Hola {usuario.Nombre},</p> <p>Gracias por registrarte en la aplicación. Desde ahora podrás coleccionar las figuritas del Álbum de la Liga Profesional Argentina.</p>";
-                emailService.armarCorreo(usuario.Email,asunto,cuerpo);
-                emailService.enviarEmail();
-                Response.Redirect("menu.aspx",false);
+                
+
+                if (!(string.IsNullOrEmpty(usuario.Nombre) || string.IsNullOrEmpty(usuario.Apellido) || string.IsNullOrEmpty(usuario.Email) || string.IsNullOrEmpty(usuario.Clave)) && txtPass.Text.ToString().Equals(txtConfirmPass.Text))
+                {
+                    usuarioNegocio.crearUsuario(usuario);
+                    usuarioNegocio.ingresar(usuario);
+                    Session.Add("usuario", usuario);
+                    string asunto = "Bienvenida";
+                    string cuerpo = $"<h1>Bienvenido!</h1> <br><p>Hola {usuario.Nombre},</p> <p>Gracias por registrarte en la aplicación. Desde ahora podrás coleccionar las figuritas del Álbum de la Liga Profesional Argentina.</p>";
+                    emailService.armarCorreo(usuario.Email, asunto, cuerpo);
+                    emailService.enviarEmail();
+                    Response.Redirect("menu.aspx", false);
+                }
+                else
+                {
+                    HayErrorRegistro = true;
+                }
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
-                Response.Redirect("error.aspx",false);
+                throw ex;
             }
         }
     }

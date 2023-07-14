@@ -13,7 +13,7 @@ namespace dominio2
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Clave { get; set; }
-        public decimal Monedas { get; set; }
+        public int Monedas { get; set; }
         public DateTime UltimoPaqute { get; set; }
         public Nivel Nivel  { get; set; }
         public List<Album> Albumes { get; set; }

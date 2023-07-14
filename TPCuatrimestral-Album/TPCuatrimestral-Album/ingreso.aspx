@@ -30,7 +30,7 @@
                             </div>
                             <div class="row g-2 align-items-center p-2">
                                 <div class="col">
-                                    <asp:Label ID="lblMail" runat="server" CssClass="form-label" Text="EMail"></asp:Label>
+                                    <asp:Label ID="lblMailR" runat="server" CssClass="form-label" Text="EMail"></asp:Label>
                                 </div>
                                 <div class="col-auto">
                                     <asp:TextBox ID="txtMailRegistro" runat="server" CssClass="form-control"></asp:TextBox>
@@ -53,6 +53,12 @@
                                     <asp:TextBox ID="txtConfirmPass" runat="server" CssClass="form-control" Type="password"></asp:TextBox>
                                 </div>
                             </div>
+                            <%if (HayErrorRegistro)
+                                    { %>
+                                <div class="alert alert-danger mt-4 py-4 d-flex justify-content-center" role="alert">
+                                    <p>Error. Por favor verificar todos los campos.</p>
+                                </div>
+                                <%} %>
 
                             <div class="d-flex justify-content-center pb-3">
                                 <asp:Button ID="btnCrearCuenta" runat="server" Text="Crear Cuenta" CssClass="btn btn-secondary" OnClick="btnCrearCuenta_Click" />
@@ -87,6 +93,12 @@
                                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" Type="password"></asp:TextBox>
                             </div>
                         </div>
+                        <%if (HayErrorIngreso)
+                                    { %>
+                                <div class="alert alert-danger mt-4 py-4 d-flex justify-content-center" role="alert">
+                                    <p>Email o contraseña incorrectos, por favor verifique los datos ingresados.</p>
+                                </div>
+                                <%} %>
                         <div class="d-flex justify-content-center pb-3">
                             <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-secondary" OnClick="btnIngresar_Click" />
                         </div>

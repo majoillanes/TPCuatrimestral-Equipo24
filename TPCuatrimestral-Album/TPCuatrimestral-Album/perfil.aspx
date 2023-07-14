@@ -12,7 +12,7 @@
   <ul class="icons-right">
            <li>
             <img class="icon" src="Images/coins.png" alt="Monedas">
-            <span class="icon-description">Mi Moneda Virtual</span>
+            <span class="icon-description"><%= Usuario.Monedas%></span>
         </li>
 
 
@@ -23,8 +23,8 @@
             <img class="icons" src="Images/perfil.png" alt="Perfil">
         </li>
         <div class="descrip">
-            <span class="icon-descrip">Nombre de perfil</span> <!--Deberíamos traer de la base-->
-            <span class="icon-descrip">name@email.com</span> <!--Deberíamos traer de la base-->
+            <span class="icon-descrip"><%= Usuario.Nombre %></span> <!--Deberíamos traer de la base-->
+            <span class="icon-descrip"><%= Usuario.Email %></span> <!--Deberíamos traer de la base-->
             </div>
         <li>
             <img class="icons" src="Images/amigos.png" alt="Invitar amigos">

@@ -51,13 +51,13 @@ namespace TPCuatrimestral_Album
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// Control lblMail.
+        /// Control lblMailR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMail;
+        protected global::System.Web.UI.WebControls.Label lblMailR;
 
         /// <summary>
         /// Control txtMailRegistro.

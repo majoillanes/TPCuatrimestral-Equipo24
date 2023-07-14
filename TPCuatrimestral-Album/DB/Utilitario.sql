@@ -669,5 +669,4 @@ values
 (2,'USER')
 --idfigu, idalbum, activo, pegada, idjugador, nombre, apellido, imagen
 
-INSERT INTO Usuarios values ('Matias','Islas', 'matias@mail.com', 'password',null,1000,2)
-
+INSERT INTO Usuarios values ('admin','admin', 'admin@mail.com', 'password',null,1000,1)

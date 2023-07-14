@@ -15,12 +15,13 @@ namespace Test
 
             try
             {
-                datos.setearConsulta($"select u.ID,u.Nombre, n.Nombre as NombreNivel from Usuarios U Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = '{usuario.Email}' and u.Clave = '{usuario.Clave}'");
+                datos.setearConsulta($"select u.ID,u.Nombre,u.Monedas, n.Nombre as NombreNivel from Usuarios U Inner join Niveles N on n.ID = u.Nivel WHERE u.Email = '{usuario.Email}' and u.Clave = '{usuario.Clave}'");
                 datos.ejecutarLectura();
                 if (datos.Lector.Read())
                 {
                     usuario.Id = (int)datos.Lector["ID"];
                     usuario.Nombre = (string)datos.Lector["Nombre"];
+                    usuario.Monedas = (int)datos.Lector["Monedas"];
                     usuario.Nivel = new Nivel();
                     usuario.Nivel.Nombre = (string)datos.Lector["NombreNivel"];
                     return true;
@@ -41,7 +42,7 @@ namespace Test
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"INSERT INTO Usuarios values ('{usuario.Nombre}','{usuario.Apellido}','{usuario.Email}','{usuario.Clave}',0,2)");
+                datos.setearConsulta($"INSERT INTO Usuarios(Nombre, Apellido, Email, Clave, Monedas, Nivel) values ('{usuario.Nombre}','{usuario.Apellido}','{usuario.Email}','{usuario.Clave}',0,2)");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
