@@ -3,79 +3,63 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--<asp:GridView ID="gvLista" CssClass="table" runat="server" AutoGenerateColumns="false">
-        <Columns>
-            <asp:BoundField DataField="IDFigurita" HeaderText="ID Figurita" />
-            <asp:BoundField DataField="IDAlbum" HeaderText="ID Album" />
-            <asp:BoundField DataField="Activo" HeaderText="Activo" />
-            <asp:BoundField DataField="Pegada" HeaderText="Pegada" />
-            <asp:TemplateField HeaderText="Nombres">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.Nombres") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Apellidos">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.Apellidos") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Nacionalidad">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.Nacionalidad.Gentilicio") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Fecha de Nacimiento">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Equipo">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.Equipo.Nombre") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Posicion">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Jugador.Posicion.Descripcion") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Imagen">
-                <ItemTemplate>
-                    <asp:Image runat="server" ImageUrl='<%# Eval("Jugador.Imagen") %>' Width="100" Height="100" />
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>--%>
-
-    <%-- a partir de aca funcionaba --%>
-
-    <%--<div class="container-xl">
-        <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
-            <asp:Repeater ID="repeaterJugadores" runat="server">
-                <ItemTemplate>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-img-top" src='<%# Eval("Jugador.Imagen") %>' alt="Imagen del jugador">
-                            <div class="card-body">
-                                <h5 class="card-title"><%# Eval("Jugador.Nombres") %> <%# Eval("Jugador.Apellidos") %></h5>
-                                <p class="card-text"><%# Eval("Jugador.Nacionalidad.Gentilicio") %></p>
-                                <p class="card-text"><%# Eval("Jugador.FechaDeNacimiento", "{0:dd/MM/yyyy}") %></p>
-                                <p class="card-text"><%# Eval("Jugador.Equipo.Nombre") %></p>
-                                <p class="card-text"><%# Eval("Jugador.Posicion.Descripcion") %></p>
-                            </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
-            <div class="container d-flex justify-content-center mt-4">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
-            </div>
-        </div>
-    </div>--%>
-
-    <%-- pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --%>
 
     <div class="container-xl">
+        <div class="row">
+            <h1>Mis Figuritas</h1>
+            <div class="row">
+                <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
+                    <div class="mb-3">
+                        <asp:CheckBox Text="Filtro Avanzado"
+                            CssClass="" ID="chkAvanzado" runat="server"
+                            AutoPostBack="true"
+                            OnCheckedChanged="chkAvanzado_CheckedChanged" />
+                    </div>
+                </div>
+
+                <%if (chkAvanzado.Checked)
+                    { %>
+                <div>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="mb-3">
+                                        <asp:Label Text="Campo" ID="lblCampo" runat="server" />
+                                        <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-control" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
+                                            <asp:ListItem Text="" />
+                                            <asp:ListItem Text="Equipo" />
+                                            <asp:ListItem Text="Posicion" />
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="mb-3">
+                                        <asp:Label Text="Criterio" runat="server" />
+                                        <asp:DropDownList runat="server" ID="ddlCriterio" CssClass="form-control"></asp:DropDownList>
+                                    </div>
+                                </div>
+                                <%--            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Label Text="Filtro" runat="server" />
+                    <asp:TextBox runat="server" ID="txtFiltroAvanzado" CssClass="form-control" />
+                </div>
+            </div>--%>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="mb-3">
+                        <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" ID="btnBuscar" OnClick="btnBuscar_Click" />
+                        <asp:Button Text="Limpiar" runat="server" CssClass="btn btn-light" ID="btnLimpiar" OnClick="btnLimpiar_Click" />
+
+                    </div>
+                </div>
+            </div>
+            <%} %>
+        </div>
         <div class="row row-cols-1 row-cols-sm-6 g-4 mt-2">
             <asp:Repeater ID="repeaterJugadores" runat="server">
                 <ItemTemplate>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -179,16 +180,23 @@ namespace Test
                 accesoDatos.cerrarConexion();
             }
         }
-        public List<FiguritaJugador> entre(int idUsuario, int inicio, int fin)
+        public List<FiguritaJugador> filtrar(int idUsuario, string campo, string criterio)
         {
             List<FiguritaJugador> figuritas = new List<FiguritaJugador>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta($"select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF \r\ninner join Figuritas f ON f.IDFigurita= UxF.IDFigurita\r\nInner join Figuritas_Jugadores fj ON f.IDFigurita=fj.IDFigurita\r\nInner join Jugadores j on fj.IDJugador = j.ID \r\nInner join Posiciones p on p.Codigo = j.Posicion\r\nInner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad\r\ninner join Equipos e on e.ID = j.Equipo\r\nWHERE UxF.IDUsuario = {idUsuario} and f.Ubicacion between {inicio} and {fin}");
+                string consulta = $"select f.Pegada, f.Ubicacion,j.Imagen, j.Nombres, j.Apellidos, j.FechaDeNacimiento, p.Descripcion, e.Nombre, e.Id,n.GENTILICIO_NAC from Usuarios_X_Figuritas UxF \r\ninner join Figuritas f ON f.IDFigurita = UxF.IDFigurita\r\nInner join Figuritas_Jugadores fj ON f.IDFigurita = fj.IDFigurita\r\nInner join Jugadores j on fj.IDJugador = j.ID \r\nInner join Posiciones p on p.Codigo = j.Posicion\r\nInner join Nacionalidad n on n.ISO_NAC = j.Nacionalidad\r\ninner join Equipos e on e.ID = j.Equipo\r\nWHERE UxF.IDUsuario = { idUsuario} and f.Pegada = 0 and ";
+                
+                if (campo == "Equipo")
+                    consulta += $"E.ID = {criterio}";
+                else
+                    consulta += $"P.Codigo = '{criterio}'";
+                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
+
                     FiguritaJugador figurita = new FiguritaJugador();
                     figurita.Pegada = (bool)datos.Lector["Pegada"];
                     figurita.Ubicacion = (Int16)datos.Lector["Ubicacion"];
@@ -209,7 +217,6 @@ namespace Test
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
