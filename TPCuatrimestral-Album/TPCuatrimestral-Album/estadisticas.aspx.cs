@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio2;
+using Test;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,14 +11,16 @@ namespace TPCuatrimestral_Album
 {
     public partial class Formulario_web19 : System.Web.UI.Page
     {
+        public int Completadas { get; set; }
+        public int Porcentaje { get; set; } 
+        public Usuario Usuario { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Usuario = (Usuario)Session["usuario"];
+            FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
+            Completadas = figuritaNegocio.cantidadFiguiritasxUsuario(Usuario.Id);
+            Porcentaje = (Completadas * 100) / 364;
         }
 
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("menu.aspx", false);
-        }
     }
 }

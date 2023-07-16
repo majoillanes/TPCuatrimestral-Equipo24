@@ -130,5 +130,30 @@ namespace Test
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public int cantidadFiguiritasxUsuario(int idUsuario)
+        {
+            int cantidadFiguritas = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"select count(Distinct(F.Ubicacion)) as Cantidad  from Figuritas F\r\nInner join Usuarios_X_Figuritas UxF On f.IDFigurita = UxF.IDFigurita\r\nWHERE UxF.IDUsuario = {idUsuario} and f.Pegada = 1");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    cantidadFiguritas = (int)datos.Lector["Cantidad"];
+                }
+                return cantidadFiguritas;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace TPCuatrimestral_Album
                 if (negocio.ingresar(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    Response.Redirect("menu.aspx", false);
+                    Response.Redirect("estadisticas.aspx", false);
                 }
                 else
                 {
