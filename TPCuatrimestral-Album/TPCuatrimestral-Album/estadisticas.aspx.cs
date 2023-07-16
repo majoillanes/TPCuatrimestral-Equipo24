@@ -20,6 +20,11 @@ namespace TPCuatrimestral_Album
             FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
             Completadas = figuritaNegocio.cantidadFiguiritasxUsuario(Usuario.Id);
             Porcentaje = (Completadas * 100) / 364;
+            lblCantidadPegadas.Text += Completadas.ToString();
+            int faltantes = 364 - Completadas;
+            lblCantidadFaltantes.Text += " " + faltantes.ToString();
+            lblCantidadNoPegadas.Text += figuritaNegocio.cantidadFiguiritasDisponibles(Usuario.Id);
+
         }
 
     }

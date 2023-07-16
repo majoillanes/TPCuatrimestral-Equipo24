@@ -17,7 +17,9 @@
         <img class="imageEstadisticas" src="Images/estadisticas.png" alt="Estadisticas">
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="container d-flex">
+           <div class="container-left">
+    <div class="container d-flex justify-content-center">
         <div class="col">
             <div class="card sombra">
                 <div class="card-body">
@@ -29,6 +31,23 @@
                     </div>
                 </div>
             </div>
+            </div>
+         <div class="container-right">
+             <div class="container d-flex justify-content-center">
+                <div class="card sombra">
+                    <div class="card-body mx-auto">
+                        <h5 class="card-title">Mis figuritas</h5>
+                        <asp:Label ID="lblCantidadPegadas" runat="server" Text="Figuritas pegadas: "></asp:Label>
+                        <br />
+                        <asp:Label ID="lblCantidadFaltantes" runat="server" Text="Figuritas faltantes: "></asp:Label>
+                        <br />
+                        <asp:Label ID="lblCantidadNoPegadas" runat="server" Text="Figuritas disponibles: "></asp:Label>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+          </div>
     </div>
+    
 </asp:Content>

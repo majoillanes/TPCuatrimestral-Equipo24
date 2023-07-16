@@ -15,76 +15,31 @@ namespace TPCuatrimestral_Album
     {
 
         /// <summary>
-        /// Control btnPerfil.
+        /// Control lblCantidadPegadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPerfil;
+        protected global::System.Web.UI.WebControls.Label lblCantidadPegadas;
 
         /// <summary>
-        /// Control btnAlbum.
+        /// Control lblCantidadFaltantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAlbum;
+        protected global::System.Web.UI.WebControls.Label lblCantidadFaltantes;
 
         /// <summary>
-        /// Control btnPaquete.
+        /// Control lblCantidadNoPegadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPaquete;
-
-        /// <summary>
-        /// Control btnFiguritas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiguritas;
-
-        /// <summary>
-        /// Control btnIntercambiar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIntercambiar;
-
-        /// <summary>
-        /// Control btnBonosRecompensas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBonosRecompensas;
-
-        /// <summary>
-        /// Control btnTienda.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTienda;
-
-        /// <summary>
-        /// Control btnEstadisticas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEstadisticas;
+        protected global::System.Web.UI.WebControls.Label lblCantidadNoPegadas;
 
         /// <summary>
         /// Control btnAdministrador.
