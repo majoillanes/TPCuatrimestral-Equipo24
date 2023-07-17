@@ -47,7 +47,7 @@ namespace TPCuatrimestral_Album
 //            repeaterJugadores.DataSource = paqueteNegocio.MasRecientes();
 //            repeaterJugadores.DataBind();
             usuarioNegocio.actualizarFechaPaquete(usuario);
-            btnAbrir.Enabled=false;
+            btnAbrir.Enabled = false;
             //repeaterFiguritas.DataSource = paqueteNegocio.MasRecientes();
             //repeaterFiguritas.DataBind();
             figuritas = paqueteNegocio.MasRecientes();

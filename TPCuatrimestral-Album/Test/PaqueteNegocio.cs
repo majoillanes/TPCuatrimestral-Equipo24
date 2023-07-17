@@ -202,7 +202,7 @@ namespace Test
                     figuritaEstadio.IDFigurita = figuritaNegocio.Listar().Last().IDFigurita;
                     figuritaEstadio.TipoDeFigurita = new TipoDeFigurita();
                     figuritaEstadio.TipoDeFigurita.Id = figurita.TipoDeFigurita.Id;
-                    figuritaEstadio.Ubicacion = (short)(13 * (figuritaEstadio.Estadio.ID - 1) + 2);
+                    figuritaEstadio.Ubicacion = (short)(13 * (EquipoXEstadio(figuritaEstadio.Estadio.ID) - 1) + 2);
                     figuritaEstadioNegocio.Agregar(figuritaEstadio, usuario);
                     return figuritaEstadio;
                     break;
@@ -212,7 +212,29 @@ namespace Test
             //listaFiguritas.Add(figuritaJugador);
             //figuritaJugadorNegocio.Agregar(figuritaJugador, usuario);
         }
+        public int EquipoXEstadio(int id)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta($"SELECT EQ.ID AS 'IDEquipo' FROM Estadios ES INNER JOIN Equipos EQ ON EQ.Estadio = ES.ID WHERE ES.ID ={id}");
+                accesoDatos.ejecutarLectura();
+                int ID= new int();
+                while (accesoDatos.Lector.Read())
+                {
+                    ID = (Int16)accesoDatos.Lector["IDEquipo"];
+                }
+                    return ID;
+            }
+            catch (Exception ex)
+            {
 
-
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }
