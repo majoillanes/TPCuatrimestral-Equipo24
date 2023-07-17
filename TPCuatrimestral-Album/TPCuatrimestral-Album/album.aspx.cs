@@ -15,8 +15,8 @@ namespace TPCuatrimestral_Album
         public Equipo Equipo { get; set; }
         public int JugadoresPagina1 { get; set; }
         public int JugadoresPagina2 { get; set; }
-        public List<FiguritaJugador> Figuritas {get;set;}
-        public FiguritaJugador Figurita { get; set;}
+        public List<FiguritaJugador> Figuritas { get; set; }
+        public FiguritaJugador Figurita { get; set; }
         public List<FiguritaEstadio> FiguritasEstadios { get; set; }
         public FiguritaEstadio FiguritaEstadio { get; set; }
         public List<FiguritaEquipo> FiguritasEquipos { get; set; }
@@ -25,7 +25,7 @@ namespace TPCuatrimestral_Album
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario = (Usuario)Session["usuario"];
-            
+
             if (Usuario == null || !Usuario.EsUsuario(Usuario))
             {
                 Session.Add("error", "Debes iniciar sesión");
@@ -39,34 +39,54 @@ namespace TPCuatrimestral_Album
             FiguritasEstadios = figuritaEstadioNegocio.listar(Usuario.Id);
             FiguritaEquipoNegocio figuritaEquipoNegocio = new FiguritaEquipoNegocio();
             FiguritasEquipos = figuritaEquipoNegocio.listar(Usuario.Id);
-            
+
 
             if (!IsPostBack)
             {
-                
 
-                EquipoNegocio equipoNegocio = new EquipoNegocio();
-                Equipo = equipoNegocio.listar().First();
-                lblNumeroPagina.Text = "1";
-                Session.Add("EquipoActual", Equipo);
 
-                List<string> numeros = new List<string>();
-                lblNumeroEscudo.Text = "1";
-                lblNumeroEstadio.Text = "2";
-                numeros.Add(lblNumeroEscudo.Text);
-                numeros.Add(lblNumeroEstadio.Text);
-                Session.Add("Numeros", numeros);
 
-                JugadoresPagina1 = 3;
-                Session.Add("Pagina1", JugadoresPagina1);
+                if (Session["UltimoNumeroPagina"] != null)
+                {
+                    lblNumeroPagina.Text = Session["UltimoNumeroPagina"].ToString();
+                    lblNumeroEscudo.Text = Session["nroEscudo"].ToString();
+                    lblNumeroEstadio.Text = Session["nroEstadio"].ToString();
+                    JugadoresPagina1 = int.Parse(Session["Pagina1"].ToString());
+                    JugadoresPagina2 = int.Parse(Session["Pagina2"].ToString());
+                    Equipo = (Equipo)Session["EquipoActual"];
 
-                JugadoresPagina2 = 5;
-                Session.Add("Pagina2", JugadoresPagina2);
+                    CargarFiguritasJugadores();
+                    CargarFiguritasEquipos();
+                    CargarFiguritasEstadios();
+                }
+                else
+                {
 
-                Page.DataBind();
-                CargarFiguritasJugadores();
-                CargarFiguritasEquipos();
-                CargarFiguritasEstadios();
+                    EquipoNegocio equipoNegocio = new EquipoNegocio();
+                    Equipo = equipoNegocio.listar().First();
+
+                    Session.Add("EquipoActual", Equipo);
+                    lblNumeroPagina.Text = "1";
+                    List<string> numeros = new List<string>();
+                    lblNumeroEscudo.Text = "1";
+                    lblNumeroEstadio.Text = "2";
+                    numeros.Add(lblNumeroEscudo.Text);
+                    numeros.Add(lblNumeroEstadio.Text);
+                    Session.Add("Numeros", numeros);
+
+                    JugadoresPagina1 = 3;
+                    Session.Add("Pagina1", JugadoresPagina1);
+
+                    JugadoresPagina2 = 5;
+                    Session.Add("Pagina2", JugadoresPagina2);
+
+                    Page.DataBind();
+                    CargarFiguritasJugadores();
+                    CargarFiguritasEquipos();
+                    CargarFiguritasEstadios();
+                }
+
+
             }
             else
             {
@@ -75,7 +95,7 @@ namespace TPCuatrimestral_Album
                 numeros = (List<string>)Session["Numeros"];
                 lblNumeroEscudo.Text = numeros[0];
                 lblNumeroEstadio.Text = numeros[1];
-                
+
 
 
                 JugadoresPagina1 = int.Parse(Session["Pagina1"].ToString());
@@ -183,7 +203,11 @@ namespace TPCuatrimestral_Album
             FiguritaNegocio figuritaNegocio = new FiguritaNegocio();
             string ubicacion = ((Button)sender).CommandArgument;
             figuritaNegocio.pegar(Int32.Parse(ubicacion));
+            Session["UltimoNumeroPagina"] = lblNumeroPagina.Text;
+            Session["nroEscudo"] = lblNumeroEscudo.Text;
+            Session["nroEstadio"] = lblNumeroEstadio.Text;
             Response.Redirect("album.aspx", false);
+
         }
     }
 }
