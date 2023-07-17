@@ -15,10 +15,10 @@ namespace TPCuatrimestral_Album
         public List<Figurita> figuritas { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //btnAbrir.Enabled = false;
-            //UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-            //if (usuarioNegocio.consultarUltimoPaquete((Usuario)Session["usuario"]).Date < DateTime.Now.Date)
-            //    btnAbrir.Enabled = true;
+            btnAbrir.Enabled = false;
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            if (usuarioNegocio.consultarUltimoPaquete((Usuario)Session["usuario"]).Date < DateTime.Now.Date)
+               btnAbrir.Enabled = true;
             //PaqueteNegocio paqueteNegocio = new PaqueteNegocio();
             //if (!IsPostBack) Mostrar = false;
             //else

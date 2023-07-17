@@ -20,7 +20,11 @@ namespace Test
         public AccesoDatos()
         {
 
+<<<<<<< HEAD
             conexion = new SqlConnection("server=.\\SQLEXPRESs; database=ALBUM_DBPROD; integrated security=true");
+=======
+            conexion = new SqlConnection("server=DESKTOP-806U76I; database=ALBUM_DBPROD; integrated security=true");
+>>>>>>> 7990b9d36b6f1c001cfa39e46751036db28b0623
             comando = new SqlCommand();
         }
 
