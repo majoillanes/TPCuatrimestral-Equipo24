@@ -286,9 +286,9 @@
                                             <li><%# Eval("Estadio.Alias") %></li>
                                             <li><%# Eval("Estadio.Capacidad") %></li>
                                             <li><%# Eval("Estadio.Barrio") %></li>
-                                            <li><%# Eval("Estadio.Calle") %></li>
-                                            <asp:Button ID="btnPegar" runat="server" Text="Pegar" OnClick="btnPegar_Click" CommandArgument='<%# Eval("Ubicacion") %>' CommandName="FiguritaUbicacion" AutoPostBack="false"  PostBack="false"/>
+                                             <%--<li><%# Eval("Estadio.Calle") %></li>--%>
                                         </ul>
+                                            <asp:Button ID="btnPegar" runat="server" Text="Pegar" OnClick="btnPegar_Click" CommandArgument='<%# Eval("Ubicacion") %>' CommandName="FiguritaUbicacion" AutoPostBack="false"  PostBack="false"/>
                                     </div>
                                 </div>
                             </div>
